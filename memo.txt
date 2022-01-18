@@ -1,0 +1,1281 @@
+1
+#内蔵サーバー実行
+./vendor/bin/sail artisan serve
+
+2
+#ルーティングroute/web.php
+
+3
+#get の引数に{パラメータ名}を入れるとfunctionの引数として渡せる
+#この場合パラメータがないと404notfoundとなる
+#{パラメータ名?}とすると、必須入力ではなくなる
+Route::get('/hello/{msg?}', function ($msg = 'no message') {
+    #<<<[任意のID]
+    #[任意のID]
+    #で、長い文字列を入れられる。
+    $html = <<<EOF EOF;
+    return $html;
+});
+
+4
+#コントローラーの生成（app/Http/Contorollers配下）
+./vendor/bin/sail artisan make:controller HelloController(コントローラー名)
+
+5
+#アクションの追加
+#生成したコントローラークラスの中に引数無しメソッドを追加
+
+6
+#アクションにルートを割り当てる
+#getの第二引数に'コントローラー名@アクション名
+#名前空間付きで指定
+Route::get('hello/{id?}/{pass?}', 'App\Http\Controllers\HelloController@index');
+#app/Providers/RouteServiceProvider.phpの
+#protected $namespace = 'App\\Http\\Controllers';のコメントを外すと以下のようにパスを省略可
+Route::get('hello/{id?}/{pass?}', 'HelloController@index');
+
+
+#controller
+public function index($id='noname', $pass='unknown'){
+    ///
+    <li>ID: {$id}</li>
+    <li>PASS: {$pass}</li>
+    ///
+}
+
+
+#グローバル変数->そのファイル全体で有効
+<?php
+$name = '山田太郎';
+
+function person(){
+    # echo $name; //global宣言をしていない×
+    global $name;
+    echo $name; //OK
+}
+person();
+?>
+
+7
+#アクションとアドレスの関係
+[http://アプリケーションのアドレス/コントローラ/アクション]
+
+8
+#シングルアクションコントローラ・・・１コントローラに１アクション
+#メソッドは追加できるがアクションとしては使用できない
+Route::get('アドレス', 'コントローラ名');
+
+9
+#リクエストとレスポンス
+use Illuminate\Http\Request;
+#はデフォルトで記述済み
+use Illuminate\Http\Response;
+#を追加する
+#アクションメソッドで以下のように引数を渡すとRequestとResponseインスタンスが渡される
+public function index(Request $request, Response $response){///}
+
+10
+#書籍５４p Responseの主なメソッドでは$thisが使用されている。$thisはHelloControllerのインスタンス？Responseではない？謎
+#あとで考える
+
+11
+#PHPテンプレート作成
+#resource/viewsフォルダの中にhelloフォルダを作成。
+#通常はコントローラ毎にフォルダを作成する
+
+12
+#ルートの設定とテンプレートの表示
+#web.php
+Route::get('アドレス', function () {
+    #viewメソッドの戻り値はResponseインスタンス。ソースコードではない。
+    return view('フォルダ名.ファイル名');
+});
+
+13
+#コントローラでテンプレートを使用
+#HelloController.php
+class HelloController extends Controller
+{
+    public function index()
+    {
+        return view('hello.index');
+    }
+}
+#web.php
+Route::get('hello' , HelloController@index );
+
+14
+#パラメータをテンプレートに渡す
+#viewの第２引数に連想配列を渡すと、テンプレート側で「$キー」で値を参照できる。
+public function index()
+{
+    $data = ['
+    '=>'これはコントローラから渡されたメッセージです。'];
+    return view('hello.index', $data);
+}
+#または
+public function index($id = 'zero')
+{
+    $data = [
+        'msg'=>'これはコントローラから渡されたメッセージです。',
+        'id'=>$id,
+    ];
+    return view('hello.index', $data);
+}
+#viewメソッドはlaravelのヘルパ関数。
+#ヘルパ関数は、クラスの表現に直接アクセスする必要はないが、
+#クラスへの便利なインターフェイスの一部と見なされる関数。（c++の説明）
+#javaでいうObjectのメソッドみたいな感じ？
+
+#このような方法もある。
+#アクションメソッドの引数にRequestを渡し、パラメータ名を連想配列のキーと結びつける。
+#通常の配列の場合はforeachなどで要素の回数分処理するなど
+18#にforeachの詳細を記載
+#http://localhost/hello?id(パラメータ名)=パラメータ値でアクセス
+
+public function index(Request $request)
+    {
+        $data = [
+            'msg'=>'これはコントローラから渡されたメッセージです。',
+            'id'=>$request->id, //idはパラメータ名
+        ];
+        return view('hello.index', $data);
+    }
+
+
+
+15
+#Bladeテンプレートの作成
+#resource/views/任意のフォルダ配下にXXX.blade.phpを作成する。
+#テンプレート内では<p>{{ $msg }}</p>のようにパラメータを参照できる
+#XXX.blade.phpとXXX.phpが存在している場合、bladeテンプレートが優先される。
+
+16
+#フォーム送信
+#formタグの中には必ず@csrfを入れる
+#formタグのname属性がパラメータ名となる。
+<form method="POST" action="/hello">
+@csrf
+<input type="text" name="msg">
+<input type="submit">
+</form>
+#の場合コントローラーで受け取るには
+public function post(Request $request)
+{
+    $msg = $request->msg;
+}
+#とする。
+
+17
+#ifディレクティブの利用
+#$msgの内容でpタグの内容を分岐している
+@if ($msg != '')
+<p>こんにちは、{{ $msg }}さん。</p>
+@else
+<p>何か書いてください。</p>
+@endif
+
+#@issetの利用
+@if ($msg != '')
+#を
+@isset ($msg)
+#で置き換えることができる。
+#この場合はHelloController@indexの中でパラメータ$msgを渡す必要がない。(未定義でもfalseだから)
+
+18
+#foreachディレクティブの利用
+public function index()
+    {
+        $data = [
+            'one', 'two', 'three', 'four', 'five'
+        ];
+        # 通常の配列を渡す場合、$data配列にdatasという名前をつけている。
+        # テンプレートでは$datasという名前で参照できる
+        return view('hello.index', ['datas'=>$data]);
+    }
+
+
+19
+#@loopによるループ変数
+#以下は最初のループでtrueとなる例
+@if ($loop->first)
+///
+@endif
+#以下は最後のループでtrueとなる例
+@if ($loop->last)
+///
+@endif
+
+
+20
+#@phpディレクティブ
+#テンプレートの中でphpの処理ができる。下では$counterへの代入処理
+※ただし、処理はコントローラ（アクション）で行うのが基本。テンプレート（view）では表示のみ担当すべき。
+#@phpの使用は必要最低限にとどめる
+<ol>
+@php
+    $counter = 0;
+@endphp
+@while ($counter < count($datas))
+    <li>{{ $datas[$counter] }}
+    @php
+        $counter++;
+    @endphp
+@endwhile
+</ol>
+
+21
+#@sectionと@yield
+#######################################
+#継承元（親）
+<title>@yield('title')</title>
+#子
+@section('title', 'Index')  //titleという名前のyieldにIndexを設定する
+#結果
+タブが「title」になる
+
+#######################################
+#継承元（親）
+@section('menuber')
+<h2 class="menutitle" >※メニュー</h2>
+<ul>
+    <li>@show</li>
+</ul>
+#子
+@section('menuber') //menuberという名前の親のsection(レイアウト)を上書きする
+    @parent //親レイアウトのセクションを示す
+    インデックスページ
+@endsection
+#結果
+<ul>
+    <li>インデックスページ</li>
+</ul>
+
+#↑の例での@parentは
+@section('menuber')
+<h2 class="menutitle" >※メニュー</h2>
+<ul>
+    <li>@show
+#までを示す。
+#子で「インデックスページ」を追加し、
+    </li>
+</ul>
+#はmenuberセクションの外側にあるのでテンプレートからそのまま継承される。
+
+#######################################
+#継承元（親）
+<div class="content" >
+    @yield('content')
+</div>
+<div class="footer" >
+    @yield('footer')
+</div>
+#子
+@section('content') //親の@yield('content')にこのsectionの内容をはめ込む
+    <p>ここが本文のコンテンツです</p>
+    <p>必要なだけ記述できます</p>
+@endsection
+
+@section('footer') //親の@yield('footer')にこのsectionの内容をはめ込む
+    copyright 2020 tuyano.
+@endsection
+#結果
+<div class="content" >
+    <p>ここが本文のコンテンツです</p>
+    <p>必要なだけ記述できます</p>
+</div>
+<div class="footer" >
+    copyright 2020 tuyano.
+</div>
+#######################################
+
+
+22
+#コンポーネント
+#resources/view/components/配下にmessage.blade.phpを作成
+#コンポーネント
+<div class="message">
+    <p class="msg_title">{{ $msg_title }}</p>
+    <p class="msg_content">{{ $msg_content }}</p>
+</div>
+#組み込み先
+@component('components.message') //コンポーネントのファイル名を引数に渡す
+    @slot('msg_title') //コンポーネントの{{ $msg_title }}変数にCOUTION!を格納する
+    CAUTION!
+    @endslot
+
+    @slot('msg_content')
+    これはメッセージの表示です。
+    @endslot
+@endcomponent
+
+
+22
+#サブビュー(あるテンプレートをそのままはめ込む)
+@section('content')
+    <p>ここが本文のコンテンツです</p>
+    <p>必要なだけ記述できます</p>
+
+    //@include(テンプレート名, 連想配列で値を指定)
+    @include('components.message', ['msg_title'=>'OK', 'msg_content'=>'サブビューです。'])
+
+@endsection
+
+
+23
+#@eachによるコレクションビュー
+#resources/view/components/配下にitem.blade.phpを作成
+<li>{{ $item['name'] }} [{{ $item['mail'] }}]</li>
+
+#表示側（index.blade.php）
+@section('content')
+    <p>ここが本文のコンテンツです</p>
+    <ul>
+        @each('components.item', $data , 'item') //引数はテンプレート名, $配列, 第一引数で指定したテンプレートで扱う変数名
+        //foreach( $data as $item )みたいなイメージ
+    </ul>
+@endsection
+
+24
+#サービスプロバイダの作成
+#下記コマンドを実行
+./vendor/bin/sail artisan make:provider HelloServiceProvider
+#app/provider配下にHelloServiceProvider.phpが生成される
+#ServiceProviderクラスを継承したHelloServiceProviderは下記の２メソッドを持つ
+#registerメソッド・・・サービスプロバイダの登録処理
+#bootメソッド・・・ブートストラップ処理（アプリケーション起動時に割り込んで実行される処理）
+
+25
+#作成したサービスプロバイダにコンポーザ処理を作る
+//これは成功
+public function boot()
+{
+    //viewはviewインスタンスを返す。viewインスタンスのcomposerメソッド呼び出し
+    view()->composer(
+        //functionにはviewインスタンスが渡される
+        'hello.index', function ($view) {
+            //viewインスタンスのwith関数
+            //指定値を返します。関数の２番目の引数としてクロージャ(無名関数)を渡たすと、クロージャが実行され、その戻り値を返します。
+            //今回は指定値を渡している
+            $view->with('view_message', 'composer message!');
+    });
+}
+
+//これはエラー（Method Illuminate\View\View::composer does not exist.）//////////////////////////////////    なぜ失敗？Qiitaに書く
+//解決→use Illuminate\Support\Facades\View as IlSuFaView;をHelloSeiviceProviderに追記し、
+IlSuFaView::composer(/////)とする
+
+use Illuminate\View\View as ViewView; //この記述がある為Viewを参照する場合ViewViewと書く->このViewにはcomposer()メソッドがない
+
+public function boot()
+{
+    IlSuFaView::composer(//書籍ではView::composer(だがここではIlSuFaViewとする
+        //ビューコンポーザ割り当て先ビューの指定,関数orクラス
+        //$viewはViewのインスタンス（ビューを管理するオブジェクト）
+        'hello.index', function ($view) {
+            //with()はview_messageという変数名に'composer message!'という値を格納して渡している
+            $view->with('view_message', 'composer message!');
+    });
+}
+
+
+
+25
+#サービスプロバイダの登録
+#config/app.phpにのproviders配列に追記することでアプリ起動にプロバイダクラスが登録され、利用できる。
+App\Providers\HelloServiceProvider::class, //::classはクラスの完全修飾名を取得するキーワード
+
+26
+#ビューコンポーザの利用
+#index.blade.php
+@section('content')
+    <p>ここが本文のコンテンツです</p>
+    <p>Controller Value <br>'message' = {{ $message }}</p> //HelloControllerから取得
+    <p>ViewComposer Value<br>'view_message' = {{ $view_message }}</p> //HelloServiseProviderから取得
+@endsection
+
+#HelloController.php
+class HelloController extends Controller
+{
+    public function index()
+    {
+        return view('hello.index', ['message'=>'Hello!']); //message変数に'Hello!'を格納
+    }
+
+}
+
+
+27
+#ビューコンポーザクラスの作成
+#ビューコンポーザを用意するかどうかは、指定のビューで常に行う処理かどうかで判断する
+#HelloServiceProvider
+public function boot()
+    {
+        IlSuFaView::composer( 'hello.index', 'App\Http\Composers\HelloComposer' );
+    }
+#結果
+Illuminate\Contracts\Container\BindingResolutionException
+Target class [App\Http\Composers\HelloComposer] does not exist./////////////////////////////失敗   なぜ失敗？
+#が発生
+
+#理由・・・HelloComposerクラスのnamespaseがApp\Http\Conposersになっていたので、Composerは存在せずConposersが存在する状態だったから。
+namespace App\Http\Composers;
+
+
+28
+#ミドルウェアの作成
+./vendor/bin/sail artisan make:middleware HelloMiddleware
+
+# App\Http\Middleware配下にHelloMiddlewareが作成される
+class HelloMiddleware
+{
+    # /**
+    #  * Handle an incoming request.
+    #  *
+    #  * @param  \Illuminate\Http\Request  $request
+    #  * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+    #  * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+    #  */
+    // $requestはRequestインスタンス、$nextはClosureクラスのインスタンス（無名クラスを表す）
+    public function handle(Request $request, Closure $next)
+    {
+        public function handle(Request $request, Closure $next)
+        {
+            $data = [
+                ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
+                ['name'=>'田中はなこ', 'mail'=>'hanako@tanaka'],
+                ['name'=>'鈴木さちこ', 'mail'=>'sachiko@suzuki'],
+            ];
+            #merge(配列)
+            $request->merge(['data'=>$data]);
+            //Responseインスタンスが返る。
+            return $next($request);
+        }
+    }
+}
+
+
+29
+#ミドルウェアの登録
+#app\kernel.phpの$routeMiddlewareに追記
+protected $routeMiddleware = [
+    'auth' => \App\Http\Middleware\Authenticate::class,
+    'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+    'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+    'can' => \Illuminate\Auth\Middleware\Authorize::class,
+    'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+    'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+    'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+    // ここから追記
+    'hello' => \App\Http\Middleware\HelloMiddleware::class,
+];
+
+#web.phpに下記を追記
+use App\Http\Middleware\HelloMiddleware;
+
+Route::get('hello' , 'HelloController@index' )
+    //ここで使用するミドルウェアを指定
+    ->middleware(HelloMiddleware::class);
+
+#複数指定する場合は、
+->middleware(aaa::class);->middleware(bbb::class);->middleware(ccc::class)...とできる
+
+ミドルウェア名の配列をmiddlewareメソッドに渡すことにより、///////ドキュメントより->こっちの方がよさそう
+ルートに複数のミドルウェアを割り当てることができます。
+Route::get('/', function () {
+    //
+})->middleware(['first', 'second']);
+
+
+
+30
+#ミドルウェアの使用（リクエスト、前処理）
+#HelloMiddleware
+public function handle(Request $request, Closure $next)
+{
+    $data = [
+        ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
+        ['name'=>'田中はなこ', 'mail'=>'hanako@tanaka'],
+        ['name'=>'鈴木さちこ', 'mail'=>'sachiko@suzuki'],
+    ];
+    //この'data'はHelloControllerのindexの引数のRequestインスタンスに含まれる
+    $request->merge(['data'=>$data]);
+    return $next($request);
+}
+
+#HelloController
+public function index(Request $request)
+{
+    //ここでやっていた処理をミドルウェアで実行している
+    # // $data = [
+    # //     ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
+    # //     ['name'=>'田中はなこ', 'mail'=>'hanako@tanaka'],
+    # //     ['name'=>'鈴木さちこ', 'mail'=>'sachiko@suzuki'],
+    # // ];
+    # // return view('hello.index', ['data'=>$data]);
+
+    //view( テンプレートで使用したい変数名=>アクションの引数Requestオブジェクト->mergeされた変数名の変数（ここでは'data'） )
+    return view('hello.index', ['data'=>$request->data]);
+}
+
+
+31
+#ミドルウェアの使用（レスポンス、後処理）
+#HelloMiddleware
+public function handle(Request $request, Closure $next)
+{
+    #アクションの結果のResponseを受け取る
+    $response = $next($request);
+    #Responseのコンテンツを取得する（htmlのソースが得られる）
+    $content = $response->content();
+
+    #<middleware>タグをリンクに置き換える
+    $pattern = '/<middleware>(.*)<\/middleware>/i';
+    $replace = '<a href="http://$1">$1</a>';
+
+    $content = preg_replace($pattern, $replace, $content);
+    #置き換えたコンテンツをResponseに入れる
+    $response->setContent($content);
+    return $response;
+}
+
+
+
+32
+#グローバルミドルウェアの登録
+#グローバルミドルウェアはすべてのアクセスで自動的に実行されるミドルウェア
+#登録
+kernel.php
+
+protected $middleware = [
+    // \App\Http\Middleware\TrustHosts::class,
+    \App\Http\Middleware\TrustProxies::class,
+    \Fruitcake\Cors\HandleCors::class,
+    \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
+    \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+    \App\Http\Middleware\TrimStrings::class,
+    \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+    //グローバルミドルウェア ここから追記
+    \App\Http\Middleware\HelloMIddleware::class,
+];
+
+#特定のアクセスに使用するミドルウェアの登録はrouteMiddleware配列
+#app\kernel.phpの$routeMiddlewareに追記
+protected $routeMiddleware = [
+    'auth' => \App\Http\Middleware\Authenticate::class,
+    'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+    'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+    'can' => \Illuminate\Auth\Middleware\Authorize::class,
+    'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+    'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+    'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+    // ここから追記
+    'hello' => \App\Http\Middleware\HelloMiddleware::class,
+];
+
+#web.phpのmiddlemamreメソッドは消す。グローバルなのでHelloMiddlewareは常に実行される。
+Route::get('hello' , 'HelloController@index' );
+
+
+
+33
+#ミドルウェアのグループ登録
+protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        // \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+
+    'hello' => [
+        \App\Http\Middleware\HelloMiddleware::class,
+    ],
+
+
+#グローバルミドルウェア（$middleware）の
+// \App\Http\Middleware\HelloMIddleware::class,
+#は削除しておく。
+#web.php
+Route::get('hello' , 'HelloController@index' )
+    ->middleware('hello');
+
+
+34
+#バリデーション
+書籍とドキュメントでvalidationメソッドの呼び出し方が異なる
+////////////////////////////////////////////////////////////Laravel8.xドキュメント               Qiita
+これで、新しいブログ投稿をバリデーションするロジックをstoreメソッドに入力する準備が整いました。
+これを行うには、Illuminate\Http\Requestオブジェクトによって提供されるvalidateメソッドを使用します。
+public function post(Request $request)
+{
+
+    $validate_rule = [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'numeric|between:0,150',
+    ];
+
+    $request->validate($validate_rule);
+
+    return view('hello.index', ['msg'=>'正しく入力されました！']);
+}
+
+#こっちの場合
+Illuminate\Http\Request::validateメソッドが呼び出される
+
+<?php
+public function validate($rules, ...$params) { }
+@param array $rules
+@param mixed ...$params
+@return array
+
+
+///////////////////////////////////////////////書籍、こっちでもOK(古いバージョンから使用されていた)
+Laravel6.x
+ドキュメントから引用・・・Laravelの基本コントローラークラスはパワフルでバラエティー豊かなバリデーションルールを使い
+HTTPリクエストをバリデーションするために便利な手法を提供している、ValidatesRequestsトレイトをデフォルトで使用しています。
+
+public function post(Request $request)
+{
+    $validate_rule = [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'numeric|between:0,150',
+    ];
+
+    //エラーメッセージのカスタマイズ
+    ここが上の例との差別化できる点
+    $validate_messages = [
+        'name.required' => 'Illuminate\Foundation\Validation\ValidatesRequests::validateのエラーメッセージ',
+        'mail.email' => 'Illuminate\Foundation\Validation\ValidatesRequests::validateのエラーメッセージ',
+        'age.numeric' => 'Illuminate\Foundation\Validation\ValidatesRequests::validateのエラーメッセージ',
+        'age.between' => 'Illuminate\Foundation\Validation\ValidatesRequests::validateのエラーメッセージ',
+    ];
+
+    //このthisは、HelloControllerインスタンス、validateはValidatesRequestsのものが呼ばれる
+    //なぜ呼べるかというと、Controllerクラスでuseしており、HelloControllerがControllerを継承しているから
+    $this->validate($request, $validate_rule, $validate_messages);
+    return view('hello.index', ['msg'=>'正しく入力されました！']);
+}
+
+#こっちの場合、
+# Illuminate\Foundation\Validation\ValidatesRequests::validateメソッドが呼び出される
+
+Validate the given request with the given rules.
+
+<?php
+public function validate(
+    Request $request,
+    array $rules,
+    array $messages = [],
+    array $customAttributes = []
+) { }
+
+/////////////どっちを使うべき？
+引数が違うので、メッセージ等を設定したい場合はvalidatedRequesqを使う？
+
+Request
+->array validate(array $rules, mixed $params)
+$rules
+$params
+
+validatedRequesq
+->array validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+引数
+$request
+$rules
+$messages
+$customAttributes
+例外
+ValidationException
+
+
+
+35
+#バリデーションのエラーメッセージ
+#ここでの$errorsはバリデーションで発生したエラーメッセージをまとめた管理するオブジェクト
+#バリデーション機能で自動的に組み込まれるのでユーザーが定義する必要はない
+@if (count($errors) > 0)
+<div>
+    <ul>
+        #$errors->all()はエラーメッセージをファイ列として取り出す。
+        @foreach ($errors->all() as $error )
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+
+36
+#以前の入力値の表示
+#old('name')は前回送信したnumeフィールドの値を返す
+<input type="text" name="name" value="{{ old('name') }}">
+
+
+37
+#エラーメッセージの取り出し2
+#$errorsのhas()メソッドは、その項目でエラーが発生している稼働かを確認する
+※$errors->get()メソッドはその項目で発生している全てのエラーメッセージを取得できる
+@if ($errors->has('name'))
+<tr>
+    <th>ERROR</th>
+    <td>
+        #その項目の最初のエラーメッセージを表示する
+        {{ $errors->first('name') }}
+    </td>
+</tr>
+@endif
+
+38
+#より簡単にエラーメッセージを表示
+#@errorディレクティブ
+#ここでnameの項目でのエラー有無を確認
+@error('name')
+<tr>
+    <th>ERROR</th>
+    #$messageで表示
+    <td>{{ $message }}</td>
+</tr>
+@enderror
+
+39
+#フォームリクエスト
+FormRequestはRequestを継承している
+今までコントローラのアクション内でバリデーションしていたが、
+これを使用することで
+クライアントからのリクエストがコントローラに到達する前にバリデーションできる
+#フォームリクエスト作成コマンド
+./vendor/bin/sail artisan make:request HelloRequest
+
+app\Http\Requests配下にHelloRequest.phpが生成される
+FormRequestクラスを継承したHelloRequestクラス
+
+authorize()このフォームを利用するアクションでフォームリクエストの利用が許可されているかを示す。
+trueで許可。
+
+fules()バリデーションの検証ルールを設定する。
+34のvaridateメソッドの第二引数のルール配列を指定し、returnする。
+コントローラーのアクションメソッドの引数をフォームリクエストの型にする
+public function post(HelloRequest $request)
+
+public function post(Request $request)
+{
+    $validate_rule = [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'numeric|between:0,150',
+    ];
+    $this->validate($request, $validate_rule);
+    return view('hello.index', ['msg'=>'正しく入力されました！']);
+}
+
+public function rules()
+{
+
+    return [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'numeric|between:0,150',
+    ];
+}
+
+
+public function authorize()
+{
+    #helloへのリクエストのみバリデーションを行う
+    if($this->path() == 'hello'){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+40
+#メッセージのカスタマイズ
+FormRequestのmessagesメソッドをカスタマイズ
+public function messages()
+{
+    return [
+        # 項目名.ルール名 => メッセージという形で記述。
+        # ageのように複数ルールがある場合は、それぞれにメッセージを定義する必要あり。
+        'name.required' => '名前は必ず入力してください',
+        'mail.email' => 'メールアドレスが必要です',
+        'age.numeric' => '年齢を整数で記入ください',
+        'age.between' => '年齢は0-150の間で入力ください',
+    ];
+}
+
+
+41
+#バリデータの作成
+通常のバリデーション・・・チェックに引っ掛かったら、元のページにリダイレクトしてフォームを再表示する。
+バリデータ・・・元のページにリダイレクトせず、それ以外の動作をさせたい時に使用する。Varidatorクラスが用意されている。
+
+
+つまづきポイント
+Call to undefined method Dotenv\Validator::make()発生
+
+Dotenv\Validatorにはmakeメソッドはなかった
+
+public function post(Request $request)
+{
+    $validator = Validator::make($request->all(),[//////////////Validator::makeが定義されていないエラー・・・・・・・・Qiita
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'numeric|between:0,150',
+    ]);
+
+    #fils()は、バリデーションチェックに失敗したかどうかを調べる
+    #戻り値がtrueならエラーが発生しているのでエラー処理を用意する。
+
+    #passesメソッドもあり、これは通過したらtrue、失敗でfalse
+                            こっちの方がわかりやすいので使いやすいのでは？
+    if($validator->fails()){
+        # リダイレクトする
+        return redirect('/hello')
+            # Validatorインスタンスを引数に渡すことで、エラーの情報をリダイレクト先に引き継ぐことができる
+            ->withErrors($validator)
+            # 送信されたフォームの値をそのまま引き継ぐ
+            ->withInput();
+    }
+
+    return view('hello.index', ['msg'=>'正しく入力されました！']);
+}
+
+////////////////////////////////解消方法
+HelloController
+
+se App\Http\Requests\HelloRequest;
+use Dotenv\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator as ValidatorFaz;/////////////これを追加。すでにuse Dotenv\Validatorがあるため別名をつけた
+
+# makeの戻り値は\Illuminate\Contracts\Validation\Validator
+make(値の配列, ルールの配列)
+$validator = ValidatorFaz::make($request->all(),[
+    'name' => 'required',
+    'mail' => 'email',
+    'age' => 'numeric|between:0,150',
+]);
+
+
+https://readouble.com/laravel/8.x/ja/validation.html のバリデータの生成に記載あり
+
+
+https://readouble.com/laravel/8.x/ja/facades.html イントロダクションに、
+Laravelのファサードはすべて、Illuminate\Support\Facades名前空間で定義します。とあるため、
+ここで使用しているValidatorファザードも
+Illuminate\Support\Facades\Facade\Validatorである。
+
+ファサードは、アプリケーションのサービスコンテナで使用可能なクラスに対して「静的な」インターフェイスを提供します。
+
+
+
+42
+#クエリー文字列にバリデータを適用する
+
+class HelloController extends Controller
+{
+    public function index(Request $request)
+    {
+        # queryメソッドは、送信されたクエリー文字列を配列の形にまとめて返す
+        $validator = ValidatorFaz::make($request->query(), [
+            'id' => 'required',
+            'pass' => 'required',
+        ]);
+
+        if($validator->fails()){
+            $msg = 'クエリーに問題があります';
+        }else{
+            $msg = 'ID/PASSを受け付けました。フォームを入力ください';
+        }
+
+        return view('hello.index', ['msg' => $msg, ]);
+    }
+
+
+43
+#バリデータのエラーメッセージのカスタマイズ
+make()メソッドの第3引数にメッセージを渡すと良い
+
+public function post(Request $request)
+{
+
+    $rules = [
+        'name' => 'required',
+        'mail' => 'email',
+        'age' => 'numeric|between:0,150',
+    ];
+
+    $messages = [
+        'name.required' => '名前は必ず入力してください',
+        'mail.email' => 'メールアドレスが必要です',
+        'age.numeric' => '年齢を整数で記入ください',
+        'age.between' => '年齢は0-150の間で入力ください',
+    ];
+
+    $validator = ValidatorFaz::make($request->all(), $rules, $messages);
+
+    if($validator->fails()){
+        return redirect('/hello')
+            ->withErrors($validator)
+            ->withInput();
+    }
+
+    return view('hello.index', ['msg'=>'正しく入力されました！']);
+}
+
+
+
+44
+#条件に応じてルールを追加する
+Validatorのsometimesメソッドを使用する
+$validator->sometimes(項目名, ルール名, クロージャ)
+クロージャ内で、ルールを追加すべきかどうかを指定する真偽値を返す。
+trueの場合、sometimesの中で指定したルールを追加する。
+
+public function post(Request $request)
+    {
+
+        $rules = [
+            'name' => 'required',
+            'mail' => 'email',
+            'age' => 'numeric',
+        ];
+
+        $messages = [
+            // 必ず含めるルールのメッセージ
+            'name.required' => '名前は必ず入力してください',
+            'mail.email' => 'メールアドレスが必要です',
+            'age.numeric' => '年齢を整数で記入ください',
+            // ageの入力内容によって含めるかどうかを決めるルールのメッセージ
+            'age.min' => '年齢は0歳以上で記入ください',
+            'age.max' => '年齢は200歳以下で記入ください',
+        ];
+
+        $validator = ValidatorFaz::make($request->all(), $rules, $messages);
+
+        $validator->sometimes('age', 'min:0', function($input){
+                return is_numeric($input->age);
+            }
+        );
+
+        $validator->sometimes('age', 'max:200', function($input){
+                return is_numeric($input->age);
+            }
+        );
+
+
+45
+#オリジナルバリデータを作成する
+App/Http/にValidators/HelloValidator.phpを作成
+
+<?php
+namespace App\Http\Validators;
+
+use Illuminate\Validation\Validator; //これを継承したクラスを定義して、真偽値を返すメソッドを定義する
+
+class HelloValidator extends Validator
+{
+    public function validateHello($attribute, $value, $parameters){
+        return $value % 2 == 0;
+    }
+
+}
+
+46
+# オリジナルバリデータを組み込む
+サービスプロバイダを利用する
+
+サービスプロバイダとは・・・・サービスプロバイダーの役目はサービスコンテナへのサービスの登録です。////////////後で確認
+
+Laravelではサービスコンテナに登録されているサービスを利用してアプリケーションの開発を行なっていきます。
+サービスコンテナはサービスを入れる入れ物の役割をもっており、サービスを利用するためには、
+サービスコンテナに事前にサービスを登録しておく必要があります。
+そのサービスを登録する役目を持つものがサービスプロバイダーです。
+
+#HelloServiceProvidorに記載
+
+//追記
+use Illuminate\Support\Facades\Validator as ValidatorFaz;
+use App\Http\Validators\HelloValidator;
+
+
+public function boot()
+{
+    # Illuminate\Support\ServiceProvider::$app['validator']にバリデータが保管されていない
+    $validator = $this->app['validator'];
+
+    $validator->resolver(
+        function ($translator, $data, $rules, $messages) {
+            //クロージャで返すインスタンスをバリデーションに用いる、ここではHelloValidatorのルールを使用z
+            return new HelloValidator($translator, $data,$rules, $messages);
+        }
+    );
+}
+
+47
+#オリジナルのバリデータルールを使用する
+HelloController
+
+public function post(HelloRequest $request)
+{
+    return view('hello.index', ['msg'=>'正しく入力されました！']);
+}
+
+
+HelloRequest
+
+public function rules()
+    {
+
+        return [
+            'name' => 'required',
+            'mail' => 'email',
+            'age' => 'numeric|hello',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '名前は必ず入力してください',
+            'mail.email' => 'メールアドレスが必要です',
+            'age.numeric' => '年齢を整数で記入ください',
+            'age.hello' => 'Hello! 入力は偶数のみ受け付けます',
+        ];
+    }
+
+48
+#Validator::extendの利用
+特定の条件でのみカスタマイズしたルールを利用したい場合に利用
+HelloServiceProvider
+
+public function boot()
+{
+    ValidatorFaz::extend('hello', function($attribute, $value, $parameters, $validator){
+        return $value % 2 == 0;
+    });
+}
+
+
+49
+#バリデーションルールを作る
+Illuminate\Contracts\Validation名前空間のRuleクラスを継承して作られる
+
+./vendor/bin/sail artisan make:rule Myrule を実行
+
+App/Rules/Myrul.phpファイルが生成される
+
+コンストラクタ、passes、messagesメソッドがある。
+passesはルールの通過条件を設定する。引数はルールの属性$attributeとチェックする値の$value
+問題ない場合はtrue、問題ある場合はfalseを返す。
+
+
+class Myrule implements Rule
+{
+
+    public function __construct($n)
+    {
+        $this->num = $n;
+    }
+
+    public function passes($attribute, $value)
+    {
+        return $value % $this->num == 0;
+    }
+
+    public function message()
+    {
+        return $this->num . 'で割り切れる値が必要です';
+    }
+}
+
+
+#HelloRequest
+
+public function rules()
+{
+
+    return [
+        'name' => 'required',
+        'mail' => 'email',
+        //Myrureのコンストラクタに5を渡している->5で割り切れる数値であるかチェック
+        'age' => ['numeric', new Myrule(5)],
+    ];
+}
+
+
+
+
+50
+#csrf対策
+@csrfの処理は、ミドルウェアのapp/Http/VeryCsrfTokenクラス内で実行されている
+
+class VerifyCsrfToken extends Middleware
+{
+    # この配列に格納したアクションではcsrf対策を適用しない
+    protected $except = [
+        'hello'
+    ];
+}
+
+
+<form action="/hello" method="post">
+    <table>
+        {{-- @csrf --}}///これを消す
+        @error('name')
+            <tr>
+                <th>ERROR</th>
+                <td>{{ $message }}</td>
+            </tr>
+        @enderror
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////Qiitaに書く
+フォーム送信時に419 Page Expiredエラーが発生した
+
+・解決策
+formタグないに@csrfの記載をする
+または、VerificationCsrfTokenの$except配列にフォーム送信後の遷移先を記載する
+
+・原因
+formタグないに@csrfを入れていないにも関わらず
+VerifyCsrfTokenクラスの$except配列にフォーム送信後の遷移先を記載していないから。
+
+なぜ？上記のことをしないといけないのか
+ドキュメント（https://readouble.com/laravel/8.x/ja/csrf.html）
+
+引用
+アプリケーションで"POST"、"PUT"、"PATCH"、"DELETE" HTMLフォームを定義するときはいつでも、
+CSRF保護ミドルウェアがリクエストを検証できるように、フォームに非表示のCSRF_tokenフィールドを含める必要があります。
+便利なように、@csrf Bladeディレクティブを使用して、非表示のトークン入力フィールドを生成できます。
+/////////////生成内容//////////////
+<form method="POST" action="/profile">
+    @csrf
+    <!-- Equivalent to... -->
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" /> ////ここが非表示のトークン入力フィールド
+</form>
+/////////////生成内容//////////////
+webミドルウェアグループへデフォルトで含まれているApp\Http\Middleware\VerificationCsrfTokenミドルウェアは、
+リクエスト入力のトークンがセッションに保存されたトークンと一致するかを自動的に検証します。
+この２トークンが一致すれば、認証済みユーザーがリクエストを開始したことがわかります。
+
+従って、formタグ内に@csrfを記載しておらずVerificationCsrfTokenの$except配列にフォーム送信後の遷移先を記載していない場合
+            ・・・・VerificationCsrfTokenでの入力トークン検証が成功せず419 Page Expired
+あるフォーム内でcsrf対策をしたくない場合、VerificationCsrfTokenクラスで設定することでトークンの検証をしないようにできる。->エラー解消！！
+
+
+
+
+        <form action="/hello" method="post">
+        <table>
+            {{-- @csrf --}}////////ここを消すとエラー
+            @error('name')
+                <tr>
+                    <th>ERROR</th>
+                    <td>{{ $message }}</td>
+                </tr>
+            @enderror
+            <tr>
+                <th>name: </th>
+                <td>
+                    <input type="text" name="name" value="{{ old('name') }}">
+                </td>
+            </tr>
+            @error('mail')
+                <tr>
+                    <th>ERROR</th>
+                    <td>{{ $message }}</td>
+                </tr>
+            @enderror
+            <tr>
+                <th>mail: </th>
+                <td>
+                    <input type="text" name="mail" value="{{ old('mail') }}">
+                </td>
+            </tr>
+            @error('age')
+                <tr>
+                    <th>ERROR</th>
+                    <td>{{ $message }}</td>
+                </tr>
+            @enderror
+            <tr>
+                <th>age: </th>
+                <td>
+                    <input type="text" name="age" value="{{ old('age') }}">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" value="send">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+51
+#クッキーの読み書き
+#クッキーとは
+Cookie（クッキー）とは、Webサーバーがクライアントコンピュータに預けておく小さなファイルのことです。
+　クライアントコンピュータが、あるWebサーバーに初めて接続した際に、Webサーバーがクライアントコンピュータの中に、
+そのWebサーバー専用のCookieファイルを作成します。
+そして、次回、クライアントコンピュータがWebサーバーに接続したときには、WebブラウザがそのCookieをWebサーバーに送信します。
+このような仕組みによって、Webサーバーは、個々のクライアントコンピュータが前回使用していた情報を読み取ることができるようになります。
+例・・・・買い物かごの情報をなどの管理に使用されている
+
+
+#クッキーの取得
+HelloController
+$xxx = $request->cookie(キー);
+
+public function index(Request $request)
+{
+    if($request->hasCookie('msg')){
+        $msg = 'Cookie' . $request->cookie('msg');
+    }else{
+        $msg = '※クッキーはありません';
+    }
+
+    return view('hello.index', ['msg' => $msg, ]);
+}
+
+クッキーの保存
+$xxx = $response->cookie(キー, 値, 保存期間の分数);
+
+public function post(Request $request)///HelloRequestから変更しないと、HelloRequestでバリデーションするのでチェック失敗扱いとなる？
+{
+    $validate_rule = [
+        'msg' => 'required',
+    ];
+
+    $request->validate($validate_rule);
+    $msg = $request->msg;
+    $response = response()->view('hello.index', ['msg'=>'「' . $msg . '」をクッキーに保存しました。']);
+    $response->cookie('msg', $msg, 100);
+    return $response;
+}
+
+
+52
+#リダイレクト
+
+
