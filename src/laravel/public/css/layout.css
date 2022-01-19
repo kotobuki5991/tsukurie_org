@@ -5,10 +5,10 @@ src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
      format("woff2");
 }
 
-* {
+/* * {
     margin: 0;
     padding: 0;
-}
+} */
 
 .letter {
     color: rgb(179, 187, 190);
@@ -17,6 +17,9 @@ src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
 
 body {
     background-color: rgb(248, 236, 222);
+    margin: 0;
+    padding: 0;
+    min-width: 800px;
 }
 
 /*/////////////////// ヘッダー ///////////////////*/
@@ -37,6 +40,7 @@ div.header-img {
     margin-left: 20px;
     /* top: 10px; */
     /* left: 60px; */
+
 }
 
 div.header-img > img {
@@ -62,17 +66,21 @@ ul.nav > li {
 
 
 /*/////////////////// トップ ///////////////////*/
+.content {
+    min-width: 800px;
+}
+
 section {
     display: block;
 }
 
 section.top {
-    width: 100vw;
+    /* width: 100vw; */
     position: relative;
 }
 
 div.top-image {
-    width: 100vw;
+    /* width: 100vw; */
     height: 450px;
 }
 
@@ -93,7 +101,6 @@ div.top-p{
 }
 
 p.head {
-
     font-size: 50px;
     background-color: rgb(255, 255, 255, 0.6);
 }
@@ -101,7 +108,7 @@ p.head {
 
 /*///////////////////////// 検索ボックス /////////////////////////*/
 div.search-box-bg {
-    margin: auto;
+    margin:0 auto;
     background-color: rgb(243, 246, 246, 0.5);
     /* background-color: rgb(28, 30, 30); */
     width: 50%;
@@ -111,9 +118,11 @@ div.search-box-bg {
     border-color: rgb(198, 202, 202);
     position: absolute;
     top: 400px;
-    left: 25%;
+    /* left: 25%; */
+    right: 0;
+    left: 0;
     min-width: 700px;
-    transform: translate(0%, 0%);
+
 }
 
 div.search-box {
@@ -141,4 +150,33 @@ select.search-select-box {
 input.search-select-submit {
     height: 40px;
     width: 60px;
+}
+
+
+
+
+/*////////////////////////// メインコンテンツ //////////////////////////*/
+div.show-cards-wrapper {
+    margin-top: 60px;
+    text-align: center;
+    /* display: flex; */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div.show-cards-area {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.dask-card {
+    /* margin: 30px; */
+    width: 300px;
+    height: 200px;
+    min-width: 300px;
+    background-color: white;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    float: left;
 }

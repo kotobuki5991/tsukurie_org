@@ -50,22 +50,43 @@
                 <p class="head letter">クリエイターの<br>つくえを共有しよう<p>
             </div>
         </section>
-    </div>
-    <div class="search-box-bg">
-        <div class="search-box">
-            <form>
-                @csrf
-                <input class="search-text-box" type="text">
-                <select class="search-select-box" name="example">
-                    <option hidden>カテゴリ</option>
-                    <option value="music">音楽</option>
-                    <option value="movie">動画</option>
-                    <option value="illustration">イラスト</option>
-                    </select>
-                <input class="search-select-submit" type="submit" value="検索">
-            </form>
+        <div class="search-box-bg">
+            <div class="search-box">
+                <form>
+                    @csrf
+                    <input class="search-text-box" type="text">
+                    <select class="search-select-box" name="example">
+                        <option hidden>カテゴリ</option>
+                        <option value="music">音楽</option>
+                        <option value="movie">動画</option>
+                        <option value="illustration">イラスト</option>
+                        </select>
+                    <input class="search-select-submit" type="submit" value="検索">
+                </form>
+            </div>
+        </div>
+
+        <div class="show-cards-wrapper">
+            <h1 class="letter">検索結果</h1>
+
+            <div class="show-cards-area">
+                <div class="dask-card">
+                    <div></div>
+                </div>
+                <div class="dask-card">
+                    <div></div>
+                </div>
+                <div class="dask-card">
+                    <div></div>
+                </div>
+                <div class="dask-card">
+                    <div></div>
+                </div>
+            </div>
         </div>
     </div>
+
+
 
 
 
