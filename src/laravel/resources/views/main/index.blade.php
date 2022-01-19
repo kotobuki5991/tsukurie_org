@@ -71,25 +71,33 @@
 
             <div class="show-cards-area">
                 <div class="dask-card">
-                    <div></div>
+                    <div><a><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
                 </div>
                 <div class="dask-card">
-                    <div></div>
+                    <div><a><img class="dask-card-image" src="uploaded_images/2.jpg" alt=""></a></div>
                 </div>
                 <div class="dask-card">
-                    <div></div>
+                    <div><a><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
                 </div>
                 <div class="dask-card">
-                    <div></div>
+                    <div><a><img class="dask-card-image" src="uploaded_images/2.jpg" alt=""></a></div>
+                </div>
+                <div class="dask-card">
+                    <div><a><img class="dask-card-image" src="uploaded_images/3.png" alt=""></a></div>
+                </div>
+                <div class="dask-card">
+                    <div><a><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
                 </div>
             </div>
         </div>
     </div>
+    <footer>
 
+        <a class="letter" href="index.html">トップページ</a>
+        <a class="letter" href="profile.html">お問合せ</a>
+        <a class="letter" href="about.html">つくりえとは？</a>
 
-
-
-
-
+        <p class="letter">copyright(c) kotobuki All Rights Reserved.</p>
+    </footer>
 </body>
 </html>

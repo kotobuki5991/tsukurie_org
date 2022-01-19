@@ -153,11 +153,9 @@ input.search-select-submit {
 }
 
 
-
-
-/*////////////////////////// メインコンテンツ //////////////////////////*/
+/*////////////////////////// 検索結果表示 //////////////////////////*/
 div.show-cards-wrapper {
-    margin-top: 60px;
+    margin-top: 80px;
     text-align: center;
     /* display: flex; */
     margin-right: auto;
@@ -179,4 +177,17 @@ div.dask-card {
     margin-top: 30px;
     margin-bottom: 30px;
     float: left;
+}
+
+
+img.dask-card-image {
+    width: 260px;
+    height: auto;
+}
+
+/* //////////////フッター//////////////// */
+
+footer {
+    background-color: rgb(243, 243, 243);
+    text-align: center;
 }
