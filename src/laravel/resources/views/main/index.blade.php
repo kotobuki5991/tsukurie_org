@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="header-img">
-            <img src="images/icon.jpg" alt="">
+            <a href="https://www.google.com"><img src="images/icon.jpg" alt=""></a>
         </div>
         {{-- <div class="header-a">
             <a class="letter">ログイン</a>
@@ -31,7 +31,7 @@
                             <li><a href="{{ route('register') }}" class="letter ml-4 text-sm text-gray-700 dark:text-gray-500 underline">ユーザー登録</a></li>
                             @endif
                         @endauth
-                        <li><a href="https://www.google.com" class="letter underline">お問合せ</a></li>
+                        <li><a href="https://www.google.com" class="letter underline">お問い合せ</a></li>
                         <li><a href="https://www.google.com" class="letter underline">つくりえとは？</a></li>
                     </ul>
 
@@ -71,32 +71,66 @@
 
             <div class="show-cards-area">
                 <div class="dask-card">
-                    <div><a><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
+                    <div class="category-tag"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-icon" src="user_icon/1.png" alt=""></a></div>
+                    <div>
+                        <div class="user-name"><h4>kotobuki</h4></div>
+                        <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+                    </div>
                 </div>
                 <div class="dask-card">
-                    <div><a><img class="dask-card-image" src="uploaded_images/2.jpg" alt=""></a></div>
+                    <div class="category-tag"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-image" src="uploaded_images/2.jpg" alt=""></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-icon" src="user_icon/1.png" alt=""></a></div>
+                    <div>
+                        <div class="user-name"><h4>kotobuki</h4></div>
+                        <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+                    </div>
                 </div>
                 <div class="dask-card">
-                    <div><a><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
+                    <div class="category-tag"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-icon" src="user_icon/1.png" alt=""></a></div>
+                    <div>
+                        <div class="user-name"><h4>kotobuki</h4></div>
+                        <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+                    </div>
                 </div>
                 <div class="dask-card">
-                    <div><a><img class="dask-card-image" src="uploaded_images/2.jpg" alt=""></a></div>
+                    <div class="category-tag"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-image" src="uploaded_images/2.jpg" alt=""></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-icon" src="user_icon/1.png" alt=""></a></div>
+                    <div>
+                        <div class="user-name"><h4>kotobuki</h4></div>
+                        <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+                    </div>
                 </div>
                 <div class="dask-card">
-                    <div><a><img class="dask-card-image" src="uploaded_images/3.png" alt=""></a></div>
+                    <div class="category-tag"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-image" src="uploaded_images/3.png" alt=""></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-icon" src="user_icon/1.png" alt=""></a></div>
+                    <div>
+                        <div class="user-name"><h4>kotobuki</h4></div>
+                        <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+                    </div>
                 </div>
                 <div class="dask-card">
-                    <div><a><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
+                    <div class="category-tag"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-image" src="uploaded_images/1.jpg" alt=""></a></div>
+                    <div><a href="https://www.google.com"><img class="dask-card-icon" src="user_icon/1.png" alt=""></a></div>
+                    <div>
+                        <div class="user-name"><h4>kotobuki</h4></div>
+                        <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <footer>
-
         <a class="letter" href="index.html">トップページ</a>
         <a class="letter" href="profile.html">お問合せ</a>
         <a class="letter" href="about.html">つくりえとは？</a>
-
         <p class="letter">copyright(c) kotobuki All Rights Reserved.</p>
     </footer>
 </body>
