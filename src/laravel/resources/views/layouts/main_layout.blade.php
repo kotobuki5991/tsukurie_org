@@ -7,6 +7,7 @@
     {{-- タイトル --}}
     <title>@yield('title')</title>
     <link rel="stylesheet" href="css/layout.css">
+    @yield('add_css')
 </head>
 <body>
     <header>

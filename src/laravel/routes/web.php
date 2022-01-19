@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -22,6 +21,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+// メインページからのルーティング
+Route::get('/', 'MainController@index');
+
+Route::get('/show_post', 'MainController@forPostPage');
 
 
 
