@@ -198,8 +198,8 @@ img.dask-card-icon{
     height: 80px;
     left: 20px;
 }
-
-div.category-tag {
+/*/////////// 音楽用タグ /////////////*/
+div.category-tag-music {
     position: absolute;
     z-index: 2;
     /* top: 100; */
@@ -211,13 +211,55 @@ div.category-tag {
     margin-left: 200px;
     margin-top: -20px;
 }
-div.category-tag > a > h4 {
+
+div.category-tag-music > a > h4 {
+    margin: 0;
+    line-height: 40px;
+    color: white;
+    font-family: harenosora-mincho;
+}
+/*/////////// 動画用タグ /////////////*/
+div.category-tag-movie {
+    position: absolute;
+    z-index: 2;
+    /* top: 100; */
+    background-color: rgb(255, 200, 91);
+    width: 70px;
+    height: 40px;
+    border-radius: 3px;
+    /* left: 10; */
+    margin-left: 200px;
+    margin-top: -20px;
+}
+
+div.category-tag-movie > a > h4 {
     margin: 0;
     line-height: 40px;
     color: white;
     font-family: harenosora-mincho;
 }
 
+/*/////////// イラスト用タグ /////////////*/
+div.category-tag-illust {
+    position: absolute;
+    z-index: 2;
+    /* top: 100; */
+    background-color: rgb(254, 168, 115);
+    width: 70px;
+    height: 40px;
+    border-radius: 3px;
+    /* left: 10; */
+    margin-left: 200px;
+    margin-top: -20px;
+}
+
+div.category-tag-illust  > a > h4 {
+    margin: 0;
+    line-height: 40px;
+    color: white;
+    font-family: harenosora-mincho;
+}
+/* ////////////////////////// */
 div.user-name {
     height: 20px;
     width: 100px;
