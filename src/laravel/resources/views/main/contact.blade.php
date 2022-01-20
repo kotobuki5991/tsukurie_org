@@ -12,14 +12,14 @@
 
 {{-- メインコンテンツ --}}
 @section('main_contents')
-<div class="contact-form">
-    <form>
+<div class="contact-form-erea">
+    <form id="contact-form">
         @csrf
         {{--タスク 登録していないユーザーからの問い合わせの場合、ゲストさんとする。 --}}
         <input type="hidden" name="contact-title" value="【つくりえ】○○さんからの問い合わせ">
         <div class="contact-parts">
             <textarea class="contact-message" name="contact-message" cols="60" rows="30" >機能追加のご要望や、改善点、感想などをご記入ください。</textarea>
-            <input class="contact-submit"  type="submit" value="送信">
+            <input id="contact-submit" class="contact-submit"  type="submit" value="送信">
         </div>
     </form>
 </div>

@@ -11,7 +11,7 @@
 
 {{-- メインコンテンツ --}}
 @section('main_contents')
-<div class="posted-desk-card">
+<div class="posted-desk-card float">
     <div><img class="posted-desk-card-image" src="uploaded_images/1.jpg" alt=""></div>
     <div class="posted-desk-card-imgdiv">
         <img class="posted-desk-card-icon" src="user_icon/1.png" alt="">

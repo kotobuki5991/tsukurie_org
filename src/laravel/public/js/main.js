@@ -14,9 +14,17 @@ function copyToClipboard() {
 
 }
 
+var submit = document.getElementById('contact-form');
+
+//タスク メール送信に成功したかどうか確認、成功の場合は成功、失敗の場合は失敗の表示
+submit.addEventListener('submit', function(event){
+    if (confirm('本当に送信しますか？')){
+        event.submit();
+    }
+    event.preventDefault();
+
+});
 
 
 
-// 指定の要素.addEventListener('mouseover', function() {
-//   // マウスが要素に乗った際の処理
-// });
+

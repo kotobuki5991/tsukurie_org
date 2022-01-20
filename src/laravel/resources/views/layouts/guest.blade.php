@@ -12,12 +12,15 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- 背景追加Styles -->
+        <link rel="stylesheet" href="{{ asset('css/background.css') }}">
+
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="font-sans text-gray-900 antialiased bkground-image">
             {{ $slot }}
         </div>
     </body>

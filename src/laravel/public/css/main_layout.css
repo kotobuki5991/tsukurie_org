@@ -325,6 +325,11 @@ div.user-message > h5 {
     -webkit-line-clamp: 4;
 }
 
+.posted-back-to-top {
+    height: 50px;
+}
+
+
 
 /* //////////////フッター//////////////// */
 
