@@ -8,11 +8,20 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="css/main_layout.css">
     @yield('add_css')
+
+    <script>
+        window.onload = function(){
+            const hover_item = document.getElementById('top-image-pc');
+            var topimg_style = hover_item.style;
+            topimg_style.opacity = 1;
+        };
+    </script>
+
 </head>
 <body>
     <header>
         <div class="header-img">
-            <a href="/"><img src="images/icon.jpg" alt=""></a>
+            <a href="/"><img  src="images/icon.jpg" alt=""></a>
         </div>
         {{-- <div class="header-a">
             <a class="letter">ログイン</a>
@@ -46,7 +55,7 @@
     <div class="content">
         <section class="top">
             <div class="top-image">
-                <img class="top-image-pc" src="images/top_img.jpg" alt="">
+                <img id="top-image-pc" class="top-image-pc" src="images/top_img.jpg" alt="">
             </div>
             <div class="top-p">
                 <p class="head letter">クリエイターの<br>つくえを共有しよう<p>
@@ -69,6 +78,9 @@
         <a class="letter" href="about.html">つくりえとは？</a>
         <p class="letter">copyright(c) kotobuki All Rights Reserved.</p>
     </footer>
+    @yield('add_script')
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/common.js"></script>
 </body>
-@yield('add_script')
 </html>

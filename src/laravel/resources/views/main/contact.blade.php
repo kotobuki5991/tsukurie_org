@@ -7,7 +7,7 @@
 @endsection
 
 {{-- ページ名 --}}
-@section('page_name', 'お問合せ')
+@section('page_name', 'お問い合せ')
 
 
 {{-- メインコンテンツ --}}
@@ -17,8 +17,10 @@
         @csrf
         {{--タスク 登録していないユーザーからの問い合わせの場合、ゲストさんとする。 --}}
         <input type="hidden" name="contact-title" value="【つくりえ】○○さんからの問い合わせ">
-        <input class="contact-message" type="text" value="機能追加のご要望、">
-        <input type="submit" value="送信">
+        <div class="contact-parts">
+            <textarea class="contact-message" name="contact-message" cols="60" rows="30" >機能追加のご要望や、改善点、感想などをご記入ください。</textarea>
+            <input class="contact-submit"  type="submit" value="送信">
+        </div>
     </form>
 </div>
 
