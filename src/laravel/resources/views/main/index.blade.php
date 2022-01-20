@@ -1,6 +1,6 @@
 @extends('layouts.main_layout')
 
-@section('title', 'トップページ')
+@section('title', 'つくりえ -トップページ-')
 
 {{-- ページ名 --}}
 @section('page_name', '検索結果')

@@ -1,11 +1,15 @@
 
+h3 {
+    font-size: 25px;
+}
 
 /* 投稿された内容表示 */
 div.posted-desk-card {
     position: relative;
     background-color: white;
     width: 700px;
-    height: 700px;
+    /* height: 700px; */
+    height: auto;
     margin: auto;
     margin-bottom: 40px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
@@ -16,11 +20,146 @@ img.posted-desk-card-image {
     width: 600px;
     height: auto;
     margin-top: 45px;
-
+    margin-bottom: 25px;
 }
 
 
 
+/* ユーザーアイコン */
+
+div.posted-desk-card-imgdiv {
+    position: relative;
+    width: 600px;
+    height: 80px;
+    margin: auto;
+}
+
+
+img.posted-desk-card-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    margin-left: 0;
+    left: 0;
+}
+
+/* ユーザー名表示 */
+
+h2.posted-desc-card-username {
+    line-height: 80px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+/* メッセージ表示欄 */
+
+div.posted-desk-card-profiles {
+    width: 600px;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    padding-bottom: 50px;
+}
+
+div.posted-desk-card-message {
+    width: 600px;
+    height: auto;
+    overflow-wrap: break-word;
+    text-align: left;
+    background-color: rgb(243, 246, 246, 0.5);
+    /* border-radius: 5px; */
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(213, 220, 220);
+
+}
+
+div.posted-desk-card-message > p {
+    width: 550px;
+    height: auto;
+    margin: auto;
+    padding: 20px 20px;
+}
+
+
+
+/* ユーザーが使用しているアイテム（プラグイン、ソフトウェアなど） */
+div.using-items {
+    height: 40px;
+}
+
+div.using-items {
+    margin: 0px;
+}
+
+
+div.posted-desk-card-used-items-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+div.posted-desk-card-used-items {
+    /* background-color: rgb(243, 246, 246, 0.5); */
+    margin-top: 20px;
+    width: 300px;
+    height: 70px;
+    display: flex;
+}
+
+img.posted-used-items-icon {
+    width: 70px;
+    height: 70px;
+}
+
+div.posted-used-items-exp {
+    width: 230px;
+    height: 70px;
+    /* background-color: rgb(243, 246, 246, 0.5);
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(213, 220, 220); */
+    margin: 0;
+}
+
+div.posted-used-items-exp > h3 {
+    margin: 0;
+    margin-left: 10px;
+    text-align: left;
+}
+
+div.posted-used-items-url {
+    position: relative;
+    /* overflow-x: scroll; */
+    height: 30px;
+    width: 180px;
+    background-color: rgb(243, 246, 246, 0.5);
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(213, 220, 220);
+}
+
+figure {
+    height: 30px;
+    margin: 0px;
+    margin-left: 10px;
+    overflow-x: scroll;
+}
+
+input.copy-url {
+    position: absolute;
+    z-index: 1;
+    margin-left: 95px;
+    background-color: rgb(255, 255, 255, 0.9);
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(213, 220, 220);
+
+}
 
 /* 戻るボタン */
 div.posted-back-to-top {

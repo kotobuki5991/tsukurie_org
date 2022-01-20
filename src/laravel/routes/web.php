@@ -26,6 +26,8 @@ Route::get('/', 'MainController@index');
 
 Route::get('/show_post', 'MainController@forPostPage');
 
+Route::get('/contact', 'MainController@contact');
+
 
 
 

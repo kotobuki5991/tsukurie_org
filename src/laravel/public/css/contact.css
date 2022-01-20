@@ -1,0 +1,7 @@
+
+/* 入力フォームエリア */
+div.contact-form {
+    width: 600px;
+    height: auto;
+    display: inline-block;
+}

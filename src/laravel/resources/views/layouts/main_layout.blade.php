@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- タイトル --}}
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/main_layout.css">
     @yield('add_css')
 </head>
 <body>
     <header>
         <div class="header-img">
-            <a href="https://www.google.com"><img src="images/icon.jpg" alt=""></a>
+            <a href="/"><img src="images/icon.jpg" alt=""></a>
         </div>
         {{-- <div class="header-a">
             <a class="letter">ログイン</a>
@@ -33,7 +33,7 @@
                             <li><a href="{{ route('register') }}" class="letter ml-4 text-sm text-gray-700 dark:text-gray-500 underline">ユーザー登録</a></li>
                             @endif
                         @endauth
-                        <li><a href="https://www.google.com" class="letter underline">お問い合せ</a></li>
+                        <li><a href="/contact" class="letter underline">お問い合せ</a></li>
                         <li><a href="https://www.google.com" class="letter underline">つくりえとは？</a></li>
                     </ul>
 
@@ -70,4 +70,5 @@
         <p class="letter">copyright(c) kotobuki All Rights Reserved.</p>
     </footer>
 </body>
+@yield('add_script')
 </html>

@@ -1,9 +1,24 @@
+/*/////////////////// フォント関連 ///////////////////*/
 @font-face
 {
 font-family: harenosora-mincho;
 src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
      format("woff2");
 }
+
+h1 {
+    font-size: 45px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+
 
 /* * {
     margin: 0;

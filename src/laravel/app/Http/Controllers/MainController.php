@@ -15,4 +15,11 @@ class MainController extends Controller
     public function forPostPage(){
         return view('main/show_post');
     }
+
+    // お問合せページへの遷移
+    public function contact(Request $request)
+    {
+        return view('main/contact');
+    }
+
 }
