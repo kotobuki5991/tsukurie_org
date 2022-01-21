@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- タイトル --}}
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="css/main_layout.css">
+    <link rel="stylesheet" href="{{ asset('css/main_layout.css') }}">
     @yield('add_css')
 
     <script>
@@ -21,7 +21,8 @@
 <body>
     <header>
         <div class="header-img">
-            <a href="/"><img  src="images/icon.jpg" alt=""></a>
+            {{-- <a href="/"><img  src="images/icon.jpg" alt=""></a> --}}
+            <a href="/"><img  src="{{ asset('images/icon.jpg') }}" alt=""></a>
         </div>
         {{-- <div class="header-a">
             <a class="letter">ログイン</a>
@@ -55,7 +56,7 @@
     <div class="content">
         <section class="top">
             <div class="top-image">
-                <img id="top-image-pc" class="top-image-pc" src="images/top_img.jpg" alt="">
+                <img id="top-image-pc" class="top-image-pc" src="{{ asset('images/top_img.jpg') }}" alt="">
             </div>
             <div class="top-p">
                 <p class="head letter">クリエイターの<br>つくえを共有しよう<p>
@@ -81,6 +82,6 @@
     @yield('add_script')
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="js/common.js"></script>
+    <script src="{{ asset('js/common.js') }}"></script>
 </body>
 </html>

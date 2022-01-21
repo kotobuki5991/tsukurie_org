@@ -1,7 +1,45 @@
+/*/////////////////// フォント関連 ///////////////////*/
+@font-face
+{
+font-family: harenosora-mincho;
+src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
+     format("woff2");
+}
+
+.letter {
+    color: rgb(179, 187, 190);
+    font-family: harenosora-mincho;
+}
 
 h3 {
     font-size: 25px;
 }
+
+div.main-contents {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+/*///////////////// 左側のブロック /////////////////*/
+div.left-block {
+    min-width: 200px;
+    height: auto;
+}
+
+/*///////////////// 右側のブロック /////////////////*/
+div.right-block {
+    min-width: 200px;
+    height: auto;
+}
+
+/* /////////////////メインブロック ////////////////*/
+div.main-block {
+    width: 100%;
+    height: auto;
+}
+
+
 
 /* 投稿された内容表示 */
 div.posted-desk-card {
@@ -10,6 +48,7 @@ div.posted-desk-card {
     width: 700px;
     /* height: 700px; */
     height: auto;
+    /* margin: auto; */
     margin: auto;
     margin-bottom: 40px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
@@ -98,6 +137,27 @@ div.posted-desk-card-used-items-area {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    position: relative;
+}
+
+/*//////////////////// カテゴリタグ ////////////////////*/
+.posted-deck-category-tag-music {
+    position: absolute;
+    z-index: 2;
+    background-color: rgb(255, 112, 112);
+    width: 70px;
+    height: 40px;
+    border-radius: 3px;
+    margin-left: 600px;
+    margin-top: -20px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+
+div.posted-deck-category-tag-music > a > h4 {
+    margin: 0;
+    line-height: 40px;
+    color: white;
+    font-family: harenosora-mincho;
 }
 
 

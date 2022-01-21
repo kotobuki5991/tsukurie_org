@@ -1,0 +1,8 @@
+.mypage-links {
+    list-style: none;
+}
+
+.mypage-links > li {
+    padding-bottom: 20px;
+}
+

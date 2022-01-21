@@ -3,7 +3,7 @@
 @section('title', 'つくりえ -お問合せ-')
 
 @section('add_css')
-<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
 @endsection
 
 {{-- ページ名 --}}
@@ -25,10 +25,10 @@
 </div>
 
 <div class="posted-back-to-top">
-    <a class="letter" href="/">トップへ戻る</a>
+    <a class="letter" href="{{ asset('/') }}">トップへ戻る</a>
 </div>
 @endsection
 
 @section('add_script')
-<script src="js/main.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 @endsection

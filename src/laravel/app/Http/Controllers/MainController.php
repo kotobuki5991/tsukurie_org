@@ -22,4 +22,10 @@ class MainController extends Controller
         return view('main/contact');
     }
 
+    // マイページへの遷移
+    public function toMyPageTop(Request $request)
+    {
+        return view('mypage/top');
+    }
+
 }
