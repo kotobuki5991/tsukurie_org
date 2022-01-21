@@ -19,7 +19,7 @@
         <ul class="mypage-links">
             <li><a href="{{ asset('/mypage/top') }}" class="letter">マイページトップ</a></li>
             <li><a href="{{ asset('/mypage/top') }}" class="letter">ログイン情報変更</a></li>
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">プロフィール編集</a></li>
+            <li><a href="{{ asset('/mypage/edit') }}" class="letter">プロフィール編集</a></li>
             <li><a href="{{ asset('/mypage/top') }}" class="letter">アカウント削除</a></li>
         </ul>
 

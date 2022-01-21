@@ -20,6 +20,7 @@ var submit = document.getElementById('contact-form');
 //タスク submitすると画面遷移してしまい、alertが表示されない
 submit.addEventListener('submit', function(event){
     if (confirm('本当に送信しますか？')){
+        event.method = 'post';
         event.submit();
     }else{
         event.preventDefault();

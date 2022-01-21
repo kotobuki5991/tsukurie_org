@@ -28,4 +28,11 @@ class MainController extends Controller
         return view('mypage/top');
     }
 
+    public function toMyPageEdit(Request $request)
+    {
+        return view('mypage/edit');
+    }
+
+
+
 }

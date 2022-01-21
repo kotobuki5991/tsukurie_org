@@ -13,7 +13,7 @@
 {{-- メインコンテンツ --}}
 @section('main_contents')
 <div class="contact-form-erea">
-    <form id="contact-form">
+    <form id="contact-form" method="post" action="{{ asset('contact') }}">
         @csrf
         {{--タスク 登録していないユーザーからの問い合わせの場合、ゲストさんとする。 --}}
         <input type="hidden" name="contact-title" value="【つくりえ】○○さんからの問い合わせ">

@@ -1,8 +1,98 @@
+/* マイページトップ */
+
 .mypage-links {
     list-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .mypage-links > li {
     padding-bottom: 20px;
 }
 
+
+/* プロフィール更新 */
+
+.myprofile-edit-submit {
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.myprofile-edit-message {
+    width: 600px;
+}
+
+
+/* .myprofile-edit-used-items {
+    height: 30px;
+    width: 150px;
+    margin-left: 0px;
+} */
+
+/* textarea {
+    width: 600px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+    resize: vertical;
+} */
+
+div.myprofile-edit-message > textarea {
+    width: 598px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+    resize: vertical;
+    padding: 0px;
+}
+
+div.myprofile-edit-used-items-exp {
+    width: 230px;
+    height: 70px;
+    margin: 0;
+}
+
+select.select-items-logo {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+    resize: vertical;
+    padding: 0px;
+
+
+}
+
+
+select.myprofile-edit-used-items {
+    /* margin: 0;
+    margin-left: 10px;
+    text-align: left; */
+    height: 20px;
+    width: 150px;
+    margin-left: 0px;
+
+    margin-top: 9px;
+    margin-bottom: 9px;
+
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+}
+
+
+div.myprofile-edit-items-url > input {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+    resize: vertical;
+}
