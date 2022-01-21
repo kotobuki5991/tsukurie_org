@@ -22,7 +22,7 @@
     <header>
         <div class="header-img">
             {{-- <a href="/"><img  src="images/icon.jpg" alt=""></a> --}}
-            <a href="/"><img  src="{{ asset('images/icon.jpg') }}" alt=""></a>
+            <a href="{{ asset('/') }}"><img  src="{{ asset('images/icon.jpg') }}" alt=""></a>
         </div>
         {{-- <div class="header-a">
             <a class="letter">ログイン</a>
@@ -43,7 +43,7 @@
                             <li><a href="{{ route('register') }}" class="letter ml-4 text-sm text-gray-700 dark:text-gray-500 underline">ユーザー登録</a></li>
                             @endif
                         @endauth
-                        <li><a href="/contact" class="letter underline">お問い合せ</a></li>
+                        <li><a href="{{ asset('/contact') }}" class="letter underline">お問い合せ</a></li>
                         <li><a href="https://www.google.com" class="letter underline">つくりえとは？</a></li>
                     </ul>
 
@@ -74,9 +74,9 @@
         </div>
     </div>
     <footer>
-        <a class="letter" href="index.html">トップページ</a>
-        <a class="letter" href="profile.html">お問合せ</a>
-        <a class="letter" href="about.html">つくりえとは？</a>
+        <a class="letter" href="{{ asset('/') }}">トップページ</a>
+        <a class="letter" href="{{ asset('/contact') }}">お問合せ</a>
+        <a class="letter" href="{{ asset('about.html') }}">つくりえとは？</a>
         <p class="letter">copyright(c) kotobuki All Rights Reserved.</p>
     </footer>
     @yield('add_script')

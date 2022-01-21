@@ -28,6 +28,7 @@
 
     <div class="main-block">
         <form action="{{ asset('/mypage/top') }}" method="post">
+            @csrf
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div><img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""></div>
@@ -43,9 +44,9 @@
                     <div class="using-items">
                         <h3>使用機材</h3>
                     </div>
-
-                    <div class="posted-desk-card-used-items-area">
-                        <div class="posted-desk-card-used-items">
+                    {{-- ＋ボタンで追加できるフォーム --}}
+                    <div id="used-items-form-area" class="posted-desk-card-used-items-area">
+                        <div id="used-items-form" class="posted-desk-card-used-items  used_item_form_number-1">
                             <select id="select-items-logo" class="select-items-logo">
                                 <option value="">選択</option>
                                 <option value="">guitar</option>
@@ -58,85 +59,7 @@
                                 <option value="">mic</option>
                                 <option value="">headphones</option>
                                 <option value="">daw</option>
-                                <option value="">audio I/F</option>
-                            </select>
-                            {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
-                            <div class="myprofile-edit-used-items-exp">
-                                <select class="myprofile-edit-used-items">
-                                    <option value="waves">waves</option>
-                                    <option value="trillian">trillian</option>
-                                </select>
-                                <div class="myprofile-edit-items-url">
-                                    <input type="text" value="https://www.soundhouse.co.jp/">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="posted-desk-card-used-items">
-                            <select id="select-items-logo" class="select-items-logo">
-                                <option value="">選択</option>
-                                <option value="">guitar</option>
-                                <option value="">bass</option>
-                                <option value="">piano</option>
-                                <option value="">strings</option>
-                                <option value="">synth</option>
-                                <option value="">drum</option>
-                                <option value="">mix/master</option>
-                                <option value="">mic</option>
-                                <option value="">headphones</option>
-                                <option value="">daw</option>
-                                <option value="">audio I/F</option>
-                            </select>
-                            {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
-                            <div class="myprofile-edit-used-items-exp">
-                                <select class="myprofile-edit-used-items">
-                                    <option value="waves">waves</option>
-                                    <option value="trillian">trillian</option>
-                                </select>
-                                <div class="myprofile-edit-items-url">
-                                    <input type="text" value="https://www.soundhouse.co.jp/">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="posted-desk-card-used-items">
-                            <select id="select-items-logo" class="select-items-logo">
-                                <option value="">選択</option>
-                                <option value="">guitar</option>
-                                <option value="">bass</option>
-                                <option value="">piano</option>
-                                <option value="">strings</option>
-                                <option value="">synth</option>
-                                <option value="">drum</option>
-                                <option value="">mix/master</option>
-                                <option value="">mic</option>
-                                <option value="">headphones</option>
-                                <option value="">daw</option>
-                                <option value="">audio I/F</option>
-                            </select>
-                            {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
-                            <div class="myprofile-edit-used-items-exp">
-                                <select class="myprofile-edit-used-items">
-                                    <option value="waves">waves</option>
-                                    <option value="trillian">trillian</option>
-                                </select>
-                                <div class="myprofile-edit-items-url">
-                                    <input type="text" value="https://www.soundhouse.co.jp/">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="posted-desk-card-used-items">
-                            <select id="select-items-logo" class="select-items-logo">
-                                <option value="">選択</option>
-                                <option value="">guitar</option>
-                                <option value="">bass</option>
-                                <option value="">piano</option>
-                                <option value="">strings</option>
-                                <option value="">synth</option>
-                                <option value="">drum</option>
-                                <option value="">mix/master</option>
-                                <option value="">mic</option>
-                                <option value="">headphones</option>
-                                <option value="">daw</option>
-                                <option value="">audio I/F</option>
+                                <option value="">audioI/F</option>
                             </select>
                             {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
                             <div class="myprofile-edit-used-items-exp">
@@ -151,8 +74,10 @@
                         </div>
                     </div>
                 </div>
+                <input class="add-button sink-button circle-button" type="button" onclick="addForm()" value="+">
+                <input class="remove-button sink-button circle-button" type="button" onclick="removeForm()" value="-">
             </div>
-            <input class="myprofile-edit-submit" type="submit" value="更新">
+            <input class="myprofile-edit-submit sink-button" type="submit" value="更新">
         </form>
         </div>
     <div class="right-block"></div>
@@ -163,13 +88,6 @@
 @endsection
 
 @section('add_script')
-{{-- <script src="{{ asset('js/main.js') }}"></script> --}}
-<script type="text/javascript">
+<script src="{{ asset('js/mypage_edit.js') }}"></script>
 
-    $(document).ready(function(){
-     $('select[class=select-items-logo]').ImageSelect({dropdownWidth:425});
-     });
-
-
- </script>
 @endsection

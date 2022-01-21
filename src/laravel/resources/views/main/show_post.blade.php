@@ -38,7 +38,7 @@
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
-                                <input class="copy-url" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://www.soundhouse.co.jp/</figure>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 {{--
                                     copyTocripBoadの引数に、ユーザーのidを渡す。figureタグのidを、url-to-copy-[ユーザーid]にして、jsでどのfigureをコピーするか判別する。
                                     --}}
-                                <input class="copy-url" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://google.com</figure>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
-                                <input class="copy-url" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://www.soundhouse.co.jp/</figure>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                 {{--
                                     copyTocripBoadの引数に、ユーザーのidを渡す。figureタグのidを、url-to-copy-[ユーザーid]にして、jsでどのfigureをコピーするか判別する。
                                     --}}
-                                <input class="copy-url" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://google.com</figure>
                             </div>
                         </div>

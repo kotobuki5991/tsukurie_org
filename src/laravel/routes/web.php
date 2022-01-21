@@ -32,6 +32,8 @@ Route::post('/contact', 'MainController@contact');
 // マイページ
 Route::get('/mypage/top', 'MainController@toMyPageTop');
 
+Route::post('/mypage/top', 'MainController@toMyPageTop');
+
 Route::get('/mypage/edit', 'MainController@toMyPageEdit');
 
 

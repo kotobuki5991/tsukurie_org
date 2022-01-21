@@ -44,11 +44,13 @@
 
 div.myprofile-edit-message > textarea {
     width: 598px;
+    height: 200px;
     border-radius: 10px;
     border: solid 1px;
     border-color: rgb(198, 202, 202);
     resize: vertical;
     padding: 0px;
+    /* color: rgb(90, 97, 100); */
 }
 
 div.myprofile-edit-used-items-exp {
@@ -66,7 +68,7 @@ select.select-items-logo {
     border-color: rgb(198, 202, 202);
     resize: vertical;
     padding: 0px;
-
+    /* color: rgb(90, 97, 100); */
 
 }
 
@@ -81,7 +83,7 @@ select.myprofile-edit-used-items {
 
     margin-top: 9px;
     margin-bottom: 9px;
-
+    /* color: rgb(90, 97, 100); */
     border-radius: 10px;
     border: solid 1px;
     border-color: rgb(198, 202, 202);
@@ -95,4 +97,36 @@ div.myprofile-edit-items-url > input {
     border: solid 1px;
     border-color: rgb(198, 202, 202);
     resize: vertical;
+    /* color: rgb(90, 97, 100); */
+}
+
+
+.circle-button {
+    width: 40px;
+    height: 40px;
+    border: solid 1px;
+    border-color: rgb(160, 173, 173);
+    border-radius: 20px;
+    resize: vertical;
+    font-size: 20px;
+}
+
+
+.add-button {
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
+}
+
+.remove-button {
+    /* width: 40px;
+    height: 40px; */
+    position: absolute;
+    /* border-radius: 20px; */
+    /* border: solid 1px; */
+    /* border-color: rgb(160, 173, 173); */
+    /* resize: vertical; */
+    right: 20px;
+    bottom: 20px;
+    /* font-size: 20px; */
 }

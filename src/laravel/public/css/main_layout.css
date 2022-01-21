@@ -10,13 +10,15 @@ h1 {
     font-size: 45px;
     font-weight: normal;
 }
-
 h2 {
     font-size: 40px;
 }
-
 h3 {
     font-size: 25px;
+}
+
+a, p, h1, h2, h3, h4, h5, input, textarea {
+    color: rgb(90, 97, 100);
 }
 
 
@@ -35,12 +37,24 @@ a {
     font-family: harenosora-mincho;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: rgb(248, 236, 222);
     margin: 0;
     padding: 0;
     min-width: 1100px;
 }
+
+/* ボタンを押したら沈む */
+.sink-button:active{
+	transition: 0.2s;
+	transform: translate3d(0,4px,0);
+	box-shadow: none;
+}
+
 
 /*/////////////////// ヘッダー ///////////////////*/
 header {

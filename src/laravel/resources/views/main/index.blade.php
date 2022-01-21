@@ -18,7 +18,7 @@
                 <option value="movie">動画</option>
                 <option value="illustration">イラスト</option>
                 </select>
-            <input class="search-select-submit" type="submit" value="検索">
+            <input class="search-select-submit sink-button" type="submit" value="検索">
         </form>
     </div>
 </div>
