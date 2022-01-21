@@ -52,13 +52,15 @@ div.posted-desk-card {
     margin: auto;
     margin-bottom: 40px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-    border-radius: 5px;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 img.posted-desk-card-image {
-    width: 600px;
+    /* width: 600px; */
+    width: 725px;
     height: auto;
-    margin-top: 45px;
+    /* margin-top: 45px; */
     margin-bottom: 25px;
 }
 
@@ -145,13 +147,16 @@ div.posted-desk-card-used-items-area {
     position: absolute;
     z-index: 2;
     background-color: rgb(255, 112, 112);
-    width: 70px;
+    width: 200px;
     height: 40px;
     border-radius: 3px;
-    margin-left: 600px;
-    margin-top: -20px;
+    margin-left: 560px;
+    margin-top: 20px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    transform:rotate(45deg);
 }
+
 
 div.posted-deck-category-tag-music > a > h4 {
     margin: 0;

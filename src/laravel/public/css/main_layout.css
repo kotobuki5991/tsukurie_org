@@ -216,7 +216,7 @@ div.desk-card {
     /* margin: 30px; */
     width: 300px;
     height: 300px;
-    border-radius: 5px;
+    border-radius: 15px;
     min-width: 300px;
     background-color: white;
     margin: auto;
@@ -225,12 +225,15 @@ div.desk-card {
     float: left;
     position: relative;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    overflow: hidden;
 }
 
 img.desk-card-image {
-    margin-top: 20px;
-    width: 280px;
-    height: 180px;
+    /* margin-top: 20px; */
+    width: 310px;
+    height: auto;
+    max-height: 200px;
 }
 
 img.desk-card-icon{
@@ -245,14 +248,16 @@ div.category-tag-music {
     position: absolute;
     z-index: 2;
     /* top: 100; */
-    background-color: rgb(255, 112, 112);
-    width: 70px;
+    background-color: rgb(255, 112, 112,0.8);
+    width: 200px;
     height: 40px;
     border-radius: 3px;
     /* left: 10; */
-    margin-left: 200px;
-    margin-top: -20px;
+    margin-left: 170px;
+    margin-top: 10px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    transform:rotate(45deg);
 }
 
 div.category-tag-music > a > h4 {
@@ -266,14 +271,16 @@ div.category-tag-movie {
     position: absolute;
     z-index: 2;
     /* top: 100; */
-    background-color: rgb(255, 200, 91);
-    width: 70px;
+    background-color: rgb(255, 200, 91, 0.8);
+    width: 200px;
     height: 40px;
     border-radius: 3px;
     /* left: 10; */
-    margin-left: 200px;
-    margin-top: -20px;
+    margin-left: 170px;
+    margin-top: 10px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    transform:rotate(45deg);
 }
 
 div.category-tag-movie > a > h4 {
@@ -288,14 +295,16 @@ div.category-tag-illust {
     position: absolute;
     z-index: 2;
     /* top: 100; */
-    background-color: rgb(254, 168, 115);
-    width: 70px;
+    background-color: rgb(254, 168, 115, 0.8);
+    width: 200px;
     height: 40px;
     border-radius: 3px;
     /* left: 10; */
-    margin-left: 200px;
-    margin-top: -20px;
+    margin-left: 170px;
+    margin-top: 10px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    transform:rotate(45deg)
 }
 
 div.category-tag-illust  > a > h4 {
