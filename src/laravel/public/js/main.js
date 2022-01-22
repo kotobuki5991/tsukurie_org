@@ -21,6 +21,7 @@ var submit = document.getElementById('contact-form');
 if( submit != null ){
     submit.addEventListener('submit', function(event){
         if (confirm('本当に送信しますか？')){
+            
             event.method = 'post';
             alert('ありがとうございます、送信が完了しました!');
             event.submit();

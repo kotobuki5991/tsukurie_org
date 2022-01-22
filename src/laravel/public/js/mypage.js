@@ -1,8 +1,10 @@
 'use strict';
 
-// プロフィール編集ページの入力欄追加ボタン
+////////////////////////////////////////////
+// プロフィール編集ページ
+////////////////////////////////////////////
 
-// 入力欄取得
+// 入力欄追加ボタン
 var used_item_form_number = 1;
 
 function addForm() {
@@ -24,7 +26,7 @@ function addForm() {
     }
   }
 
-  // タスク プロフィール編集ページの入力欄を消す必要がある(全て空欄の場合と、ボタンを押された場合)
+  //入力欄削除ボタン
 
   function removeForm() {
     // 使用機材入力欄は最低1個より多く
@@ -42,3 +44,28 @@ function addForm() {
         used_item_form_number-- ;
     }
   }
+
+////////////////////////////////////////////
+// アカウント削除ページ
+////////////////////////////////////////////
+
+var delete_button = document.getElementById('account-delete-button');
+
+if( delete_button != null ){
+    delete_button.addEventListener('submit', (event) => {
+        // // enterキーは無効化
+        // if( event.key = 'Enter'){
+        //     event.preventDefault();
+        // }
+
+        if( confirm('本当に削除しますか？') ){
+            console.log(event);
+            event.submit();
+        }else{
+            event.preventDefault();
+        }
+    });
+}
+
+
+

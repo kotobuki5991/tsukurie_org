@@ -107,3 +107,41 @@ div.myprofile-edit-items-url > input {
     right: 15px;
     bottom: 20px;
 }
+
+/* アカウント削除ページ */
+
+.account-delete-submit {
+    width: 130px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(255, 77, 0);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgb(251, 124, 20);
+    color: white;
+}
+
+
+.delete-explanation-area {
+    width: 600px;
+    height: auto;
+    background-color: rgb(243, 246, 246);
+    margin: auto;
+    border-radius: 15px;
+    border: solid 1px;
+    border-color: rgb(160, 173, 173);
+}
+
+
+
+h2.delete-explanation {
+    color: red;
+    margin-top: 10px;
+}
+
+p.delete-explanation {
+    margin: 0px 15px 10px 15px;
+    text-align: left;
+}
+

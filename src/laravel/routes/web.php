@@ -24,6 +24,7 @@ require __DIR__.'/auth.php';
 // メインページからのルーティング
 // トップ
 Route::get('/', 'MainController@index');
+Route::post('/', 'MainController@index');
 // 投稿ページ
 Route::get('/show_post', 'MainController@forPostPage');
 // 問い合わせページ

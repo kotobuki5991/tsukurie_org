@@ -38,6 +38,5 @@
 
 @section('add_script')
 <script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/mypage.js') }}"></script>
 @endsection
-{{-- mypage共通部品2 --}}
-@yield('add_script_mypage')

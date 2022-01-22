@@ -72,6 +72,6 @@
 @endsection
 
 @section('add_script_mypage')
-<script src="{{ asset('js/mypage_edit.js') }}"></script>
+<script src="{{ asset('js/mypage.js') }}"></script>
 
 @endsection
