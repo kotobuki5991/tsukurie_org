@@ -21,16 +21,8 @@
 <body>
     <header>
         <div class="header-img">
-            {{-- <a href="/"><img  src="images/icon.jpg" alt=""></a> --}}
             <a href="{{ asset('/') }}"><img  src="{{ asset('images/icon.jpg') }}" alt=""></a>
         </div>
-        {{-- <div class="header-a">
-            <a class="letter">ログイン</a>
-            <p> | </p>
-            <a class="letter">ユーザー登録</a>
-            <p> | </p>
-            <a class="letter">お問い合わせ</a>
-        </div> --}}
         @if (Route::has('login'))
                 <div class="header-a hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     <ul class="nav">

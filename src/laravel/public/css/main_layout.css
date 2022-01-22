@@ -23,10 +23,6 @@ a, p, h1, h2, h3, h4, h5, input, textarea {
 
 
 
-/* * {
-    margin: 0;
-    padding: 0;
-} */
 
 a {
     text-decoration:none;
@@ -53,6 +49,19 @@ body {
 	transition: 0.2s;
 	transform: translate3d(0,4px,0);
 	box-shadow: none;
+}
+/* カーソルを合わせると透明に */
+.mouse-hover-transparent:hover {
+    opacity: 0.6;
+}
+
+/* カーソルを合わせると拡大 */
+.mouse-hover-expansion:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.mouse-hover-pointer {
+    cursor: pointer;
 }
 
 
@@ -229,6 +238,13 @@ div.desk-card {
     overflow: hidden;
 }
 
+div.desk-card-image-area {
+    width: 310px;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
 img.desk-card-image {
     /* margin-top: 20px; */
     width: 310px;
@@ -315,20 +331,22 @@ div.category-tag-illust  > a > h4 {
 }
 /* ////////////////////////// */
 div.user-name {
-    height: 20px;
-    width: 100px;
-    margin-left: 95px;
+    height: 30px;
+    /* width: 100px; */
+    /* margin-left: 110px; */
 }
 
-div.user-name > h4 {
-    height: 20px;
+div.user-name > h3 {
+    height: 30px;
     margin: 0;
+    margin-left: 110px;
     color: rgb(101, 110, 110);
     font-family: harenosora-mincho;
+    text-align: left;
 }
 
 div.user-message {
-    height: 60px;
+    height: 50px;
     width: 180px;
     margin-left: 110px;
     overflow-wrap: break-word;
@@ -336,7 +354,7 @@ div.user-message {
 
 div.user-message > h5 {
     margin: 0;
-    height: 60px;
+    height: 50px;
     width: 180px;
     text-align: left;
     float: left;
@@ -345,7 +363,7 @@ div.user-message > h5 {
     /* text-overflow: ellipsis; */
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
 }
 
 .posted-back-to-top {

@@ -28,110 +28,110 @@
 @section('main_contents')
 <div class="show-cards-area">
     <div class="desk-card float">
-        <div class="category-tag-music"><a href="https://www.google.com"><h4>音楽</h4></a></div>
-        <div><a href="/show_post"><img class="desk-card-image" src="{{ asset('uploaded_images/fukuju.jpg') }}" alt=""></a></div>
+        <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+        <div class="desk-card-image-area"><a href="/show_post"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/fukuju.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
-        <div class="category-tag-movie"><a href="https://www.google.com"><h4>動画</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
+        <div class="category-tag-movie mouse-hover-transparent"><a href="https://www.google.com"><h4>動画</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/3.png') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
-        <div class="category-tag-illust"><a href="https://www.google.com"><h4>イラスト</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
+        <div class="category-tag-illust mouse-hover-transparent"><a href="https://www.google.com"><h4>イラスト</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
-        <div class="category-tag-music"><a href="https://www.google.com"><h4>音楽</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
+        <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
-        <div class="category-tag-movie"><a href="https://www.google.com"><h4>動画</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/3.png') }}" alt=""></a></div>
+        <div class="category-tag-movie mouse-hover-transparent"><a href="https://www.google.com"><h4>動画</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/3.png') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
-            <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
-        </div>
-    </div>
-    <div class="desk-card float">
-        <div class="category-tag-illust"><a href="https://www.google.com"><h4>イラスト</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
-        <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
-            <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
-        </div>
-    </div>
-    <div class="desk-card float">
-        <div class="category-tag-music"><a href="https://www.google.com"><h4>音楽</h4></a></div>
-        <div><a href="/show_post"><img class="desk-card-image" src="{{ asset('uploaded_images/fukuju.jpg') }}" alt=""></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
-        <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
-            <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
-        </div>
-    </div>
-    <div class="desk-card float">
-        <div class="category-tag-movie"><a href="https://www.google.com"><h4>動画</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
-        <div>
-        <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
         <div class="category-tag-illust"><a href="https://www.google.com"><h4>イラスト</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
-        <div class="category-tag-music"><a href="https://www.google.com"><h4>音楽</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
+        <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+        <div class="desk-card-image-area"><a href="/show_post"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/fukuju.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
-        <div class="category-tag-movie"><a href="https://www.google.com"><h4>動画</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/3.png') }}" alt=""></a></div>
+        <div class="category-tag-movie mouse-hover-transparent"><a href="https://www.google.com"><h4>動画</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+        <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>
     <div class="desk-card float">
         <div class="category-tag-illust"><a href="https://www.google.com"><h4>イラスト</h4></a></div>
-        <div><a href="https://www.google.com"><img class="desk-card-image" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
         <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
         <div>
-            <div class="user-name"><h4>kotobuki</h4></div>
+            <div class="user-name"><h3>kotobuki</h3></div>
+            <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+        </div>
+    </div>
+    <div class="desk-card float">
+        <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>音楽</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/2.jpg') }}" alt=""></a></div>
+        <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
+        <div>
+            <div class="user-name"><h3>kotobuki</h3></div>
+            <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+        </div>
+    </div>
+    <div class="desk-card float">
+        <div class="category-tag-movie mouse-hover-transparent"><a href="https://www.google.com"><h4>動画</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/3.png') }}" alt=""></a></div>
+        <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
+        <div>
+            <div class="user-name"><h3>kotobuki</h3></div>
+            <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
+        </div>
+    </div>
+    <div class="desk-card float">
+        <div class="category-tag-illust"><a href="https://www.google.com"><h4>イラスト</h4></a></div>
+        <div class="desk-card-image-area"><a href="https://www.google.com"><img class="desk-card-image mouse-hover-expansion" src="{{ asset('uploaded_images/1.jpg') }}" alt=""></a></div>
+        <div><a href="https://www.google.com"><img class="desk-card-icon" src="{{ asset('user_icon/1.png') }}" alt=""></a></div>
+        <div>
+            <div class="user-name"><h3>kotobuki</h3></div>
             <div class="user-message letter"><h5>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb</h5></div>
         </div>
     </div>

@@ -1,4 +1,5 @@
-@extends('/layouts.main_layout')
+{{-- @extends('/layouts.main_layout') --}}
+@extends('/layouts.mypage_layout')
 
 @section('title', 'つくりえ -○○のマイページ-')
 @section('add_css')
@@ -12,22 +13,12 @@
 
 
 {{-- メインコンテンツ --}}
-@section('main_contents')
-<div class="main-contents">
+    @section('main_block')
 
-    <div class="left-block">
-        <ul class="mypage-links">
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">マイページトップ</a></li>
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">ログイン情報変更</a></li>
-            <li><a href="{{ asset('/mypage/edit') }}" class="letter">プロフィール編集</a></li>
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">アカウント削除</a></li>
-        </ul>
-
-    </div>
 
     <div class="main-block">
         <div class="posted-desk-card float">
-            <div class="posted-deck-category-tag-music"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
+            <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
             <div><img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""></div>
             <div class="posted-desk-card-imgdiv">
                 <img class="posted-desk-card-icon" src="{{ asset('/user_icon/1.png') }}" alt="">
@@ -48,7 +39,7 @@
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://www.soundhouse.co.jp/</figure>
                             </div>
                         </div>
@@ -61,7 +52,7 @@
                                 {{--
                                     copyTocripBoadの引数に、ユーザーのidを渡す。figureタグのidを、url-to-copy-[ユーザーid]にして、jsでどのfigureをコピーするか判別する。
                                     --}}
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://google.com</figure>
                             </div>
                         </div>
@@ -71,7 +62,7 @@
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://www.soundhouse.co.jp/</figure>
                             </div>
                         </div>
@@ -84,7 +75,7 @@
                                 {{--
                                     copyTocripBoadの引数に、ユーザーのidを渡す。figureタグのidを、url-to-copy-[ユーザーid]にして、jsでどのfigureをコピーするか判別する。
                                     --}}
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://google.com</figure>
                             </div>
                         </div>
@@ -93,14 +84,4 @@
             </div>
         </div>
     </div>
-
-    <div class="right-block"></div>
-</div>
-<div class="posted-back-to-top">
-    <a class="letter" href="{{ asset('/') }}">トップへ戻る</a>
-</div>
-@endsection
-
-@section('add_script')
-<script src="{{ asset('js/main.js') }}"></script>
 @endsection

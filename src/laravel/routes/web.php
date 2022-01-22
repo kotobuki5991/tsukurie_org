@@ -36,6 +36,8 @@ Route::post('/mypage/top', 'MainController@toMyPageTop');
 
 Route::get('/mypage/edit', 'MainController@toMyPageEdit');
 
+Route::get('/mypage/delete_account', 'MainController@toMyPageDelete');
+
 
 
 

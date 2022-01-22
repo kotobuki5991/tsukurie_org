@@ -33,6 +33,11 @@ class MainController extends Controller
         return view('mypage/edit');
     }
 
+    public function toMyPageDelete(Request $request)
+    {
+        return view('mypage/delete_account');
+    }
+
 
 
 }

@@ -28,19 +28,6 @@
 }
 
 
-/* .myprofile-edit-used-items {
-    height: 30px;
-    width: 150px;
-    margin-left: 0px;
-} */
-
-/* textarea {
-    width: 600px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    resize: vertical;
-} */
 
 div.myprofile-edit-message > textarea {
     width: 598px;
@@ -54,13 +41,13 @@ div.myprofile-edit-message > textarea {
 }
 
 div.myprofile-edit-used-items-exp {
-    width: 230px;
+    width: 220px;
     height: 70px;
     margin: 0;
 }
 
 select.select-items-logo {
-    width: 70px;
+    width: 80px;
     height: 70px;
 
     border-radius: 10px;
@@ -74,16 +61,13 @@ select.select-items-logo {
 
 
 select.myprofile-edit-used-items {
-    /* margin: 0;
-    margin-left: 10px;
-    text-align: left; */
     height: 20px;
-    width: 150px;
+    width: 200px;
     margin-left: 0px;
 
     margin-top: 9px;
     margin-bottom: 9px;
-    /* color: rgb(90, 97, 100); */
+
     border-radius: 10px;
     border: solid 1px;
     border-color: rgb(198, 202, 202);
@@ -114,19 +98,12 @@ div.myprofile-edit-items-url > input {
 
 .add-button {
     position: absolute;
-    right: 20px;
+    right: 15px;
     bottom: 80px;
 }
 
 .remove-button {
-    /* width: 40px;
-    height: 40px; */
     position: absolute;
-    /* border-radius: 20px; */
-    /* border: solid 1px; */
-    /* border-color: rgb(160, 173, 173); */
-    /* resize: vertical; */
-    right: 20px;
+    right: 15px;
     bottom: 20px;
-    /* font-size: 20px; */
 }

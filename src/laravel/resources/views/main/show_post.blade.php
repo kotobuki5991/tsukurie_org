@@ -17,7 +17,7 @@
 
     <div class="main-block">
         <div class="posted-desk-card float">
-            <div class="posted-deck-category-tag-music"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
+            <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
             <div><img class="posted-desk-card-image" src="uploaded_images/1.jpg" alt=""></div>
             <div class="posted-desk-card-imgdiv">
                 <img class="posted-desk-card-icon" src="user_icon/1.png" alt="">
@@ -38,7 +38,7 @@
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://www.soundhouse.co.jp/</figure>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 {{--
                                     copyTocripBoadの引数に、ユーザーのidを渡す。figureタグのidを、url-to-copy-[ユーザーid]にして、jsでどのfigureをコピーするか判別する。
                                     --}}
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://google.com</figure>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://www.soundhouse.co.jp/</figure>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                 {{--
                                     copyTocripBoadの引数に、ユーザーのidを渡す。figureタグのidを、url-to-copy-[ユーザーid]にして、jsでどのfigureをコピーするか判別する。
                                     --}}
-                                <input class="copy-url sink-button" type="button" value="Copy" onclick="copyToClipboard()">
+                                <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                 <figure id="url-to-copy">https://google.com</figure>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-@extends('/layouts.main_layout')
+@extends('/layouts.mypage_layout')
 
 @section('title', 'つくりえ -プロフィール編集-')
 @section('add_css')
@@ -12,25 +12,12 @@
 
 
 {{-- メインコンテンツ --}}
-@section('main_contents')
-<div class="main-contents">
-
-    <div class="left-block">
-        <ul class="mypage-links">
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">マイページトップ</a></li>
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">ログイン情報変更</a></li>
-            <li><a href="{{ asset('/mypage/edit') }}" class="letter">プロフィール編集</a></li>
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">アカウント削除</a></li>
-        </ul>
-
-    </div>
-
-
+    @section('main_block')
     <div class="main-block">
         <form action="{{ asset('/mypage/top') }}" method="post">
             @csrf
             <div class="posted-desk-card float">
-                <div class="posted-deck-category-tag-music"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
+                <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div><img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""></div>
                 <div class="posted-desk-card-imgdiv">
                     <img class="posted-desk-card-icon" src="{{ asset('/user_icon/1.png') }}" alt="">
@@ -48,7 +35,7 @@
                     <div id="used-items-form-area" class="posted-desk-card-used-items-area">
                         <div id="used-items-form" class="posted-desk-card-used-items  used_item_form_number-1">
                             <select id="select-items-logo" class="select-items-logo">
-                                <option value="">選択</option>
+                                <option value="">カテゴリ</option>
                                 <option value="">guitar</option>
                                 <option value="">bass</option>
                                 <option value="">piano</option>
@@ -64,6 +51,7 @@
                             {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
                             <div class="myprofile-edit-used-items-exp">
                                 <select class="myprofile-edit-used-items">
+                                    <option value="">プラグイン・実機選択</option>
                                     <option value="waves">waves</option>
                                     <option value="trillian">trillian</option>
                                 </select>
@@ -74,20 +62,16 @@
                         </div>
                     </div>
                 </div>
-                <input class="add-button sink-button circle-button" type="button" onclick="addForm()" value="+">
-                <input class="remove-button sink-button circle-button" type="button" onclick="removeForm()" value="-">
+                <input class="add-button sink-button circle-button mouse-hover-pointer" type="button" onclick="addForm()" value="+">
+                <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
             </div>
-            <input class="myprofile-edit-submit sink-button" type="submit" value="更新">
+            <input class="myprofile-edit-submit sink-button mouse-hover-pointer" type="submit" value="更新">
         </form>
-        </div>
-    <div class="right-block"></div>
-</div>
-<div class="posted-back-to-top">
-    <a class="letter" href="{{ asset('/') }}">トップへ戻る</a>
-</div>
+    </div>
+
 @endsection
 
-@section('add_script')
+@section('add_script_mypage')
 <script src="{{ asset('js/mypage_edit.js') }}"></script>
 
 @endsection
