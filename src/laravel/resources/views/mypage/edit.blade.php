@@ -14,14 +14,15 @@
 {{-- メインコンテンツ --}}
     @section('main_block')
     <div class="main-block">
-        <form action="{{ asset('/mypage/top') }}" method="post">
+        <form id="update-form" action="{{ asset('/mypage/top') }}" method="post">
             @csrf
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div><img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""></div>
                 <div class="posted-desk-card-imgdiv">
                     <img class="posted-desk-card-icon" src="{{ asset('/user_icon/1.png') }}" alt="">
-                    <h2 class="posted-desc-card-username">kotobuki</h2>
+                    <input class="myprofile-edit-username" type="text" value="kotobuki">
+                    {{-- <h2 class="posted-desc-card-username">kotobuki</h2> --}}
                 </div>
                 <div class="posted-desk-card-profiles">
                     <div class="myprofile-edit-message"><textarea>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -65,7 +66,7 @@
                 <input class="add-button sink-button circle-button mouse-hover-pointer" type="button" onclick="addForm()" value="+">
                 <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
             </div>
-            <input class="myprofile-edit-submit sink-button mouse-hover-pointer" type="submit" value="更新">
+            <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
         </form>
     </div>
 

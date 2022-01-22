@@ -117,10 +117,11 @@ div.posted-desk-card-message {
 }
 
 div.posted-desk-card-message > p {
-    width: 550px;
+    width: 580px;
     height: auto;
-    margin: auto;
-    padding: 20px 20px;
+    margin: 0;
+    padding: 10px 10px;
+    font-size: 15px;
 }
 
 
