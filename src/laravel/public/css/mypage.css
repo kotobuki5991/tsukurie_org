@@ -12,13 +12,94 @@
 
 
 /* プロフィール更新 */
+/* 最低サイズは幅700の16×9のサイズ */
+div.upload-img-area {
+        width: 700px;
+        height: auto;
+        min-height: 393px;
+        max-height: 480px;
+        overflow: hidden;
+        margin-bottom: 25px;
+        background-color: rgb(226, 231, 232);
+}
+
+
+
+input.select-upload-img {
+    position: absolute;
+    z-index: 2;
+    left: 240px;
+    top: 200px;
+}
+
+img.show-selected-img {
+    width: 725px;
+    height: auto;
+    margin-bottom: 25px;
+    opacity: 0.5;
+}
+
+div.upload-user-info {
+    position: relative;
+    width: 600px;
+    height: 80px;
+    margin: auto;
+    display: flex;
+}
+
+div.show-selected-user-icon-area {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    margin-left: 0;
+    left: 0;
+    border-radius: 40px;
+    overflow: hidden;
+    background-color: rgb(226, 231, 232);
+}
+
+
+
+.select-upload-user-icon-button {
+    height: 50px;
+}
+
+input.select-upload-user-icon {
+    margin-top: 15px;
+    padding-right: 350px;
+}
+
+img.show-selected-user-icon {
+    position: absolute;
+    z-index: 3;
+    width: 80px;
+    height: 80px;
+    left: 0;
+}
+
+
 
 input.myprofile-edit-username {
     line-height: 34px;
-    margin: auto;
+    margin-left: 100px;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+}
+
+.select-creator-type {
+    width: 160px;
+    height: 40px;
+    margin: 20px;
+    margin-right: 0px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+    resize: vertical;
+    padding: 0px;
 }
 
 
@@ -39,7 +120,7 @@ input.myprofile-edit-username {
 
 
 div.myprofile-edit-message > textarea {
-    width: 598px;
+    width: 578px;
     height: 200px;
     border-radius: 10px;
     border: solid 1px;

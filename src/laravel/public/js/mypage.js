@@ -4,6 +4,72 @@
 // プロフィール編集ページ
 ////////////////////////////////////////////
 
+// 画像アップロードフォーム
+// 選択した画像を半透明で表示させる
+
+let upload_img_area = document.getElementById('upload-img-area');
+let show_selected_img = document.getElementById('show-selected-img');
+let select_upload_img_buttotn = document.getElementById('select-upload-img');
+
+// アップロードできるファイルの拡張子を指定
+const allow_exts = new Array('jpg', 'jpeg', 'png');
+
+const handleFileSelect = (event) => {
+    let selected_file = select_upload_img_buttotn.files[0];
+    let selected_file_name = selected_file.name;
+
+    // 拡張子を取得（.で区切った配列の最後の要素が拡張子）
+    let selected_file_ext = selected_file_name.split('.').slice(-1)[0];
+    // ファイルの拡張子がallow_extsと一致しない場合
+    if( allow_exts.indexOf(selected_file_ext) === -1 ){
+        alert('アップロードできる画像ファイルの拡張子はjpg、jpeg、pngです。');
+        return;
+    }
+    // 画像を表示するimgタグのsrc要素を選択したファイル名に変更
+    let fileReader = new FileReader();
+
+    fileReader.readAsDataURL(selected_file);
+
+    fileReader.onload = (event) => {
+        show_selected_img.src = event.target.result
+    }
+}
+
+select_upload_img_buttotn.addEventListener('change', handleFileSelect);
+
+
+
+// アイコン選択////////////////////
+// タスク 冗長なので短くする
+let show_selected_user_icon_area = document.getElementById('show-selected-user-icon-area');
+let show_selected_user_icon = document.getElementById('show-selected-user-icon');
+let select_upload_user_icon_button = document.getElementById('select-upload-user-icon');
+
+
+const handleIconSelect = (event) => {
+    let selected_file = select_upload_user_icon_button.files[0];
+    let selected_file_name = selected_file.name;
+
+    // 拡張子を取得（.で区切った配列の最後の要素が拡張子）
+    let selected_file_ext = selected_file_name.split('.').slice(-1)[0];
+    // ファイルの拡張子がallow_extsと一致しない場合
+    if( allow_exts.indexOf(selected_file_ext) === -1 ){
+        alert('アップロードできる画像ファイルの拡張子はjpg、jpeg、pngです。');
+        return;
+    }
+    // 画像を表示するimgタグのsrc要素を選択したファイル名に変更
+    let fileReader = new FileReader();
+
+    fileReader.readAsDataURL(selected_file);
+
+    fileReader.onload = (event) => {
+        show_selected_user_icon.src = event.target.result
+    }
+}
+
+
+select_upload_user_icon_button.addEventListener('change', handleIconSelect);
+
 // 入力欄追加ボタン
 let used_item_form_number = 1;
 

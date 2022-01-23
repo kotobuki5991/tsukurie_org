@@ -260,13 +260,15 @@ img.desk-card-image {
     max-height: 200px;
 }
 
-img.desk-card-icon{
+img.desk-card-user-icon{
     position: absolute;
     z-index: 1;
     width: 80px;
     height: 80px;
     left: 20px;
+    border-radius: 40px;
 }
+
 /*/////////// 音楽用タグ /////////////*/
 div.category-tag-music {
     position: absolute;

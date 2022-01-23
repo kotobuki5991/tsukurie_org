@@ -14,16 +14,40 @@
 {{-- メインコンテンツ --}}
     @section('main_block')
     <div class="main-block">
-        <form id="update-form" action="{{ asset('/mypage/top') }}" method="post">
+        <form id="update-form" action="{{ asset('/mypage/top') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
-                <div><img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""></div>
-                <div class="posted-desk-card-imgdiv">
-                    <img class="posted-desk-card-icon" src="{{ asset('/user_icon/1.png') }}" alt="">
+                <div id="upload-img-area" class="upload-img-area">
+                    {{-- <img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""> --}}
+                    <img id="show-selected-img" class="show-selected-img" src="{{ asset('/uploaded_images/1.jpg') }}" alt="">
+                    {{-- メイン画像選択ボタン --}}
+                    <input id="select-upload-img" class="select-upload-img" type="file" name="" accept=".jpg, .jpeg, .png">
+                    {{-- メイン画像選択ボタン --}}
+                    {{-- メイン画像選択ボタン --}}
+                </div>
+                <div class="upload-user-info">
+                    {{-- ユーザーアイコン選択ボタン --}}
+                    {{-- <input class="upload-img-form" type="file" name="" enctype="multipart/form-data"> --}}
+                    {{-- ユーザーアイコン選択ボタン --}}
+                    {{-- ユーザーアイコン選択ボタン --}}
+                    <div id="show-selected-user-icon-area" class="show-selected-user-icon-area">
+                        {{-- <img class="uploaded-user-icon" src="{{ asset('/user_icon/1.png') }}" alt=""> --}}
+                        <img id="show-selected-user-icon" class="show-selected-user-icon" src="{{ asset('/images/default_user_icon.jpeg') }}" alt="">
+                    </div>
                     <input class="myprofile-edit-username" type="text" value="kotobuki">
+                    <select id="select-creator-type" class="select-creator-type">
+                        <option value="">クリエイター種別を選択</option>
+                        <option value="music">音楽</option>
+                        <option value="illust">イラスト</option>
+                        <option value="movie">動画</option>
+                    </select>
                     {{-- <h2 class="posted-desc-card-username">kotobuki</h2> --}}
                 </div>
+                <div id="select-upload-user-icon-button" class="select-upload-user-icon-button">
+                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="" accept=".jpg, .jpeg, .png">
+                </div>
+
                 <div class="posted-desk-card-profiles">
                     <div class="myprofile-edit-message"><textarea>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                         aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
