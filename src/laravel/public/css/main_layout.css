@@ -6,6 +6,7 @@ src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
      format("woff2");
 }
 
+
 h1 {
     font-size: 45px;
     font-weight: normal;
@@ -20,9 +21,6 @@ h3 {
 a, p, h1, h2, h3, h4, h5, input, textarea {
     color: rgb(90, 97, 100);
 }
-
-
-
 
 a {
     text-decoration:none;
