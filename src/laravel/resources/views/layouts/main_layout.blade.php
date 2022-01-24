@@ -26,13 +26,12 @@
         @if (Route::has('login'))
                 <div class="header-a hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     <ul class="nav">
-                        <form class="logout-form" name="logout" action="{{ url('/logout') }}" method="post">@csrf</form>
+                        <form name="logout" action="{{ url('/logout') }}" method="post">@csrf</form>
                         @auth
                         {{-- <li><a href="{{ url('/dashboard') }}" class="letter text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li> --}}
                         <li><a href="{{ url('/mypage/top') }}" class="letter text-sm text-gray-700 dark:text-gray-500 underline">
                             <?php $user = Auth::user(); ?>{{ $user->name }}のマイページ</a></li>
-                        <li><a href="{{ url('/mypage/top') }}" class="letter text-sm text-gray-700 dark:text-gray-500 underline"
-                            onclick="document.logout.submit();return false;">ログアウト</a></li>
+                        <li><a id="logout-form" href="javascript:logout.submit()" class="letter text-sm text-gray-700 dark:text-gray-500 underline">ログアウト</a></li>
                         @else
                         <li><a href="{{ route('login') }}" class="letter text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a></li>
 
