@@ -22,22 +22,34 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 // メインページからのルーティング
+////////////////////////////////////////////////
 // トップ
+////////////////////////////////////////////////
 Route::get('/', 'MainController@index');
 Route::post('/', 'MainController@index');
+////////////////////////////////////////////////
 // 投稿ページ
+////////////////////////////////////////////////
 Route::get('/show_post', 'MainController@forPostPage');
+////////////////////////////////////////////////
 // 問い合わせページ
+////////////////////////////////////////////////
 Route::get('/contact', 'MainController@contact');
 Route::post('/contact', 'MainController@contact');
+////////////////////////////////////////////////
 // マイページ
-Route::get('/mypage/top', 'MainController@toMyPageTop');
+////////////////////////////////////////////////
+Route::get('/mypage/top', 'MainController@toMyPageTop')
+    ->middleware('auth');
 
-Route::post('/mypage/top', 'MainController@toMyPageTop');
+Route::post('/mypage/top', 'MainController@toMyPageTop')
+    ->middleware('auth');
 
-Route::get('/mypage/edit', 'MainController@toMyPageEdit');
+Route::get('/mypage/edit', 'MainController@toMyPageEdit')
+    ->middleware('auth');
 
-Route::get('/mypage/delete_account', 'MainController@toMyPageDelete');
+Route::get('/mypage/delete_account', 'MainController@toMyPageDelete')
+    ->middleware('auth');
 
 
 

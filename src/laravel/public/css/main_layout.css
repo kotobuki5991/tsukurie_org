@@ -24,6 +24,7 @@ a, p, h1, h2, h3, h4, h5, input, textarea {
 
 a {
     text-decoration:none;
+    font-size: 18px;
 }
 
 .letter {
@@ -100,13 +101,26 @@ div.header-a  {
 ul.nav {
     list-style: none;
     overflow: hidden;
+    margin-right: 10px;
 }
 
 ul.nav > li {
     float: left;
-    margin-right: 10px;
+    /* margin-right: 10px; */
+    border-left: 1px solid rgb(179, 187, 190);
+    border-right: 1px solid rgb(179, 187, 190);
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
+ul.nav >li+ li {
+  border-left: 0;
+  border-right: 1px solid rgb(179, 187, 190);
+}
+
+.logout-form {
+    position: absolute;
+}
 
 /*/////////////////// トップ ///////////////////*/
 .content {
