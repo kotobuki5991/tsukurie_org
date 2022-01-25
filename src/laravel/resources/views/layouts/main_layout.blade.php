@@ -60,7 +60,7 @@
 
         <div class="show-cards-wrapper">
             {{-- ページ名 --}}
-            <h1 class="letter">@yield('page_name')</h1>
+            <h2 class="letter">@isset($user_name){{ $user_name }}@endisset @yield('page_name')</h2>
             {{-- メインコンテンツ --}}
             @yield('main_contents')
         </div>

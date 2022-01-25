@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -25,12 +26,22 @@ class MainController extends Controller
     // マイページへの遷移
     public function toMyPageTop(Request $request)
     {
-        return view('mypage/top');
+        $user = Auth::user();
+        $user_info = [
+            'user_name' => $user->name,
+        ];
+
+        return view('mypage/top', $user_info);
     }
 
     public function toMyPageEdit(Request $request)
     {
-        return view('mypage/edit');
+        $user = Auth::user();
+        $user_info = [
+            'user_id' => $user->id, //userテーブルのid
+        ];
+
+        return view('mypage/edit', $user_info);
     }
 
     public function toMyPageDelete(Request $request)

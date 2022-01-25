@@ -16,6 +16,7 @@
     <div class="main-block">
         <form id="update-form" action="{{ asset('/mypage/top') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="user-id" value="{{ $user_id }}">
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div id="upload-img-area" class="upload-img-area">
@@ -89,6 +90,10 @@
                 </div>
                 <input class="add-button sink-button circle-button mouse-hover-pointer" type="button" onclick="addForm()" value="+">
                 <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
+            </div>
+            <div class="publish-radio-button">
+                <input name="publish-flag" type="radio" value="1">プロフィールを公開
+                <input name="publish-flag" type="radio" value="0" checked>非公開
             </div>
             <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
         </form>
