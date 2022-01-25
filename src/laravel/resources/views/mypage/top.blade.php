@@ -1,7 +1,8 @@
 {{-- @extends('/layouts.main_layout') --}}
 @extends('/layouts.mypage_layout')
 
-@section('title', 'つくりえ -○○のマイページ-')
+{{-- @section('title', 'つくりえ -○○のマイページ-') --}}
+<title>つくりえ -{{ $user_name }}のマイページトップ-</title>
 @section('add_css')
 {{-- タスク ファイル読み込みをasset()で行う --}}
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
@@ -9,13 +10,10 @@
 @endsection
 
 {{-- ページ名 --}}
-@section('page_name', '○○○のマイページ')
-
+@section('page_name', 'のマイページ')
 
 {{-- メインコンテンツ --}}
-    @section('main_block')
-
-
+@section('main_block')
     <div class="main-block">
         <div class="posted-desk-card float">
             <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>

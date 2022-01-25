@@ -16,6 +16,7 @@
     <div class="main-block">
         <form id="update-form" action="{{ asset('/mypage/top') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="user-id" value="{{ $user_id }}">
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div id="upload-img-area" class="upload-img-area">
