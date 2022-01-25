@@ -209,6 +209,10 @@ div.myprofile-edit-items-url > input {
     bottom: 20px;
 }
 
+div.publish-radio-button {
+    height: 15px;
+}
+
 /* アカウント削除ページ */
 
 .account-delete-submit {

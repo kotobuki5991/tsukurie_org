@@ -90,6 +90,10 @@
                 <input class="add-button sink-button circle-button mouse-hover-pointer" type="button" onclick="addForm()" value="+">
                 <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
             </div>
+            <div class="publish-radio-button">
+                <input name="publish-flag" type="radio" value="1">プロフィールを公開
+                <input name="publish-flag" type="radio" value="0" checked>非公開
+            </div>
             <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
         </form>
     </div>
