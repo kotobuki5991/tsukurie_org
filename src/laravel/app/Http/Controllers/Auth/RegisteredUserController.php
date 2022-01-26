@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+use Illuminate\Support\Facades\DB;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -48,6 +50,11 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        // profilesにユーザー用のデフォルトレコード追加
+        DB::table('profiles')->insert([
+            'user_id' => Auth::user()->id,
+        ]);
 
         return redirect(RouteServiceProvider::HOME);
     }
