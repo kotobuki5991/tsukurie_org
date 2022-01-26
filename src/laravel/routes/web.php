@@ -37,7 +37,7 @@ Route::get('/show_post', 'MainController@forPostPage');
 Route::get('/contact', 'MainController@contact');
 Route::post('/contact', 'MainController@contact');
 ////////////////////////////////////////////////
-// マイページ
+// マイページ遷移のみ
 ////////////////////////////////////////////////
 Route::get('/mypage/top', 'MainController@toMyPageTop')
     ->middleware('auth');
@@ -49,6 +49,10 @@ Route::get('/mypage/edit', 'MainController@toMyPageEdit')
     ->middleware('auth');
 
 Route::get('/mypage/delete_account', 'MainController@toMyPageDelete')
+    ->middleware('auth');
+
+
+Route::post('/mypage/update', 'ProfileController@update')
     ->middleware('auth');
 
 
