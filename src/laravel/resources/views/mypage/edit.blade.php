@@ -23,7 +23,7 @@
                     {{-- <img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""> --}}
                     <img id="show-selected-img" class="show-selected-img" src="{{ asset('/uploaded_images/1.jpg') }}" alt="">
                     {{-- メイン画像選択ボタン --}}
-                    <input id="select-upload-img" class="select-upload-img" type="file" name="" accept=".jpg, .jpeg, .png">
+                    <input id="select-upload-img" class="select-upload-img" type="file" name="top-image" accept=".jpg, .jpeg, .png">
                     {{-- メイン画像選択ボタン --}}
                     {{-- メイン画像選択ボタン --}}
                 </div>
@@ -37,7 +37,7 @@
                         <img id="show-selected-user-icon" class="show-selected-user-icon" src="{{ asset('/images/default_user_icon.jpeg') }}" alt="">
                     </div>
                     <input class="myprofile-edit-username" type="text" value="kotobuki">
-                    <select id="select-creator-type" class="select-creator-type">
+                    <select id="select-creator-type" class="select-creator-type" name="creator-type-id">
                         <option value="">クリエイター種別を選択</option>
                         <option value="music">音楽</option>
                         <option value="illust">イラスト</option>
@@ -46,11 +46,11 @@
                     {{-- <h2 class="posted-desc-card-username">kotobuki</h2> --}}
                 </div>
                 <div id="select-upload-user-icon-button" class="select-upload-user-icon-button">
-                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="" accept=".jpg, .jpeg, .png">
+                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="profile-icon" accept=".jpg, .jpeg, .png">
                 </div>
 
                 <div class="posted-desk-card-profiles">
-                    <div class="myprofile-edit-message"><textarea>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    <div class="myprofile-edit-message"><textarea name="message">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                         aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
                     </div>
 
@@ -59,8 +59,8 @@
                     </div>
                     {{-- ＋ボタンで追加できるフォーム --}}
                     <div id="used-items-form-area" class="posted-desk-card-used-items-area">
-                        <div id="used-items-form" class="posted-desk-card-used-items  used_item_form_number-1">
-                            <select id="select-items-logo" class="select-items-logo">
+                        <div id="used-items-form-1" class="posted-desk-card-used-items">
+                            <select class="select-items-logo" name="equipment-id-1">
                                 <option value="">カテゴリ</option>
                                 <option value="">guitar</option>
                                 <option value="">bass</option>
@@ -74,15 +74,14 @@
                                 <option value="">daw</option>
                                 <option value="">audioI/F</option>
                             </select>
-                            {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
                             <div class="myprofile-edit-used-items-exp">
-                                <select class="myprofile-edit-used-items">
+                                <select class="myprofile-edit-used-items" name="equipment-maker-id-1">
                                     <option value="">プラグイン・実機選択</option>
                                     <option value="waves">waves</option>
                                     <option value="trillian">trillian</option>
                                 </select>
                                 <div class="myprofile-edit-items-url">
-                                    <input type="text" value="https://www.soundhouse.co.jp/">
+                                    <input type="text" value="https://www.soundhouse.co.jp/" name="equipment-url-1">
                                 </div>
                             </div>
                         </div>

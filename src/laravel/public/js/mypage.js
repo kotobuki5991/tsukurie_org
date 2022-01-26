@@ -76,19 +76,30 @@ let used_item_form_number = 1;
 function addForm() {
     // 使用機材入力欄は最大10個まで
     if(used_item_form_number < 10 ){
-        let used_item_form = document.getElementById('used-items-form');
+        console.log('used-items-form-' + used_item_form_number);
+        let used_item_form = document.getElementById('used-items-form-' + used_item_form_number);
 
         let add_form = used_item_form.cloneNode(true);
 
-        // 入力欄はused_item_form_number-(フォームNo)で位置を判別
+        // 入力欄はdivのidであるused_item_form_number-(フォームNo)で位置を判別
         used_item_form_number++ ;
-        add_form.classList = 'posted-desk-card-used-items  used_item_form_number-' + used_item_form_number;
+        add_form.id = 'used-items-form-' + used_item_form_number; //id加算
 
-        console.log('posted-desk-card-used-items  used_item_form_number-' + used_item_form_number);
+        let add_form_child = add_form.childNodes;
+
+        // 使用機材のロゴ画像選択用setectタグ取得
+        add_form_child[1].name = 'equipment-id-' + used_item_form_number;
+        // 使用機材のメーカー、urlフォームを含むdiv取得
+        let g_child_add_form = add_form_child[3].childNodes;
+        // 使用機材メーカー選択selectタグのname属性の数値加算
+        g_child_add_form[1].name = 'equipment-maker-id-' + used_item_form_number;
+
+        // url入力用textタグ取得
+        let input_url_tag = g_child_add_form[3].childNodes;
+        input_url_tag[1].name = 'equipment-url-' + used_item_form_number;
 
         let parent = document.getElementById('used-items-form-area');
         parent.appendChild(add_form);
-
     }
 }
 
@@ -97,7 +108,7 @@ function addForm() {
 function removeForm() {
     // 使用機材入力欄は最低1個より多く
     if(used_item_form_number > 1 ){
-        let used_item_form = document.getElementById('used-items-form');
+        let used_item_form = document.getElementById('used-items-form-' + used_item_form_number);
 
         // 入力欄はused_item_form_number-(フォームNo)で位置を判別
         used_item_form.classList = 'posted-desk-card-used-items  used_item_form_number-' + used_item_form_number;
