@@ -14,16 +14,21 @@
 {{-- メインコンテンツ --}}
     @section('main_block')
     <div class="main-block">
-        <form id="update-form" action="{{ asset('/mypage/top') }}" method="post" enctype="multipart/form-data">
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+        @endif
+        <form id="update-form" action="{{ asset('/mypage/update') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="user-id" value="{{ $user_id }}">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div id="upload-img-area" class="upload-img-area">
                     {{-- <img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""> --}}
                     <img id="show-selected-img" class="show-selected-img" src="{{ asset('/uploaded_images/1.jpg') }}" alt="">
                     {{-- メイン画像選択ボタン --}}
-                    <input id="select-upload-img" class="select-upload-img" type="file" name="" accept=".jpg, .jpeg, .png">
+                    <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png">
                     {{-- メイン画像選択ボタン --}}
                     {{-- メイン画像選択ボタン --}}
                 </div>
@@ -36,8 +41,8 @@
                         {{-- <img class="uploaded-user-icon" src="{{ asset('/user_icon/1.png') }}" alt=""> --}}
                         <img id="show-selected-user-icon" class="show-selected-user-icon" src="{{ asset('/images/default_user_icon.jpeg') }}" alt="">
                     </div>
-                    <input class="myprofile-edit-username" type="text" value="kotobuki">
-                    <select id="select-creator-type" class="select-creator-type">
+                    <input class="myprofile-edit-username" type="text" value="kotobuki" name="profile_name">
+                    <select id="select-creator-type" class="select-creator-type" name="creatortype_id">
                         <option value="">クリエイター種別を選択</option>
                         <option value="music">音楽</option>
                         <option value="illust">イラスト</option>
@@ -46,11 +51,11 @@
                     {{-- <h2 class="posted-desc-card-username">kotobuki</h2> --}}
                 </div>
                 <div id="select-upload-user-icon-button" class="select-upload-user-icon-button">
-                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="" accept=".jpg, .jpeg, .png">
+                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="profile_icon" accept=".jpg, .jpeg, .png">
                 </div>
 
                 <div class="posted-desk-card-profiles">
-                    <div class="myprofile-edit-message"><textarea>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    <div class="myprofile-edit-message"><textarea name="message">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                         aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
                     </div>
 
@@ -59,30 +64,29 @@
                     </div>
                     {{-- ＋ボタンで追加できるフォーム --}}
                     <div id="used-items-form-area" class="posted-desk-card-used-items-area">
-                        <div id="used-items-form" class="posted-desk-card-used-items  used_item_form_number-1">
-                            <select id="select-items-logo" class="select-items-logo">
+                        <div id="used-items-form-1" class="posted-desk-card-used-items">
+                            <select class="select-items-logo" name="equipment_id_1">
                                 <option value="">カテゴリ</option>
-                                <option value="">guitar</option>
-                                <option value="">bass</option>
-                                <option value="">piano</option>
-                                <option value="">strings</option>
-                                <option value="">synth</option>
-                                <option value="">drum</option>
-                                <option value="">mix/master</option>
-                                <option value="">mic</option>
-                                <option value="">headphones</option>
-                                <option value="">daw</option>
-                                <option value="">audioI/F</option>
+                                <option value="1">guitar</option>
+                                <option value="2">bass</option>
+                                <option value="3">piano</option>
+                                <option value="4">strings</option>
+                                <option value="5">synth</option>
+                                <option value="6">drum</option>
+                                <option value="7">mix/master</option>
+                                <option value="8">mic</option>
+                                <option value="9">headphones</option>
+                                <option value="10">daw</option>
+                                <option value="11">audioI/F</option>
                             </select>
-                            {{-- <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}"> --}}
                             <div class="myprofile-edit-used-items-exp">
-                                <select class="myprofile-edit-used-items">
+                                <select class="myprofile-edit-used-items" name="equipment_maker_id_1">
                                     <option value="">プラグイン・実機選択</option>
-                                    <option value="waves">waves</option>
-                                    <option value="trillian">trillian</option>
+                                    <option value="1">waves</option>
+                                    <option value="2">trillian</option>
                                 </select>
                                 <div class="myprofile-edit-items-url">
-                                    <input type="text" value="https://www.soundhouse.co.jp/">
+                                    <input type="text" value="https://www.soundhouse.co.jp/" name="equipment_url_1">
                                 </div>
                             </div>
                         </div>
@@ -92,8 +96,8 @@
                 <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
             </div>
             <div class="publish-radio-button">
-                <input name="publish-flag" type="radio" value="1">プロフィールを公開
-                <input name="publish-flag" type="radio" value="0" checked>非公開
+                <input name="publish_flag" type="radio" value="1">プロフィールを公開
+                <input name="publish_flag" type="radio" value="0" checked>非公開
             </div>
             <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
         </form>

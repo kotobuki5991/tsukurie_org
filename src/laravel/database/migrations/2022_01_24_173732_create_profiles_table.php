@@ -15,7 +15,8 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id'); //主キー
-            $table->biginteger('user_id'); //usersテーブルと紐付け
+            $table->biginteger('user_id')->unique(); //usersテーブルと紐付け
+            $table->string('profile_name')->nullable(); //マイページに表示する名前
             $table->integer('creator_type_id')->nullable(); //creater_typesテーブルと紐付け
             $table->string('profile_icon')->nullable(); //S3にアップロードしたurl
             $table->string('top_image')->nullable(); //S3にアップロードしたurl
