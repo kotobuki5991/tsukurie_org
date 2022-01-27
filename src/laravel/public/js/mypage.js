@@ -43,6 +43,7 @@ select_upload_img_buttotn.addEventListener('change', handleFileSelect);
 // タスク 冗長なので短くする
 let show_selected_user_icon_area = document.getElementById('show-selected-user-icon-area');
 let show_selected_user_icon = document.getElementById('show-selected-user-icon');
+// let select_upload_user_icon_button = document.getElementById('select-upload-user-icon');
 let select_upload_user_icon_button = document.getElementById('select-upload-user-icon');
 
 

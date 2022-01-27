@@ -41,7 +41,7 @@
                         {{-- <img class="uploaded-user-icon" src="{{ asset('/user_icon/1.png') }}" alt=""> --}}
                         <img id="show-selected-user-icon" class="show-selected-user-icon" src="{{ asset('/images/default_user_icon.jpeg') }}" alt="">
                     </div>
-                    <input class="myprofile-edit-username" type="text" value="kotobuki" name="profile_name">
+                    <input class="myprofile-edit-username" type="text" value="" name="profile_name" placeholder="クリエイター名を入力">
                     <select id="select-creator-type" class="select-creator-type" name="creatortype_id">
                         <option value="">クリエイター種別を選択</option>
                         <option value="music">音楽</option>
@@ -55,10 +55,9 @@
                 </div>
 
                 <div class="posted-desk-card-profiles">
-                    <div class="myprofile-edit-message"><textarea name="message">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</textarea>
+                    <div class="myprofile-edit-message">
+                        <textarea name="message" placeholder="ここにメッセージを入力"></textarea>
                     </div>
-
                     <div class="using-items">
                         <h3>使用機材</h3>
                     </div>
@@ -86,7 +85,7 @@
                                     <option value="2">trillian</option>
                                 </select>
                                 <div class="myprofile-edit-items-url">
-                                    <input type="text" value="https://www.soundhouse.co.jp/" name="equipment_url_1">
+                                    <input type="text" value="" name="equipment_url_1" placeholder="使用機材のURLを入力">
                                 </div>
                             </div>
                         </div>

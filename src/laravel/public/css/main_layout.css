@@ -6,6 +6,9 @@ src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
      format("woff2");
 }
 
+::placeholder {
+    color: rgb(202, 202, 202);
+  }
 
 h1 {
     font-size: 45px;
