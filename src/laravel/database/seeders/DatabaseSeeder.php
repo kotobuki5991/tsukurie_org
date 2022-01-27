@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $this->call(CreatorTypesTableSeeder::class);
+        // 初回実行時は全てのコメントアウトを外し、seedingする
+        // $this->call(CreatorTypesTableSeeder::class);
+        $this->call(EquipmentTypesTableSeeder::class);
     }
 }
