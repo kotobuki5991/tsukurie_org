@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCreatortypesTable extends Migration
+class CreateCreatorTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCreatortypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('creatortypes', function (Blueprint $table) {
+        Schema::create('creator_types', function (Blueprint $table) {
+
             $table->increments('id'); //主キー
             $table->string('creatortype')->unique();
             $table->timestamps();
+
         });
     }
 
@@ -27,6 +29,6 @@ class CreateCreatortypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('creatortypes');
+        Schema::dropIfExists('creator_types');
     }
 }

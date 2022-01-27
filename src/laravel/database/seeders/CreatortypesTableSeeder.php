@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
 use Illuminate\Support\Facades\DB;
 
-class CreatortypesTableSeeder extends Seeder
+class CreatorTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -27,7 +26,6 @@ class CreatortypesTableSeeder extends Seeder
 
         $types = [$type1, $type2, $type3];
 
-        DB::table('creatortypes')->insert($types);
-
+        DB::table('creator_types')->insert($types);
     }
 }
