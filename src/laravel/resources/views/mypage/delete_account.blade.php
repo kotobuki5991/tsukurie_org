@@ -8,7 +8,9 @@
 @endsection
 
 {{-- ページ名 --}}
-@section('page_name', 'アカウント削除')
+@section('page_name')
+<h2 class="letter">アカウント削除</h2>
+@endsection
 
 
 {{-- メインコンテンツ --}}

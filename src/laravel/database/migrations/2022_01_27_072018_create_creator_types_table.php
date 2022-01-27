@@ -16,7 +16,7 @@ class CreateCreatorTypesTable extends Migration
         Schema::create('creator_types', function (Blueprint $table) {
 
             $table->increments('id'); //主キー
-            $table->string('creatortype')->unique();
+            $table->string('creator_type')->unique();
             $table->timestamps();
 
         });

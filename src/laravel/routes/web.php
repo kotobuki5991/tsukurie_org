@@ -39,7 +39,9 @@ Route::post('/contact', 'MainController@contact');
 ////////////////////////////////////////////////
 // マイページ遷移のみ
 ////////////////////////////////////////////////
-Route::get('/mypage/top', 'MainController@toMyPageTop')
+// Route::get('/mypage/top', 'MainController@toMyPageTop')
+//     ->middleware('auth');
+Route::get('/mypage/top', 'ProfileController@index')
     ->middleware('auth');
 
 Route::post('/mypage/top', 'MainController@toMyPageTop')
