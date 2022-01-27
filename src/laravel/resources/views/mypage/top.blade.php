@@ -38,7 +38,7 @@
 
                 <div class="posted-desk-card-used-items-area">
                     <div class="posted-desk-card-used-items">
-                        <img class="posted-used-items-icon" src="{{ asset('item_icon/audioif_icon.png') }}">
+                        <img class="posted-used-items-icon" src="{{ asset('equipment_type_icon/audioif_icon.png') }}">
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="posted-desk-card-used-items">
-                        <img class="posted-used-items-icon" src="{{ asset('item_icon/bass_icon.png') }}">
+                        <img class="posted-used-items-icon" src="{{ asset('equipment_type_icon/bass_icon.png') }}">
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="posted-desk-card-used-items">
-                        <img class="posted-used-items-icon" src="{{ asset('item_icon/headphones_icon.png') }}">
+                        <img class="posted-used-items-icon" src="{{ asset('equipment_type_icon/headphones_icon.png') }}">
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="posted-desk-card-used-items">
-                        <img class="posted-used-items-icon" src="{{ asset('item_icon/strings_icon.png') }}">
+                        <img class="posted-used-items-icon" src="{{ asset('equipment_type_icon/strings_icon.png') }}">
                         <div class="posted-used-items-exp">
                             <h3>aaaaaaaaa</h3>
                             <div class="posted-used-items-url">

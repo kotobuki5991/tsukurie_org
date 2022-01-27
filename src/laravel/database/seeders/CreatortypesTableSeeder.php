@@ -15,13 +15,13 @@ class CreatorTypesTableSeeder extends Seeder
     public function run()
     {
         $type1 = [
-            'creatortype' => '音楽',
+            'creator_type' => '音楽',
         ];
         $type2 = [
-            'creatortype' => 'イラスト',
+            'creator_type' => 'イラスト',
         ];
         $type3 = [
-            'creatortype' => '動画',
+            'creator_type' => '動画',
         ];
 
         $types = [$type1, $type2, $type3];
