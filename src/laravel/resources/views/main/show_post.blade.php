@@ -6,7 +6,9 @@
 @endsection
 
 {{-- ページ名 --}}
-@section('page_name', '○○○のつくえ')
+@section('page_name')
+<h2 class="letter">{{ }}のマイページ</h2>
+@endsection
 
 
 {{-- メインコンテンツ --}}

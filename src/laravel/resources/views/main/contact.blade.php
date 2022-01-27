@@ -7,7 +7,9 @@
 @endsection
 
 {{-- ページ名 --}}
-@section('page_name', 'お問い合せ')
+@section('page_name')
+<h2 class="letter">お問い合わせ</h2>
+@endsection
 
 
 {{-- メインコンテンツ --}}

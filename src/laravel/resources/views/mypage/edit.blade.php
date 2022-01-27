@@ -8,7 +8,9 @@
 @endsection
 
 {{-- ページ名 --}}
-@section('page_name', 'プロフィール編集')
+@section('page_name')
+<h2 class="letter">プロフィール編集</h2>
+@endsection
 
 
 {{-- メインコンテンツ --}}
@@ -44,9 +46,9 @@
                     <input class="myprofile-edit-username" type="text" value="" name="profile_name" placeholder="クリエイター名を入力">
                     <select id="select-creator-type" class="select-creator-type" name="creatortype_id">
                         <option value="">クリエイター種別を選択</option>
-                        <option value="music">音楽</option>
-                        <option value="illust">イラスト</option>
-                        <option value="movie">動画</option>
+                        <option value="1">音楽</option>
+                        <option value="2">イラスト</option>
+                        <option value="3">動画</option>
                     </select>
                     {{-- <h2 class="posted-desc-card-username">kotobuki</h2> --}}
                 </div>

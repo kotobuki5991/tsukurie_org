@@ -3,7 +3,9 @@
 @section('title', 'つくりえ -トップページ-')
 
 {{-- ページ名 --}}
-@section('page_name', '検索結果')
+@section('page_name')
+<h2 class="letter">検索結果</h2>
+@endsection
 
 {{-- 検索ボックス --}}
 @section('search_box')
