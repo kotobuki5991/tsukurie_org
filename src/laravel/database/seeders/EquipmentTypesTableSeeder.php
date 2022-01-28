@@ -19,7 +19,7 @@ class EquipmentTypesTableSeeder extends Seeder
         $type1 = [
             'creator_type_id'          => '1',
             'equipment_type'           => 'guitar',
-            'equipment_type_icon_path' => 'equipment_type_icon/audioif_icon.png',
+            'equipment_type_icon_path' => 'equipment_type_icon/guitar_icon.png',
         ];
         $type2 = [
             'creator_type_id'          => '1',
@@ -69,7 +69,7 @@ class EquipmentTypesTableSeeder extends Seeder
         $type11 = [
             'creator_type_id'          => '1',
             'equipment_type'           => 'audioI/F',
-            'equipment_type_icon_path' => 'equipment_type_icon/aydioif_icon.png',
+            'equipment_type_icon_path' => 'equipment_type_icon/audioif_icon.png',
         ];
 
         // モニターいれる？

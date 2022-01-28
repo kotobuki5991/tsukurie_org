@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\User;
-use App\Models\CreatorType;
+// use App\Models\User;
+// use App\Models\CreatorType;
 
 class Profile extends Model
 {
@@ -31,5 +31,14 @@ class Profile extends Model
         // creator_typesテーブルのidと、profilesテーブルのcreator_types_idを関連づける
         return $this->belongsTo(CreatorType::class);
     }
+
+    public function equipment_type()
+    {
+        // equipment_typesテーブルのidと、profilesテーブルのequipment_types_id_*(1-110)を関連づける
+        return $this->belongsTo(EquipmentType::class);
+    }
+
+
+
 
 }
