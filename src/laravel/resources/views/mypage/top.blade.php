@@ -23,9 +23,10 @@
             <div class="posted-deck-category-tag-music mouse-hover-transparent">
                 <a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a>
             </div>
-            <div><img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""></div>
+            <div><img class="posted-desk-card-image" src="{{ $profile["top_image"] }}" alt=""></div>
             <div class="posted-desk-card-imgdiv">
-                <img class="posted-desk-card-icon" src="{{ asset('/user_icon/1.png') }}" alt="">
+                {{-- <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] }}" alt=""> --}}
+                <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] }}" alt="">
                 <h2 class="posted-desc-card-username">{{ $profile["profile_name"] }}</h2>
             </div>
             <div class="posted-desk-card-profiles">
@@ -45,7 +46,7 @@
                                 <h3>{{ $profile["equipment_maker_$i"] }}aaaaaa</h3>
                                 <div class="posted-used-items-url">
                                     <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
-                                    <figure id="url-to-copy">{{ asset($profile["equipment_url_$i"]) }}</figure>
+                                    <figure id="url-to-copy">{{ isset($profile["equipment_url_$i"]) ? asset($profile["equipment_url_$i"]) : '' }}</figure>
                                 </div>
                             </div>
                         </div>
