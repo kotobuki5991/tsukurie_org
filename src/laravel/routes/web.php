@@ -54,6 +54,10 @@ Route::get('/mypage/delete_account', 'MainController@toMyPageDelete')
     ->middleware('auth');
 
 
+// プロフィール編集ページへ
+Route::get('/mypage/edit', 'ProfileController@edit')
+    ->middleware('auth');
+// プロフィール更新ボタン押下時
 Route::post('/mypage/update', 'ProfileController@update')
     ->middleware('auth');
 

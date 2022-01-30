@@ -34,15 +34,15 @@ class MainController extends Controller
         return view('mypage/top', $user_info);
     }
 
-    public function toMyPageEdit(Request $request)
-    {
-        $user = Auth::user();
-        $user_info = [
-            'user_id' => $user->id, //userテーブルのid
-        ];
+    // public function toMyPageEdit(Request $request)
+    // {
+    //     $user = Auth::user();
+    //     $user_info = [
+    //         'user_id' => $user->id, //userテーブルのid
+    //     ];
 
-        return view('mypage/edit', $user_info);
-    }
+    //     return view('mypage/edit', $user_info);
+    // }
 
     public function toMyPageDelete(Request $request)
     {

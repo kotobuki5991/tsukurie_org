@@ -72,7 +72,7 @@ const handleIconSelect = (event) => {
 select_upload_user_icon_button.addEventListener('change', handleIconSelect);
 
 // 入力欄追加ボタン
-let used_item_form_number = 1;
+let used_item_form_number = document.getElementById("used-items-form-area").childElementCount;;
 
 function addForm() {
     // 使用機材入力欄は最大10個まで
@@ -90,14 +90,18 @@ function addForm() {
 
         // 使用機材のロゴ画像選択用setectタグ取得
         add_form_child[1].name = 'equipment_id_' + used_item_form_number;
+        // 初期値（カテゴリを選択）を選択した状態にする
+        add_form_child[1].selectedIndex = 0;
         // 使用機材のメーカー、urlフォームを含むdiv取得
         let g_child_add_form = add_form_child[3].childNodes;
         // 使用機材メーカー選択selectタグのname属性の数値加算
         g_child_add_form[1].name = 'equipment_maker_id_' + used_item_form_number;
+        g_child_add_form[1].selectedIndex = 0;
 
         // url入力用textタグ取得
         let input_url_tag = g_child_add_form[3].childNodes;
         input_url_tag[1].name = 'equipment_url_' + used_item_form_number;
+        input_url_tag[1].value = '';
 
         let parent = document.getElementById('used-items-form-area');
         parent.appendChild(add_form);
