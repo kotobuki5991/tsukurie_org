@@ -2,7 +2,7 @@
 
 @section('title', 'つくりえ -プロフィール編集-')
 @section('add_css')
-{{-- タスク ファイル読み込みをasset()で行う --}}
+
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
 @endsection
@@ -16,6 +16,7 @@
 {{-- メインコンテンツ --}}
     @section('main_block')
     <div class="main-block">
+        {{-- タスク エラー表示なおす --}}
         @if (count($errors) > 0)
             @foreach ($errors->all() as $error)
             <p>{{ $error }}</p>
@@ -27,20 +28,12 @@
             <div class="posted-desk-card float">
                 <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">音楽</h4></a></div>
                 <div id="upload-img-area" class="upload-img-area">
-                    {{-- <img class="posted-desk-card-image" src="{{ asset('/uploaded_images/1.jpg') }}" alt=""> --}}
                     <img id="show-selected-img" class="show-selected-img" src="{{ asset('/uploaded_images/1.jpg') }}" alt="">
                     {{-- メイン画像選択ボタン --}}
                     <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png">
-                    {{-- メイン画像選択ボタン --}}
-                    {{-- メイン画像選択ボタン --}}
                 </div>
                 <div class="upload-user-info">
-                    {{-- ユーザーアイコン選択ボタン --}}
-                    {{-- <input class="upload-img-form" type="file" name="" enctype="multipart/form-data"> --}}
-                    {{-- ユーザーアイコン選択ボタン --}}
-                    {{-- ユーザーアイコン選択ボタン --}}
                     <div id="show-selected-user-icon-area" class="show-selected-user-icon-area">
-                        {{-- <img class="uploaded-user-icon" src="{{ asset('/user_icon/1.png') }}" alt=""> --}}
                         <img id="show-selected-user-icon" class="show-selected-user-icon" src="{{ asset('/images/default_user_icon.jpeg') }}" alt="">
                     </div>
                     <input class="myprofile-edit-username" type="text" value="" name="profile_name" placeholder="クリエイター名を入力">
@@ -50,9 +43,9 @@
                         <option value="2">イラスト</option>
                         <option value="3">動画</option>
                     </select>
-                    {{-- <h2 class="posted-desc-card-username">kotobuki</h2> --}}
                 </div>
                 <div id="select-upload-user-icon-button" class="select-upload-user-icon-button">
+                    {{-- ユーザーアイコン選択ボタン --}}
                     <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="profile_icon" accept=".jpg, .jpeg, .png">
                 </div>
 
