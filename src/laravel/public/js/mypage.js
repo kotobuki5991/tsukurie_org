@@ -71,8 +71,14 @@ const handleIconSelect = (event) => {
 
 select_upload_user_icon_button.addEventListener('change', handleIconSelect);
 
+let used_item_form_number;
 // 入力欄追加ボタン
-let used_item_form_number = document.getElementById("used-items-form-area").childElementCount;;
+if( document.getElementById("used-items-form-area").childElementCount == 0 ){
+    used_item_form_number = 1;
+}else{
+    used_item_form_number = document.getElementById("used-items-form-area").childElementCount;
+}
+
 
 function addForm() {
     // 使用機材入力欄は最大10個まで

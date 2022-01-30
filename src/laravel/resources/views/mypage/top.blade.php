@@ -13,7 +13,7 @@
 {{-- ページ名 --}}
 {{-- @section('page_name', 'のマイページ') --}}
 @section('page_name')
-<h2 class="letter">{{ $profile["profile_name"] }}のマイページ</h2>
+<h2 class="letter">{{ $profile["user_name"] }}のマイページ</h2>
 @endsection
 
 {{-- メインコンテンツ --}}
@@ -23,14 +23,14 @@
             <div class="posted-deck-category-tag-music mouse-hover-transparent">
                 <a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a>
             </div>
-            <div><img class="posted-desk-card-image" src="{{ $profile["top_image"] }}" alt=""></div>
+            <div><img class="posted-desk-card-image" src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt=""></div>
             <div class="posted-desk-card-imgdiv">
                 {{-- <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] }}" alt=""> --}}
-                <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] }}" alt="">
-                <h2 class="posted-desc-card-username">{{ $profile["profile_name"] }}</h2>
+                <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] ?: asset('/images/default_user_icon.jpeg') }}" alt="">
+                <h2 class="posted-desc-card-username">{{ $profile["profile_name"] ?: 'クリエイター名未設定' }}</h2>
             </div>
             <div class="posted-desk-card-profiles">
-                <div class="posted-desk-card-message"><p>{!! nl2br(e($profile["message"])) !!}</p>
+                <div class="posted-desk-card-message"><p>{!! nl2br(e($profile["message"])) ?: e('説明文が未記入です。') !!}</p>
                 </div>
 
                 <div class="using-items">

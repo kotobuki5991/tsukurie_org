@@ -20,7 +20,31 @@ class ProfileController extends Controller
         // ログインユーザーのプロフィールカラム取得
         $profile = Profile::where('user_id', Auth::user()->id)->first();
 
-        // 重複したレコードは複数回とってこれない、表示順がid順ーーー＞修正する
+        // dd($profile);
+        $profile_ary = [
+            'id' => $profile->id,
+            'user_id' => $profile->user_id,
+            'user_name' => $profile->user->name,
+            'profile_name' => $profile->profile_name,
+            'creator_type' => $profile->creator_type->creator_type, //creator_typesのidとprofilesのcreator_types_idで紐づいたcreator_typeを取得
+            // 'profile_icon' => imagecreatefromstring(base64_decode(Storage::disk('s3')->get($profile->profile_icon))), //s3のurl
+            'top_image' => isset($profile->top_image) ? Storage::disk('s3')->url($profile->top_image) : null, //s3のurl
+            'profile_icon' => isset($profile->profile_icon) ? Storage::disk('s3')->url($profile->profile_icon) : null, //s3のurl
+            'message' => $profile->message,
+            'equipment_url_1' => $profile->equipment_url_1,
+            'equipment_url_2' => $profile->equipment_url_2,
+            'equipment_url_3' => $profile->equipment_url_3,
+            'equipment_url_4' => $profile->equipment_url_4,
+            'equipment_url_5' => $profile->equipment_url_5,
+            'equipment_url_6' => $profile->equipment_url_6,
+            'equipment_url_7' => $profile->equipment_url_7,
+            'equipment_url_8' => $profile->equipment_url_8,
+            'equipment_url_9' => $profile->equipment_url_9,
+            'equipment_url_10' => $profile->equipment_url_10,
+            'publish_flag' => $profile->publish_flag,
+        ];
+
+        // dd(isset($profile_ary['top_image']) . ':' . isset($profile_ary['profile_icon']));
         $equipment_type_icon_paths = [];
 
         $equipment_ids = [
@@ -36,32 +60,12 @@ class ProfileController extends Controller
             $profile->equipment_id_10,
         ];
 
+
         foreach($equipment_ids as $equipment_id){
+            if ( !isset($equipment_id)) continue;
             $equipment_type_icon_paths[] = EquipmentType::select('equipment_type_icon_path')
                 -> where('id', $equipment_id)->get();
         }
-
-        $profile_ary = [
-            'id' => $profile->id,
-            'user_id' => $profile->user_id,
-            'profile_name' => $profile->profile_name,
-            'creator_type' => $profile->creator_type->creator_type, //creator_typesのidとprofilesのcreator_types_idで紐づいたcreator_typeを取得
-            // 'profile_icon' => imagecreatefromstring(base64_decode(Storage::disk('s3')->get($profile->profile_icon))), //s3のurl
-            'top_image' => Storage::disk('s3')->url($profile->top_image), //s3のurl
-            'profile_icon' => Storage::disk('s3')->url($profile->profile_icon), //s3のurl
-            'message' => $profile->message,
-            'equipment_url_1' => $profile->equipment_url_1,
-            'equipment_url_2' => $profile->equipment_url_2,
-            'equipment_url_3' => $profile->equipment_url_3,
-            'equipment_url_4' => $profile->equipment_url_4,
-            'equipment_url_5' => $profile->equipment_url_5,
-            'equipment_url_6' => $profile->equipment_url_6,
-            'equipment_url_7' => $profile->equipment_url_7,
-            'equipment_url_8' => $profile->equipment_url_8,
-            'equipment_url_9' => $profile->equipment_url_9,
-            'equipment_url_10' => $profile->equipment_url_10,
-            'publish_flag' => $profile->publish_flag,
-        ];
 
         $i = 1;
         foreach($equipment_type_icon_paths as $equipment_type_icon_path){
@@ -107,8 +111,9 @@ class ProfileController extends Controller
             'profile_name' => $profile->profile_name,
             'creator_type' => $profile->creator_type->creator_type, //creator_typesのidとprofilesのcreator_types_idで紐づいたcreator_typeを取得
             // 'profile_icon' => imagecreatefromstring(base64_decode(Storage::disk('s3')->get($profile->profile_icon))), //s3のurl
-            'top_image' => Storage::disk('s3')->url($profile->top_image), //s3のurl  画像がない場合はnull(別メソッドにまとめて例外処理、その際nullを返す？)
-            'profile_icon' => Storage::disk('s3')->url($profile->profile_icon), //s3のurl
+            //s3のurl  画像がない場合はnull(別メソッドにまとめて例外処理、その際nullを返す？)
+            'top_image' => isset($profile->top_image) ? Storage::disk('s3')->url($profile->top_image) : null,
+            'profile_icon' => isset($profile->profile_icon) ? Storage::disk('s3')->url($profile->profile_icon) : null, //s3のurl
             'message' => $profile->message,
             'equipment_url_1' => $profile->equipment_url_1,
             'equipment_url_2' => $profile->equipment_url_2,

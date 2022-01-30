@@ -40,7 +40,8 @@
                     </div>
                     <input class="myprofile-edit-username" type="text" name="profile_name" placeholder="クリエイター名を入力" value="{{ $profile["profile_name"] }}">
                     <select id="select-creator-type" class="select-creator-type" name="creator_type_id">
-                        <option value="">クリエイター種別を選択</option>
+                        {{-- <option value="">クリエイター種別を選択</option> --}}
+                        <option value="4" {{ $profile["creator_type"] == '未選択' ? 'selected' : null}}>クリエイター種別選択</option>
                         <option value="1" {{ $profile["creator_type"] == '音楽' ? 'selected' : null}}>音楽</option>
                         <option value="2" {{ $profile["creator_type"] == 'イラスト' ? 'selected' : null}}>イラスト</option>
                         <option value="3" {{ $profile["creator_type"] == '動画' ? 'selected' : null}}>動画</option>
@@ -60,6 +61,10 @@
                     </div>
                     {{-- ＋ボタンで追加できるフォーム --}}
                     <div id="used-items-form-area" class="posted-desk-card-used-items-area">
+
+
+                        {{-- 下のフォームが0個の場合、デフォルトのフォームを１つ表示する --}}
+                        <?php $count_equipment_form = 0 ?>
                         @for ($i = 1; $i <= 10; $i++)
                             @if ( isset($profile["equipment_id_" . $i]) )
                                 <div id="used-items-form-{{ $i }}" class="posted-desk-card-used-items">
@@ -104,16 +109,51 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php $count_equipment_form++ ?>
                             @endif
                         @endfor
+                        {{--  --}}
+                        {{--  --}}
+                        {{-- デフォルトで最低１個はフォームを表示 --}}
+                        @if ( $count_equipment_form == 0 )
+                        <div id="used-items-form-1" class="posted-desk-card-used-items">
+                            <select class="select-items-logo" name="equipment_id_1">
+                                <option value="">カテゴリ</option>
+                                <option value="1">guitar</option>
+                                <option value="2">bass</option>
+                                <option value="3">piano</option>
+                                <option value="4">strings</option>
+                                <option value="5">synth</option>
+                                <option value="6">drum</option>
+                                <option value="7">mix/master</option>
+                                <option value="8">mic</option>
+                                <option value="9">headphones</option>
+                                <option value="10">daw</option>
+                                <option value="11">audioI/F</option>
+                            </select>
+                            <div class="myprofile-edit-used-items-exp">
+                                <select class="myprofile-edit-used-items" name="equipment_maker_id_1">
+                                    <option value="">プラグイン・実機選択</option>
+                                    <option value="1">waves</option>
+                                    <option value="2">trillian</option>
+                                </select>
+                                <div class="myprofile-edit-items-url">
+                                    <input type="text" value="" name="equipment_url_1" placeholder="使用機材のURLを入力">
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        {{--  --}}
+                        {{--  --}}
+                        {{--  --}}
                     </div>
                 </div>
                 <input class="add-button sink-button circle-button mouse-hover-pointer" type="button" onclick="addForm()" value="+">
                 <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
             </div>
             <div class="publish-radio-button">
-                <input name="publish_flag" type="radio" value="1" {{ $profile['publish_flag'] == 1 ? 'checked' : null}}>プロフィールを公開
-                <input name="publish_flag" type="radio" value="0" {{ $profile['publish_flag'] == 0 ? 'checked' : null}}>非公開
+                <input name="publish_flag" type="radio" value="1">プロフィールを公開
+                <input name="publish_flag" type="radio" value="0" checked>非公開
             </div>
             <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
         </form>

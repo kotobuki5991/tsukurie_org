@@ -23,8 +23,11 @@ class CreatorTypesTableSeeder extends Seeder
         $type3 = [
             'creator_type' => '動画',
         ];
+        $type4 = [
+            'creator_type' => '未選択',
+        ];
 
-        $types = [$type1, $type2, $type3];
+        $types = [$type1, $type2, $type3, $type4];
 
         DB::table('creator_types')->insert($types);
     }
