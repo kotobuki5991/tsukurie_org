@@ -191,7 +191,7 @@ div.posted-used-items-exp {
     margin: 0;
 }
 
-div.posted-used-items-exp > h3 {
+div.posted-used-items-exp > h5 {
     margin: 0;
     margin-left: 10px;
     text-align: left;

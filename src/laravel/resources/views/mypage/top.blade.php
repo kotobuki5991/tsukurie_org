@@ -43,7 +43,7 @@
                         <div class="posted-desk-card-used-items">
                             <img class="posted-used-items-icon" src="{{ asset($profile["equipment_type_icon_path_$i"]) }}">
                             <div class="posted-used-items-exp">
-                                <h3>{{ $profile["equipment_maker_$i"] }}aaaaaa</h3>
+                                <h5 >{{ $profile["equipment_maker_$i"] }}</h5>
                                 <div class="posted-used-items-url">
                                     <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
                                     <figure id="url-to-copy">{{ isset($profile["equipment_url_$i"]) ? asset($profile["equipment_url_$i"]) : '' }}</figure>

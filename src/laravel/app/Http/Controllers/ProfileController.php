@@ -34,7 +34,6 @@ class ProfileController extends Controller
             $profile->equipment_id_10,
         ];
 
-
         foreach($equipment_ids as $equipment_id){
             $equipment_type_icon_paths[] = EquipmentType::select('equipment_type_icon_path')
                 -> where('id', $equipment_id)->get();

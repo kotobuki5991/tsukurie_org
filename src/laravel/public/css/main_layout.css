@@ -22,6 +22,10 @@ h3 {
     font-size: 25px;
     font-weight: normal;
 }
+/* h5 {
+    font-size: 15px;
+    font-weight: normal;
+} */
 
 a, p, h1, h2, h3, h4, h5, input, textarea {
     color: rgb(90, 97, 100);
