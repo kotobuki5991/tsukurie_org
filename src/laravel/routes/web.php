@@ -28,12 +28,16 @@ require __DIR__.'/auth.php';
 Route::get('/', 'MainController@index');
 Route::post('/', 'MainController@index');
 
+// Route::get('/{creator_type}', 'MainController@index');
+Route::get('/', 'MainController@search')
+    ->name('/search');
 Route::post('/', 'MainController@search')
     ->name('/search');
 ////////////////////////////////////////////////
 // 投稿ページ
 ////////////////////////////////////////////////
-Route::get('/show_post', 'MainController@forPostPage');
+Route::get('/show_post/{user_id}', 'MainController@forPostPage')
+    ->name('/show_post');
 ////////////////////////////////////////////////
 // 問い合わせページ
 ////////////////////////////////////////////////

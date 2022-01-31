@@ -35,20 +35,20 @@
     <div class="desk-card float">
         @switch($profile["creator_type"])
             @case('音楽')
-            <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag-music mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('イラスト')
-            <div class="category-tag-illust mouse-hover-transparent"><a href="https://www.google.com"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag-illust mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('動画')
-            <div class="category-tag-movie mouse-hover-transparent"><a href="https://www.google.com"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag-movie mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @default
             {{-- タスク 未選択タグを準備 --}}
         @endswitch
         {{-- <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>{{ $profile["creator_type"] }}</h4></a></div> --}}
         <div class="desk-card-image-area">
-            <a href="/show_post">
+            <a href="{{ route('/show_post', ['user_id' => $profile['user_id']]) }}">
                 <img class="desk-card-image mouse-hover-expansion" src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt="">
             </a>
         </div>

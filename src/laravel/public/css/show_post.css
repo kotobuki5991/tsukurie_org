@@ -125,6 +125,39 @@ div.posted-desk-card-message > p {
     font-size: 15px;
 }
 
+/*//////////////////// カテゴリタグ ////////////////////*/
+.music-tag {
+    background-color: rgb(255, 112, 112);
+}
+
+.movie-tag {
+    background-color: rgb(255, 200, 91, 0.8);
+}
+
+.illust-tag {
+    background-color: rgb(254, 168, 115, 0.8);
+}
+
+.posted-deck-category-tag {
+    position: absolute;
+    z-index: 2;
+    width: 200px;
+    height: 40px;
+    border-radius: 3px;
+    margin-left: 560px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+    transform:rotate(45deg);
+}
+
+div.posted-deck-category-tag > a > h4 {
+    margin: 0;
+    line-height: 40px;
+    color: white;
+    font-family: harenosora-mincho;
+}
+
 
 
 /* ユーザーが使用しているアイテム（プラグイン、ソフトウェアなど） */
@@ -142,29 +175,6 @@ div.posted-desk-card-used-items-area {
     flex-direction: row;
     flex-wrap: wrap;
     position: relative;
-}
-
-/*//////////////////// カテゴリタグ ////////////////////*/
-.posted-deck-category-tag-music {
-    position: absolute;
-    z-index: 2;
-    background-color: rgb(255, 112, 112);
-    width: 200px;
-    height: 40px;
-    border-radius: 3px;
-    margin-left: 560px;
-    margin-top: 20px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-
-    transform:rotate(45deg);
-}
-
-
-div.posted-deck-category-tag-music > a > h4 {
-    margin: 0;
-    line-height: 40px;
-    color: white;
-    font-family: harenosora-mincho;
 }
 
 

@@ -26,7 +26,29 @@
             @csrf
             <input type="hidden" name="user_id" value="{{ $profile["user_id"] }}">
             <div class="posted-desk-card float">
-                <div class="posted-deck-category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a></div>
+                @switch($profile["creator_type"])
+                @case('音楽')
+                <div class="posted-deck-category-tag music-tag mouse-hover-transparent">
+                    <a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                </div>
+                @break
+                @case('イラスト')
+                    <div class="posted-deck-category-tag illust-tag mouse-hover-transparent">
+                        <a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                    </div>
+                    @break
+                @case('動画')
+                    <div class="posted-deck-category-tag movie-tag mouse-hover-transparent">
+                        <a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                    </div>
+                    @break
+                @default
+                {{-- タスク 未選択タグを準備 --}}
+                @endswitch
+
+                {{-- <div class="posted-deck-category-tag-music mouse-hover-transparent">
+                    <a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a>
+                </div> --}}
                 <div id="upload-img-area" class="upload-img-area">
                     <img id="show-selected-img" class="show-selected-img"
                     src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt="">
