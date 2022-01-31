@@ -11,14 +11,15 @@
 @section('search_box')
 <div class="search-box-bg">
     <div class="search-box">
-        <form action="" method="post">
+        {{-- <form action="/search" method="post"> --}}
+        <form action="{{ route('/search') }}" method="post">
             @csrf
-            <input class="search-text-box" type="text" name="search-word">
-            <select class="search-select-box" name="example">
-                <option hidden>カテゴリ</option>
-                <option value="music">音楽</option>
-                <option value="movie">動画</option>
-                <option value="illustration">イラスト</option>
+            <input class="search-text-box" type="text" name="search_word" placeholder="クリエイター名で検索">
+            <select class="search-select-box" name="creator_type">
+                <option value="">カテゴリ</option>
+                <option value="1">音楽</option>
+                <option value="2">イラスト</option>
+                <option value="3">動画</option>
                 </select>
             <input class="search-select-submit sink-button" type="submit" value="検索">
         </form>
