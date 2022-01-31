@@ -37,7 +37,7 @@ a {
 }
 
 .letter {
-    color: rgb(179, 187, 190);
+    color: rgb(111, 119, 122);
     font-family: harenosora-mincho;
 }
 
@@ -413,3 +413,30 @@ footer {
 }
 
 
+
+
+/* /////////////ペジネーション//////////// */
+div.pagenate {
+    height: 50px;
+}
+
+
+li.page-item {
+
+    list-style: none;
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.pagination {
+    display: inline-block;
+    font-size: 20px;
+    margin: auto;
+    padding: 0px;
+    color: rgb(156, 190, 190);
+}
+
+/* .pagelink:visited {
+    color: white;
+} */
