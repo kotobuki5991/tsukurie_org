@@ -130,24 +130,14 @@ class MainController extends Controller
     }
 
     // マイページへの遷移
-    public function toMyPageTop(Request $request)
-    {
-        $user = Auth::user();
-        $user_info = [
-            'user_name' => $user->name,
-        ];
-
-        return view('mypage/top', $user_info);
-    }
-
-    // public function toMyPageEdit(Request $request)
+    // public function toMyPageTop(Request $request)
     // {
     //     $user = Auth::user();
     //     $user_info = [
-    //         'user_id' => $user->id, //userテーブルのid
+    //         'user_name' => $user->name,
     //     ];
 
-    //     return view('mypage/edit', $user_info);
+    //     return view('mypage/top', $user_info);
     // }
 
     public function toMyPageDelete(Request $request)

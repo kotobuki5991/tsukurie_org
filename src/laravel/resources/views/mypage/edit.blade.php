@@ -174,8 +174,8 @@
                 <input class="remove-button sink-button circle-button mouse-hover-pointer" type="button" onclick="removeForm()" value="-">
             </div>
             <div class="publish-radio-button">
-                <input name="publish_flag" type="radio" value="1">プロフィールを公開
-                <input name="publish_flag" type="radio" value="0" checked>非公開
+                <input name="publish_flag" type="radio" value="1" {{ $profile["publish_flag"] == 1 ? 'checked' : null}}>プロフィールを公開
+                <input name="publish_flag" type="radio" value="0" {{ $profile["publish_flag"] == 0 ? 'checked' : null}}>非公開
             </div>
             <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
         </form>
