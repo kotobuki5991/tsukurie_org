@@ -39,9 +39,9 @@ class MainController extends Controller
         ];
 
         if(isset($request->creator_type)){
-            $search_terms[] = ['id', $request->creator_type];
+            $search_terms[] = ['creator_type_id', $request->creator_type];
         }
-
+        
         $user_profiles = Profile::where($search_terms)->paginate(1);
 
         $profile_ary = [];

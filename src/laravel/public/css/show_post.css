@@ -138,6 +138,10 @@ div.posted-desk-card-message > p {
     background-color: rgb(254, 168, 115, 0.8);
 }
 
+.unselected-tag {
+    background-color: rgba(205, 205, 205, 0.8);
+}
+
 .posted-deck-category-tag {
     position: absolute;
     z-index: 2;

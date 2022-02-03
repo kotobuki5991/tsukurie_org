@@ -35,13 +35,16 @@
     <div class="desk-card float">
         @switch($profile["creator_type"])
             @case('音楽')
-            <div class="category-tag-music mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag music-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('イラスト')
-            <div class="category-tag-illust mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag illust-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('動画')
-            <div class="category-tag-movie mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag movie-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+                @break
+            @case('未選択')
+            <div class="category-tag unselected-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @default
             {{-- タスク 未選択タグを準備 --}}

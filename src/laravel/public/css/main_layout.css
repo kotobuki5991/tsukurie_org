@@ -278,9 +278,10 @@ div.desk-card-image-area {
 }
 
 img.desk-card-image {
-    /* margin-top: 20px; */
-    width: 300px;
-    height: auto;
+    /* width: 300px;
+    height: auto; */
+    width: auto;
+    height: 200px;
     max-height: 200px;
 }
 
@@ -294,74 +295,38 @@ img.desk-card-user-icon{
 }
 
 /*/////////// 音楽用タグ /////////////*/
-div.category-tag-music {
-    position: absolute;
-    z-index: 2;
-
+.music-tag {
     background-color: rgb(255, 112, 112,0.8);
-    width: 200px;
-    height: 40px;
-    border-radius: 3px;
-    margin-left: 170px;
-    margin-top: 10px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-
-    transform:rotate(45deg);
 }
-
-div.category-tag-music > a > h4 {
-    margin: 0;
-    line-height: 40px;
-    color: white;
-    font-family: harenosora-mincho;
-}
-/*/////////// 動画用タグ /////////////*/
-div.category-tag-movie {
-    position: absolute;
-    z-index: 2;
-    /* top: 100; */
+.movie-tag {
     background-color: rgb(255, 200, 91, 0.8);
+}
+.illust-tag {
+    background-color: rgb(254, 168, 115, 0.8);
+}
+.unselected-tag {
+    background-color: rgba(205, 205, 205, 0.8);
+}
+
+div.category-tag {
+    position: absolute;
+    z-index: 2;
     width: 200px;
     height: 40px;
     border-radius: 3px;
-    /* left: 10; */
     margin-left: 170px;
     margin-top: 10px;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-
     transform:rotate(45deg);
 }
 
-div.category-tag-movie > a > h4 {
+div.category-tag > a > h4 {
     margin: 0;
     line-height: 40px;
     color: white;
     font-family: harenosora-mincho;
 }
 
-/*/////////// イラスト用タグ /////////////*/
-div.category-tag-illust {
-    position: absolute;
-    z-index: 2;
-    /* top: 100; */
-    background-color: rgb(254, 168, 115, 0.8);
-    width: 200px;
-    height: 40px;
-    border-radius: 3px;
-    /* left: 10; */
-    margin-left: 170px;
-    margin-top: 10px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-
-    transform:rotate(45deg)
-}
-
-div.category-tag-illust  > a > h4 {
-    margin: 0;
-    line-height: 40px;
-    color: white;
-    font-family: harenosora-mincho;
-}
 /* ////////////////////////// */
 div.user-name {
     height: 30px;

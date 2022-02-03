@@ -42,8 +42,12 @@
                         <a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
                     </div>
                     @break
+                @case('未選択')
+                    <div class="posted-deck-category-tag unselected-tag mouse-hover-transparent">
+                        <a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                    </div>
+                @break
                 @default
-                {{-- タスク 未選択タグを準備 --}}
                 @endswitch
 
                 {{-- <div class="posted-deck-category-tag-music mouse-hover-transparent">

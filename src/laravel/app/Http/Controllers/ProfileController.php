@@ -140,6 +140,7 @@ class ProfileController extends Controller
             'publish_flag' => $profile->publish_flag,
         ];
 
+
         // $i = 1;
         // foreach($equipment_type_icon_paths as $equipment_type_icon_path){
         //     $profile_ary['equipment_type_icon_path_' . $i] = $equipment_type_icon_path[0]->equipment_type_icon_path;
@@ -167,7 +168,7 @@ class ProfileController extends Controller
         }
 
         $form = $request->all();
-
+        dd($form);
         // アップロード画像が選択されている場合のみS3にアップロード
         if( isset($request->profile_icon) ){
             //タスク 後で冗長な部分をまとめる
