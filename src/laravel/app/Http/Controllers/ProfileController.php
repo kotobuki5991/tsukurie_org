@@ -168,7 +168,7 @@ class ProfileController extends Controller
         }
 
         $form = $request->all();
-        dd($form);
+        // dd($form);
         // アップロード画像が選択されている場合のみS3にアップロード
         if( isset($request->profile_icon) ){
             //タスク 後で冗長な部分をまとめる

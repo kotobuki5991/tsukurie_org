@@ -5,6 +5,10 @@
 
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
+<link rel="stylesheet" type="text/css" media="all"
+    href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
 @endsection
 
 {{-- ページ名 --}}
@@ -22,6 +26,17 @@
             <p>{{ $error }}</p>
             @endforeach
         @endif
+        {{-- <button id="crop-btn">切り抜き</button>
+        <div>
+            <table>
+                <tr>
+                    <th>元画像</th>
+                </tr>
+                <tr>
+                    <td><canvas id="sourceCanvas" width="1" height="1"></canvas></td>
+                </tr>
+            </table>
+        </div> --}}
         <form id="update-form" action="{{ asset('/mypage/update') }}" method="post" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" value="{{ $profile["user_id"] }}">
@@ -89,13 +104,16 @@
                     <div id="used-items-form-area" class="posted-desk-card-used-items-area">
 
 
-                        {{-- 下のフォームが0個の場合、デフォルトのフォームを１つ表示する --}}
+
                         <?php $count_equipment_form = 0 ?>
                         @for ($i = 1; $i <= 10; $i++)
+                            {{-- 登録済みの機材数分だけ入力フォームを追加 --}}
                             @if ( isset($profile["equipment_id_" . $i]) )
                                 <div id="used-items-form-{{ $i }}" class="posted-desk-card-used-items">
                                     <select class="select-items-logo" name="equipment_id_{{ $i }}">
                                         <option value="">カテゴリ</option>
+                                        {{-- クリエイタータイプが音楽の場合 --}}
+                                        @if ( $profile["creator_type"] == '音楽' )
                                         <option value="1" {{ $profile["equipment_id_" . $i] == 1 ? 'selected' : null}}>guitar</option>
                                         <option value="2" {{ $profile["equipment_id_" . $i] == 2 ? 'selected' : null}}>bass</option>
                                         <option value="3" {{ $profile["equipment_id_" . $i] == 3 ? 'selected' : null}}>piano</option>
@@ -107,6 +125,23 @@
                                         <option value="9" {{ $profile["equipment_id_" . $i] == 9 ? 'selected' : null}}>headphones</option>
                                         <option value="10" {{ $profile["equipment_id_" . $i] == 10 ? 'selected' : null}}>daw</option>
                                         <option value="11" {{ $profile["equipment_id_" . $i] == 11 ? 'selected' : null}}>audioI/F</option>
+                                        <option value="12" {{ $profile["equipment_id_" . $i] == 12 ? 'selected' : null}}>OS</option>
+                                        <option value="13" {{ $profile["equipment_id_" . $i] == 13 ? 'selected' : null}}>monitor</option>
+                                        {{-- イラストの場合 --}}
+                                        @elseif( $profile["creator_type"] == 'イラスト' )
+                                        <option value="14" {{ $profile["equipment_id_" . $i] == 14 ? 'selected' : null}}>illust soft</option>
+                                        <option value="15" {{ $profile["equipment_id_" . $i] == 15 ? 'selected' : null}}>tablet</option>
+                                        <option value="16" {{ $profile["equipment_id_" . $i] == 16 ? 'selected' : null}}>OS</option>
+                                        <option value="17" {{ $profile["equipment_id_" . $i] == 17 ? 'selected' : null}}>moitor</option>n
+                                        {{-- 動画の場合 --}}
+                                        @elseif( $profile["creator_type"] == '動画' )
+                                        <option value="18" {{ $profile["equipment_id_" . $i] == 18 ? 'selected' : null}}>movie soft</option>
+                                        <option value="19" {{ $profile["equipment_id_" . $i] == 19 ? 'selected' : null}}>illust soft</option>
+                                        <option value="20" {{ $profile["equipment_id_" . $i] == 20 ? 'selected' : null}}>camera</option>
+                                        <option value="21" {{ $profile["equipment_id_" . $i] == 21 ? 'selected' : null}}>tablet</option>
+                                        <option value="22" {{ $profile["equipment_id_" . $i] == 22 ? 'selected' : null}}>OS</option>
+                                        <option value="23" {{ $profile["equipment_id_" . $i] == 23 ? 'selected' : null}}>moitor</option>n
+                                        @endif
                                     </select>
                                     <div class="myprofile-edit-used-items-exp">
                                         <select class="myprofile-edit-used-items" name="equipment_maker_id_{{ $i }}">
@@ -140,7 +175,7 @@
                         @endfor
                         {{--  --}}
                         {{--  --}}
-                        {{-- デフォルトで最低１個はフォームを表示 --}}
+                        {{-- 上のフォームが0個の場合、デフォルトのフォームを１つ表示する --}}
                         @if ( $count_equipment_form == 0 )
                         <div id="used-items-form-1" class="posted-desk-card-used-items">
                             <select class="select-items-logo" name="equipment_id_1">
@@ -187,7 +222,77 @@
 
 @endsection
 
-@section('add_script_mypage')
+@section('add_script')
+<script>
+    // let cropper = null;
+    // const cropAspectRatio = 3.0 / 2.0;
+    // const scaledWidth = 200;
+
+    // const cropImage = function (evt) {
+    //     const files = evt.target.files;
+    //     if (files.length == 0) {
+    //         return;
+    //     }
+    //     let file = files[0];
+    //     let image = new Image();
+    //     let reader = new FileReader();
+    //     reader.onload = function (evt) {
+    //         image.onload = function () {
+    //             let scale = scaledWidth / image.width;
+    //             let imageData = null;
+    //             {
+    //                 const canvas = document.getElementById("sourceCanvas");
+    //                 {
+    //                     let ctx = canvas.getContext("2d");
+    //                     canvas.width = image.width * scale;
+    //                     canvas.height = image.height * scale;
+    //                     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+    //                 }
+    //                 if (cropper != null) {
+    //                     // 画像を再読み込みした場合は破棄が必要
+    //                     cropper.destroy();
+    //                 }
+    //                 cropper = new Cropper(canvas, {
+    //                     aspectRatio: cropAspectRatio,
+    //                     movable: false,
+    //                     scalable: false,
+    //                     zoomable: false,
+    //                     data: {
+    //                         width: canvas.width,
+    //                         height: canvas.width * cropAspectRatio
+    //                     },
+    //                     // crop: function (event) {
+    //                     //     const croppedCanvas = document.getElementById("croppedCanvas");
+    //                     //     {
+    //                     //         let ctx = croppedCanvas.getContext("2d");
+    //                     //         let croppedImageWidth = image.height * cropAspectRatio;
+    //                     //         croppedCanvas.width = image.width;
+    //                     //         croppedCanvas.height = image.height;
+    //                     //         croppedCanvas.width = croppedImageWidth * scale;
+    //                     //         croppedCanvas.height = image.height * scale;
+    //                     //         ctx.drawImage(image,
+    //                     //             event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
+    //                     //             0, 0, croppedCanvas.width, croppedCanvas.height
+    //                     //         );
+    //                     //     }
+    //                     // }
+    //                 });
+    //             }
+    //         }
+    //         image.src = evt.target.result;
+    //     }
+    //     reader.readAsDataURL(file);
+    // }
+
+    // document.getElementById('crop-btn').addEventListener('click', function () {
+    //     resultImgUrl = cropper.getCroppedCanvas().toDataURL();
+    //     var result = document.getElementById('show-selected-img');
+    //     result.src = resultImgUrl;
+    // });
+
+    // const uploader = document.getElementById('select-upload-img');
+    // uploader.addEventListener('change', cropImage);
+</script>
 <script src="{{ asset('js/mypage.js') }}"></script>
 
 @endsection

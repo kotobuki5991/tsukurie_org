@@ -1,4 +1,7 @@
 /* マイページトップ */
+a, p, h1, h2, h3, h4, h5, input, textarea {
+    color: rgb(90, 97, 100);
+}
 
 .mypage-links {
     list-style: none;
@@ -30,7 +33,7 @@ div.upload-img-area {
         max-height: 480px;
         overflow: hidden;
         margin-bottom: 25px;
-        background-color: rgb(226, 231, 232);
+        background-color: rgb(255, 255, 255);
 }
 
 
@@ -43,6 +46,9 @@ input.select-upload-img {
 }
 
 img.show-selected-img {
+    /* display: block;
+    max-width: 100%; */
+
     width: 725px;
     height: auto;
     margin-bottom: 25px;
