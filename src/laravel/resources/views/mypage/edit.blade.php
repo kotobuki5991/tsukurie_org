@@ -9,6 +9,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+
 @endsection
 
 {{-- ページ名 --}}
@@ -110,7 +111,7 @@
                             {{-- 登録済みの機材数分だけ入力フォームを追加 --}}
                             @if ( isset($profile["equipment_id_" . $i]) )
                                 <div id="used-items-form-{{ $i }}" class="posted-desk-card-used-items">
-                                    <select class="select-items-logo" name="equipment_id_{{ $i }}">
+                                    <select class="select-items-logo" name="equipment_id_{{ $i }}" onchange="changeSelectForUsedItem(this)">
                                         <option value="">カテゴリ</option>
                                         {{-- クリエイタータイプが音楽の場合 --}}
                                         @if ( $profile["creator_type"] == '音楽' )
@@ -144,7 +145,7 @@
                                         @endif
                                     </select>
                                     <div class="myprofile-edit-used-items-exp">
-                                        <select class="myprofile-edit-used-items" name="equipment_maker_id_{{ $i }}">
+                                        <select id="equipment_maker_id_{{ $i }}" class="myprofile-edit-used-items" name="equipment_maker_id_{{ $i }}">
                                             {{-- 初期値入れ方考える --}}
                                             {{-- 初期値入れ方考える --}}
                                             {{-- 初期値入れ方考える --}}
@@ -294,5 +295,5 @@
     // uploader.addEventListener('change', cropImage);
 </script>
 <script src="{{ asset('js/mypage.js') }}"></script>
-
+<script type="text/javascript" src="{{ asset( 'js/ajax.js') }}" ></script>
 @endsection

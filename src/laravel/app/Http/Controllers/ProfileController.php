@@ -194,4 +194,18 @@ class ProfileController extends Controller
 
         return redirect('/mypage/top');
     }
+
+
+
+    public function ajax(Request $request)
+    {
+
+        //equipment_idでequipment_makersテーブルを検索、idとquipment_makerを検索して選択肢にする
+
+        $ajax_param = [
+            'equipment_id' => $request->equipment_id,
+            'id' => $request->id,
+        ];
+        return view('/mypage/ajax_selecttag_foredit', ['ajax_param' => $ajax_param]);
+    }
 }
