@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
         // 初回実行時は全てのコメントアウトを外し、seedingする
         // $this->call(CreatorTypesTableSeeder::class);
         // $this->call(EquipmentTypesTableSeeder::class);
+        // $this->call(AddEquipmentTypesTableSeeder::class);
+        $this->call(EquipmentMakersTableSeeder::class);
     }
 }

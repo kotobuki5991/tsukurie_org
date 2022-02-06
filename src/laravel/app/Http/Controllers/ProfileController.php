@@ -200,6 +200,8 @@ class ProfileController extends Controller
     public function ajax(Request $request)
     {
 
+        // equipment_makersテーブル実装、equipment_typesテーブルに動画、イラスト用のレコード追加
+
         //equipment_idでequipment_makersテーブルを検索、idとquipment_makerを検索して選択肢にする
 
         $ajax_param = [
