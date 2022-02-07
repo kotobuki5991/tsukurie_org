@@ -39,10 +39,6 @@
             {{-- タスク 未選択タグを準備 --}}
             @endswitch
 
-
-            {{-- <div class="posted-deck-category-tag-music mouse-hover-transparent">
-                <a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a>
-            </div> --}}
             <div><img class="posted-desk-card-image" src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt=""></div>
             <div class="posted-desk-card-imgdiv">
                 <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] ?: asset('/images/default_user_icon.jpeg') }}" alt="">
