@@ -85,27 +85,6 @@ class ProfileController extends Controller
         // ログインユーザーのプロフィールカラム取得
         $profile = Profile::where('user_id', Auth::user()->id)->first();
 
-        // 重複したレコードは複数回とってこれない、表示順がid順ーーー＞修正する
-        // $equipment_type_icon_paths = [];
-
-        // $equipment_ids = [
-        //     $profile->equipment_id_1,
-        //     $profile->equipment_id_2,
-        //     $profile->equipment_id_3,
-        //     $profile->equipment_id_4,
-        //     $profile->equipment_id_5,
-        //     $profile->equipment_id_6,
-        //     $profile->equipment_id_7,
-        //     $profile->equipment_id_8,
-        //     $profile->equipment_id_9,
-        //     $profile->equipment_id_10,
-        // ];
-
-        // foreach($equipment_ids as $equipment_id){
-        //     $equipment_type_icon_paths[] = EquipmentType::select('equipment_type_icon_path')
-        //         -> where('id', $equipment_id)->get();
-        // }
-
         $profile_ary = [
             'id' => $profile->id,
             'user_id' => $profile->user_id,
@@ -138,16 +117,19 @@ class ProfileController extends Controller
             'equipment_id_9' => $profile->equipment_id_9,
             'equipment_id_10' => $profile->equipment_id_10,
 
+            'equipment_maker_id_1' => $profile->equipment_maker_id_1,
+            'equipment_maker_id_2' => $profile->equipment_maker_id_2,
+            'equipment_maker_id_3' => $profile->equipment_maker_id_3,
+            'equipment_maker_id_4' => $profile->equipment_maker_id_4,
+            'equipment_maker_id_5' => $profile->equipment_maker_id_5,
+            'equipment_maker_id_6' => $profile->equipment_maker_id_6,
+            'equipment_maker_id_7' => $profile->equipment_maker_id_7,
+            'equipment_maker_id_8' => $profile->equipment_maker_id_8,
+            'equipment_maker_id_9' => $profile->equipment_maker_id_9,
+            'equipment_maker_id_10' => $profile->equipment_maker_id_10,
+
             'publish_flag' => $profile->publish_flag,
         ];
-
-
-        // $i = 1;
-        // foreach($equipment_type_icon_paths as $equipment_type_icon_path){
-        //     $profile_ary['equipment_type_icon_path_' . $i] = $equipment_type_icon_path[0]->equipment_type_icon_path;
-        //     $profile_ary['equipment_maker_' . $i] = 'xxxxx';
-        //     $i++;
-        // }
 
         return view('/mypage/edit', ['profile' => $profile_ary]);
     }
@@ -200,11 +182,15 @@ class ProfileController extends Controller
 
     public function ajax(Request $request)
     {
-        //equipment_idでequipment_makersテーブルを検索、idとquipment_makerを検索して選択肢にする
-        $equipment_makers = DB::table('equipment_makers')->select('id', 'equipment_maker')
-                                // 選択された楽器用の選択肢を取得
-                                ->where('equipment_type_id', $request->equipment_type_id)
-                                ->orderByRaw('equipment_maker')->get();
+        $equipment_makers = [];
+        
+        if ($request->equipment_type_id != 'empty'){
+            //equipment_idでequipment_makersテーブルを検索、idとquipment_makerを検索して選択肢にする
+            $equipment_makers = DB::table('equipment_makers')->select('id', 'equipment_maker')
+                                    // 選択された楽器用の選択肢を取得
+                                    ->where('equipment_type_id', $request->equipment_type_id)
+                                    ->orderByRaw('equipment_maker')->get();
+        }
 
         $ajax_param = [
             'equipment_makers' => $equipment_makers,

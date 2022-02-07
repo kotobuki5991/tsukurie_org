@@ -208,7 +208,6 @@ class EquipmentMakersTableSeeder extends Seeder
             ['equipment_type_id' => '14', 'equipment_maker' => 'Procreate',],
             ['equipment_type_id' => '14', 'equipment_maker' => 'Adobe Photoshop',],
             ['equipment_type_id' => '14', 'equipment_maker' => 'Adobe Fresco',],
-            ['equipment_type_id' => '14', 'equipment_maker' => 'SAI',],
             ['equipment_type_id' => '14', 'equipment_maker' => 'Krita',],
             ['equipment_type_id' => '14', 'equipment_maker' => 'Paintstorm Studio',],
             ['equipment_type_id' => '14', 'equipment_maker' => 'ibis paint',],

@@ -102,7 +102,12 @@ function addForm() {
         let g_child_add_form = add_form_child[3].childNodes;
         // 使用機材メーカー選択selectタグのname属性の数値加算
         g_child_add_form[1].name = 'equipment_maker_id_' + used_item_form_number;
+        g_child_add_form[1].name = 'equipment_maker_id_' + used_item_form_number;
+        g_child_add_form[1].id = 'equipment_maker_id_' + used_item_form_number;
         g_child_add_form[1].selectedIndex = 0;
+
+        // 機材のメーカー選択selectタグを初期化
+        g_child_add_form[1].innerHTML = '';
 
         // url入力用textタグ取得
         let input_url_tag = g_child_add_form[3].childNodes;
@@ -114,8 +119,7 @@ function addForm() {
     }
 }
 
-  //入力欄削除ボタン
-
+//入力欄削除ボタン
 function removeForm() {
     // 使用機材入力欄は最低1個より多く
     if(used_item_form_number > 1 ){
