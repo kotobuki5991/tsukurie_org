@@ -67,7 +67,7 @@ Route::post('/mypage/update', 'ProfileController@update')
     ->middleware('auth');
 
 
-Route::get('/mypage/ajax_selecttag_foredit/{equipment_id}/{id}', 'ProfileController@ajax')
+Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax')
     ->middleware('auth');
 
 

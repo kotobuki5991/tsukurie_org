@@ -14,187 +14,315 @@ class EquipmentMakersTableSeeder extends Seeder
      */
     public function run()
     {
-        // ギター用のレコード equipment_type_id = 1
-        $guitar_maker1 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        $guitar_maker2 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        $guitar_maker3 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        $guitar_maker4 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        $guitar_maker5 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        $guitar_maker6 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        $guitar_maker7 = ['equipment_type_id' => '1', 'equipment_maker' => 'ここにメーカー',];
-        // ベース用のレコード equipment_type_id = 2
-        $bass_maker1 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        $bass_maker2 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        $bass_maker3 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        $bass_maker4 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        $bass_maker5 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        $bass_maker6 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        $bass_maker7 = ['equipment_type_id' => '2', 'equipment_maker' => 'ここにメーカー',];
-        // ピアノ用のレコード equipment_type_id = 3
-        $piano_maker1 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        $piano_maker2 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        $piano_maker3 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        $piano_maker4 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        $piano_maker5 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        $piano_maker6 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        $piano_maker7 = ['equipment_type_id' => '3', 'equipment_maker' => 'ここにメーカー',];
-        // ストリングス用のレコード equipment_type_id = 4
-        $strings_maker1 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        $strings_maker2 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        $strings_maker3 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        $strings_maker4 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        $strings_maker5 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        $strings_maker6 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        $strings_maker7 = ['equipment_type_id' => '4', 'equipment_maker' => 'ここにメーカー',];
-        // シンセ用のレコード equipment_type_id = 5
-        $synth_maker1 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        $synth_maker2 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        $synth_maker3 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        $synth_maker4 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        $synth_maker5 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        $synth_maker6 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        $synth_maker7 = ['equipment_type_id' => '5', 'equipment_maker' => 'ここにメーカー',];
-        // ドラム用のレコード equipment_type_id = 6
-        $drum_maker1 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        $drum_maker2 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        $drum_maker3 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        $drum_maker4 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        $drum_maker5 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        $drum_maker6 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        $drum_maker7 = ['equipment_type_id' => '6', 'equipment_maker' => 'ここにメーカー',];
-        // ミックス・マスター用のレコード equipment_type_id = 7
-        $mix_master_maker1 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        $mix_master_maker2 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        $mix_master_maker3 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        $mix_master_maker4 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        $mix_master_maker5 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        $mix_master_maker6 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        $mix_master_maker7 = ['equipment_type_id' => '7', 'equipment_maker' => 'ここにメーカー',];
-        // マイク用のレコード equipment_type_id = 8
-        $mic_maker1 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        $mic_maker2 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        $mic_maker3 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        $mic_maker4 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        $mic_maker5 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        $mic_maker6 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        $mic_maker7 = ['equipment_type_id' => '8', 'equipment_maker' => 'ここにメーカー',];
-        // ヘッドフォン用のレコード equipment_type_id = 9
-        $headphones_maker1 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        $headphones_maker2 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        $headphones_maker3 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        $headphones_maker4 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        $headphones_maker5 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        $headphones_maker6 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        $headphones_maker7 = ['equipment_type_id' => '9', 'equipment_maker' => 'ここにメーカー',];
-        // DAW用のレコード equipment_type_id = 10
-        $daw_maker1 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        $daw_maker2 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        $daw_maker3 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        $daw_maker4 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        $daw_maker5 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        $daw_maker6 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        $daw_maker7 = ['equipment_type_id' => '10', 'equipment_maker' => 'ここにメーカー',];
-        // オーディオIF用のレコード equipment_type_id = 11
-        $audio_if_maker1 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        $audio_if_maker2 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        $audio_if_maker3 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        $audio_if_maker4 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        $audio_if_maker5 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        $audio_if_maker6 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        $audio_if_maker7 = ['equipment_type_id' => '11', 'equipment_maker' => 'ここにメーカー',];
-        // OS用のレコード equipment_type_id = 12
-        $os_maker_music_1 = ['equipment_type_id' => '12', 'equipment_maker' => 'ここにメーカー',];
-        $os_maker_music_2 = ['equipment_type_id' => '12', 'equipment_maker' => 'ここにメーカー',];
-        // モニター用のレコード equipment_type_id = 13
-        $monitor_maker_music_1 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_music_2 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_music_3 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_music_4 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_music_5 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_music_6 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_music_7 = ['equipment_type_id' => '13', 'equipment_maker' => 'ここにメーカー',];
+        $params = [
+            // ギター用のレコード equipment_type_id = 1
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Hammingbird (Prominy)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'SC Electric Guitar (Prominy)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'LPC Electric Distortion and Clean Guitar (Prominy)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Electri6ity (Vir2)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Session Guitarist (Native Instruments)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'RealGuitar (MusicLab)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Ample Guitar (Ample Sound)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Junk Guitar (Fujiya Instruments)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'SampleTank (IK Multimedia)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Strategy (Acousticsamples)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'Sunbird (Acousticsamples)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'GD-6 Acoustic Guitar (Acousticsamples)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'IRON (UJAM)',],
+            ['equipment_type_id' => '1', 'equipment_maker' => '生演奏',],
+            ['equipment_type_id' => '1', 'equipment_maker' => 'その他',],
+            // ベース用のレコード equipment_type_id = 2
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Trilian (SPECTRASONICS)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'MODO BASS (IK Multimedia)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'EZbass (Toontrack)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Modern Bass (Ilya Efimov)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Virtual Bassist Rowdy (UJAM)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Scarbee MM Bass (Native Instruments)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Scabee Pre Bass (Native Instruments)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Scarbee Jay-Bass (Native Instruments)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Scarbee Rickenbacker Bass (Native Instruments)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Ample Bass PⅡ(Ample Sound)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Organic Fingered Bass (Fujiya Instruments)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Organic Picked Bass (Fujiya Instruments)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'Bass Slapper (Waves)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'SR5 (Prominy)',],
+            ['equipment_type_id' => '2', 'equipment_maker' => '生演奏',],
+            ['equipment_type_id' => '2', 'equipment_maker' => 'その他',],
+            // ピアノ用のレコード equipment_type_id = 3
+            ['equipment_type_id' => '3', 'equipment_maker' => 'Addictive Keys (XLN Audio)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'IvoryⅡ (Synthogy)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'Pianoteq 6 (Modartt)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'EZ Keys (Toontrack)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'The Grandeur (Native Instruments)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'NAlicia\'s Key (Native Instruments)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'The Meverick (Native Instruments)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'The Giant (Native Instruments)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'Keyscape (Spectrasonics)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'Grand Rhapsody Piano (Waves)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'Ravenscroft 275 (Ⅵ Labs)',],
+            ['equipment_type_id' => '3', 'equipment_maker' => 'その他',],
+            // ストリングス用のレコード equipment_type_id = 4
+            ['equipment_type_id' => '4', 'equipment_maker' => 'SessionStrings (Native Instruments)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Symphonic Orchestra (EastWest)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Hollywood Strings (EastWest)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Vienna (Vienna Instruments)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'LA SCORING STRINGS (Audiobro)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'CINEMATIC STRINGS (CINEMATIC STUDIO SERIES)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Orchestral Companion Strings (SONiVOX)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Chamber Strings (Spitfire)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Symphonic Strings (Spitfire)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Orchestral Essentials (PROJECT SAM)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'Miroslav Philharmonik (IK Multimedia)',],
+            ['equipment_type_id' => '4', 'equipment_maker' => 'その他',],
+            // シンセ用のレコード equipment_type_id = 5
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Xpand!2 (Air Music Technology)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Hybrid3 (Air Music Technology)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Pigments (Aituria)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Serum (Xfer)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Massive (Native Instruments)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Spire (Reveal Sound)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Sylenth1 (Lennar Digital)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Omnisphere2 (Spectrasonics)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Nexus2 (reFX)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Avenger (Vengeance)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'SynthMaster (KV331)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'SynthMaster One (KV331)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'Falcon (UVI)',],
+            ['equipment_type_id' => '5', 'equipment_maker' => 'その他',],
+            // ドラム用のレコード equipment_type_id = 6
+            ['equipment_type_id' => '6', 'equipment_maker' => 'Addictive Drums (XLN Audio)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'BFD3 (FXpansion)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'SUPERIOR DRUMMER (Toontrack)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'Battery (Native Instruments)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'Studio Drummer (Native Instruments)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'SSD5 (Steven Slate Drums)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'EZ Drummer (Toontrack)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'Groove Agent (Steinberg)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'KICK2 (Sonic Academy)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'Stylus (Spectrasonics)',],
+            ['equipment_type_id' => '6', 'equipment_maker' => 'その他',],
+            // ミックス・マスター用のレコード equipment_type_id = 7
+            ['equipment_type_id' => '7', 'equipment_maker' => 'waves',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'iZotepe',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'FabFilter',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'SONNOX OXFORD',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'SLATE DIGITAL',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'TC ELECTRONIC',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'OVERLOUD',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'EVENTIDE',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'A.O.M.',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'IK Multimedia',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'Brainworx',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'Nugen Audio',],
+            ['equipment_type_id' => '7', 'equipment_maker' => 'その他',],
+            // マイク用のレコード equipment_type_id = 8
+            ['equipment_type_id' => '8', 'equipment_maker' => 'Shure',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'SENNHEISER',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'AUDIX',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'RODE',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'Audio-Technica',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'Blue',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'AKG',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'SONY',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'MXL',],
+            ['equipment_type_id' => '8', 'equipment_maker' => 'Behringer',],
+            // ヘッドフォン用のレコード equipment_type_id = 9
+            ['equipment_type_id' => '9', 'equipment_maker' => 'SONY',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'YAMAHA',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'Audio Technica',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'AKG',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'SHURE',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'AIAIAI',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'CLASSIC PRO',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'beyerdynamic',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'SENNHEISER',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'DIRECT SOUND',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'PHONON',],
+            ['equipment_type_id' => '9', 'equipment_maker' => 'Shure',],
+            // DAW用のレコード equipment_type_id = 10
+            ['equipment_type_id' => '10', 'equipment_maker' => 'BitWig Studio',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Reason',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Digital Performer',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Reaper',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Pro Tools',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Cakewalke',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'FL Studio',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Ableton Live',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Logic',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Studio One',],
+            ['equipment_type_id' => '10', 'equipment_maker' => 'Cubase',],
+            // MIDIキーボード用のレコード equipment_type_id = 24 (後から追加したので24でOK)
+            ['equipment_type_id' => '24', 'equipment_maker' => 'MicroKeyシリーズ (KORG)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'Komplete Kontrolシリーズ (Native Instruments)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'Aシリーズ (Roland)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'KeyStationシリーズ (M-Audio)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'iRigKeysシリーズ (IK Multimedia)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'MOTIFシリーズ (YAMAHA)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'PROシリーズ (Roland)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'ImpactLXシリーズ (Nektar)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'Launchkeyシリーズ (Novation)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'Qシリーズ (Alesis)',],
+            ['equipment_type_id' => '24', 'equipment_maker' => 'KeyLABシリーズ (Arturia)',],
+            // オーディオIF用のレコード equipment_type_id = 11
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Steinberg',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'RME',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Behringer',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Focusrite',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Audient',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Roland',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Universal Audio',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Antelope Audio',],
+            ['equipment_type_id' => '11', 'equipment_maker' => 'Native Instruments',],
+            // OS用のレコード equipment_type_id = 12
+            ['equipment_type_id' => '12', 'equipment_maker' => 'Mac',],
+            ['equipment_type_id' => '12', 'equipment_maker' => 'Windows',],
+            // モニター用のレコード equipment_type_id = 13
+            ['equipment_type_id' => '13', 'equipment_maker' => 'Apple',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'BenQ',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'Acer',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'MSI',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'SHARP',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'Dell',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'SONY',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'MouseComputer',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'NEC',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'iiyama',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'hp',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'EIZO',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'LG Electronics',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'ASUS',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'I-O DATA',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'Philips',],
+            ['equipment_type_id' => '13', 'equipment_maker' => 'JAPANNEXT',],
 
-        // ここからイラスト用
+            // ここからイラスト用
 
-        // イラストソフト用のレコード equipment_type_id = 14
-        $illust_soft_maker_illust_1 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_illust_2 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_illust_3 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_illust_4 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_illust_5 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_illust_6 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_illust_7 = ['equipment_type_id' => '14', 'equipment_maker' => 'ここにメーカー',];
-        // タブレット用のレコード equipment_type_id = 15
-        $tablet_maker_illust_1 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_illust_2 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_illust_3 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_illust_4 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_illust_5 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_illust_6 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_illust_7 = ['equipment_type_id' => '15', 'equipment_maker' => 'ここにメーカー',];
-        // OS用のレコード equipment_type_id = 16
-        $os_maker_illust_1 = ['equipment_type_id' => '16', 'equipment_maker' => 'ここにメーカー',];
-        $os_maker_illust_2 = ['equipment_type_id' => '16', 'equipment_maker' => 'ここにメーカー',];
-        // モニター用のレコード equipment_type_id = 17
-        $monitor_maker_illust_1 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_illust_2 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_illust_3 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_illust_4 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_illust_5 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_illust_6 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_illust_7 = ['equipment_type_id' => '17', 'equipment_maker' => 'ここにメーカー',];
+            // イラストソフト用のレコード equipment_type_id = 14
+            ['equipment_type_id' => '14', 'equipment_maker' => 'CLIP STUDIO PAINT',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Corel Painter',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'MediBang Paint',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'openCanvas',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'PaintShop Pro',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Adobe Illustrator',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'SAI',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Procreate',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Adobe Photoshop',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Adobe Fresco',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'SAI',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Krita',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'Paintstorm Studio',],
+            ['equipment_type_id' => '14', 'equipment_maker' => 'ibis paint',],
+            // タブレット用のレコード equipment_type_id = 15
+            ['equipment_type_id' => '15', 'equipment_maker' => 'Xiaomi Pad',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'iPad',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'iPad Air',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'iPad Pro',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'Surface',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'Wacom',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'Hanvon Ugee',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'HUION',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'GAOMON',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'ARTISUL',],
+            ['equipment_type_id' => '15', 'equipment_maker' => 'RAYWOOD',],
+            // OS用のレコード equipment_type_id = 16
+            ['equipment_type_id' => '16', 'equipment_maker' => 'Mac',],
+            ['equipment_type_id' => '16', 'equipment_maker' => 'Windows',],
+            // モニター用のレコード equipment_type_id = 17
+            ['equipment_type_id' => '17', 'equipment_maker' => 'Apple',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'BenQ',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'Acer',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'MSI',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'SHARP',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'Dell',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'SONY',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'MouseComputer',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'NEC',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'iiyama',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'hp',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'EIZO',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'LG Electronics',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'ASUS',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'I-O DATA',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'Philips',],
+            ['equipment_type_id' => '17', 'equipment_maker' => 'JAPANNEXT',],
 
-        // ここから動画用
+            // ここから動画用
 
-        // 動画ソフト用のレコード equipment_type_id = 18
-        $movie_soft_maker_movie_1 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        $movie_soft_maker_movie_2 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        $movie_soft_maker_movie_3 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        $movie_soft_maker_movie_4 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        $movie_soft_maker_movie_5 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        $movie_soft_maker_movie_6 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        $movie_soft_maker_movie_7 = ['equipment_type_id' => '18', 'equipment_maker' => 'ここにメーカー',];
-        // イラストソフト用のレコード equipment_type_id = 19
-        $illust_soft_maker_movie_1 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_2 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_3 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_4 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_5 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_6 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_7 = ['equipment_type_id' => '19', 'equipment_maker' => 'ここにメーカー',];
-        // カメラ用のレコード equipment_type_id = 20
-        $illust_soft_maker_movie_1 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_2 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_3 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_4 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_5 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_6 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        $illust_soft_maker_movie_7 = ['equipment_type_id' => '20', 'equipment_maker' => 'ここにメーカー',];
-        // タブレット用のレコード equipment_type_id = 21
-        $tablet_maker_movie_1 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_movie_2 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_movie_3 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_movie_4 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_movie_5 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_movie_6 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        $tablet_maker_movie_7 = ['equipment_type_id' => '21', 'equipment_maker' => 'ここにメーカー',];
-        // OS用のレコード equipment_type_id = 22
-        $os_maker_movie_1 = ['equipment_type_id' => '22', 'equipment_maker' => 'ここにメーカー',];
-        $os_maker_movie_2 = ['equipment_type_id' => '22', 'equipment_maker' => 'ここにメーカー',];
-        // モニター用のレコード equipment_type_id = 23
-        $monitor_maker_movie_1 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_movie_2 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_movie_3 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_movie_4 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_movie_5 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_movie_6 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
-        $monitor_maker_movie_7 = ['equipment_type_id' => '23', 'equipment_maker' => 'ここにメーカー',];
+            // 動画ソフト用のレコード equipment_type_id = 18
+            ['equipment_type_id' => '18', 'equipment_maker' => 'PowerDirector',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Adobe Premiere Pro',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'DaVinci Resolve',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Corel VideoStudio',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Pinnacle Studio',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'AviUtl',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'iMovie',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Lightworks',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'VEGAS',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Adobe After Effects',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'FinalCut Pro',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Blender',],
+            ['equipment_type_id' => '18', 'equipment_maker' => 'Adobe Character Animator',],
+            // イラストソフト用のレコード equipment_type_id = 19
+            ['equipment_type_id' => '19', 'equipment_maker' => 'CLIP STUDIO PAINT',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Corel Painter',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'MediBang Paint',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'openCanvas',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'PaintShop Pro',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Adobe Illustrator',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'SAI',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Procreate',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Adobe Photoshop',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Adobe Fresco',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'SAI',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Krita',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'Paintstorm Studio',],
+            ['equipment_type_id' => '19', 'equipment_maker' => 'ibis paint',],
+            // カメラ用のレコード equipment_type_id = 20
+            ['equipment_type_id' => '20', 'equipment_maker' => 'SONY',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'Panasonic',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'JVC KENWOOD',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'Canon',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'Nikon',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'OLYMPUS',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'PENTAX',],
+            ['equipment_type_id' => '20', 'equipment_maker' => 'FUJIFILM',],
+            // タブレット用のレコード equipment_type_id = 21
+            ['equipment_type_id' => '21', 'equipment_maker' => 'Xiaomi Pad',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'iPad',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'iPad Air',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'iPad Pro',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'Surface',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'Wacom',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'Hanvon Ugee',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'HUION',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'GAOMON',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'ARTISUL',],
+            ['equipment_type_id' => '21', 'equipment_maker' => 'RAYWOOD',],
+            // OS用のレコード equipment_type_id = 22
+            ['equipment_type_id' => '22', 'equipment_maker' => 'Mac',],
+            ['equipment_type_id' => '22', 'equipment_maker' => 'Windows',],
+            // モニター用のレコード equipment_type_id = 23
+            ['equipment_type_id' => '23', 'equipment_maker' => 'Apple',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'BenQ',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'Acer',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'MSI',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'SHARP',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'Dell',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'SONY',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'MouseComputer',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'NEC',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'iiyama',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'hp',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'EIZO',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'LG Electronics',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'ASUS',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'I-O DATA',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'Philips',],
+            ['equipment_type_id' => '23', 'equipment_maker' => 'JAPANNEXT',],
 
+        ];
 
-
-        $types = [];
-
-        DB::table('equipment_types')->insert($types);
+        DB::table('equipment_makers')->insert($params);
 
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use \Illuminate\Contracts\Filesystem\Filesystem;
 
@@ -199,15 +200,18 @@ class ProfileController extends Controller
 
     public function ajax(Request $request)
     {
-
-        // equipment_makersテーブル実装、equipment_typesテーブルに動画、イラスト用のレコード追加
-
         //equipment_idでequipment_makersテーブルを検索、idとquipment_makerを検索して選択肢にする
+        $equipment_makers = DB::table('equipment_makers')->select('id', 'equipment_maker')
+                                // 選択された楽器用の選択肢を取得
+                                ->where('equipment_type_id', $request->equipment_type_id)
+                                ->orderByRaw('equipment_maker')->get();
 
         $ajax_param = [
-            'equipment_id' => $request->equipment_id,
-            'id' => $request->id,
+            'equipment_makers' => $equipment_makers,
+            'select_tag_id' => $request->id,
         ];
+
+        // return view('/mypage/ajax_selecttag_foredit', ['ajax_param' => $ajax_param]);
         return view('/mypage/ajax_selecttag_foredit', ['ajax_param' => $ajax_param]);
     }
 }
