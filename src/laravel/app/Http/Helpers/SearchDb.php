@@ -94,8 +94,13 @@ class SearchDb{
         foreach($equipment_type_icon_paths as $equipment_type_icon_path){
             // $profile_ary['equipment_type_icon_path_' . $i] = $equipment_type_icon_path[0]->equipment_type_icon_path;
             $profile_ary[$equipment_type_tag_name . $i] = $equipment_type_icon_path[0]->equipment_type_icon_path;
+            $i++;
+        }
+
+        $i = 1;
+        foreach($equipment_makers as $equipment_maker){
             // $profile_ary['equipment_maker_' . $i] = $equipment_makers[$i - 1][0]->equipment_maker;
-            $profile_ary[$equipment_maker_tag_name . $i] = $equipment_makers[$i - 1][0]->equipment_maker;
+            $profile_ary[$equipment_maker_tag_name . $i] = $equipment_maker[0]->equipment_maker;
             $i++;
         }
 
