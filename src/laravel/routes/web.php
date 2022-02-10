@@ -67,7 +67,14 @@ Route::post('/mypage/update', 'ProfileController@update')
     ->middleware('auth');
 
 
+// プロフィール編集用ajax
 Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax')
+    ->middleware('auth');
+
+Route::get('/mypage/ajax_creator_type_change/{equipment_type_id}', 'ProfileController@changeCreatorTypeTag')
+    ->middleware('auth');
+
+Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm')
     ->middleware('auth');
 
 

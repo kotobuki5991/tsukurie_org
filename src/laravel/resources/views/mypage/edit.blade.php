@@ -42,29 +42,31 @@
             @csrf
             <input type="hidden" name="user_id" value="{{ $profile["user_id"] }}">
             <div class="posted-desk-card float">
-                @switch($profile["creator_type"])
-                @case('音楽')
-                <div class="posted-deck-category-tag music-tag mouse-hover-transparent">
-                    <a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                <div id="creator-type-tag">
+                    @switch($profile["creator_type"])
+                    @case('音楽')
+                    <div id="creator-type" class="posted-deck-category-tag music-tag mouse-hover-transparent">
+                        <a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                    </div>
+                    @break
+                    @case('イラスト')
+                        <div id="creator-type" class="posted-deck-category-tag illust-tag mouse-hover-transparent">
+                            <a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                        </div>
+                        @break
+                    @case('動画')
+                        <div id="creator-type" class="posted-deck-category-tag movie-tag mouse-hover-transparent">
+                            <a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                        </div>
+                        @break
+                    @case('未選択')
+                        <div id="creator-type" class="posted-deck-category-tag unselected-tag mouse-hover-transparent">
+                            <a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                        </div>
+                    @break
+                    @default
+                    @endswitch
                 </div>
-                @break
-                @case('イラスト')
-                    <div class="posted-deck-category-tag illust-tag mouse-hover-transparent">
-                        <a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-                    </div>
-                    @break
-                @case('動画')
-                    <div class="posted-deck-category-tag movie-tag mouse-hover-transparent">
-                        <a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-                    </div>
-                    @break
-                @case('未選択')
-                    <div class="posted-deck-category-tag unselected-tag mouse-hover-transparent">
-                        <a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-                    </div>
-                @break
-                @default
-                @endswitch
 
                 {{-- <div class="posted-deck-category-tag-music mouse-hover-transparent">
                     <a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a>
@@ -81,7 +83,7 @@
                         src="{{ $profile["profile_icon"] ?: asset('/images/default_user_icon.jpeg') }}" alt="">
                     </div>
                     <input class="myprofile-edit-username" type="text" name="profile_name" placeholder="クリエイター名を入力" value="{{ $profile["profile_name"] }}">
-                    <select id="select-creator-type" class="select-creator-type" name="creator_type_id">
+                    <select id="select-creator-type" class="select-creator-type" name="creator_type_id" onchange="changeCreatorType(this)">
                         {{-- <option value="">クリエイター種別を選択</option> --}}
                         <option value="4" {{ $profile["creator_type"] == '未選択' ? 'selected' : null}}>クリエイター種別選択</option>
                         <option value="1" {{ $profile["creator_type"] == '音楽' ? 'selected' : null}}>音楽</option>
