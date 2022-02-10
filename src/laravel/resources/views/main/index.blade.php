@@ -63,7 +63,8 @@
         </div>
         <div>
             <div class="user-name"><h3>{{ $profile["profile_name"] }}</h3></div>
-            <div class="user-message letter"><h5>{!! nl2br(e($profile["message"])) !!}</h5></div>
+            {{-- <div class="user-message letter"><h5>{!! nl2br(e($profile["message"])) !!}</h5></div> --}}
+            <div class="user-message letter"><h5>{{$profile["message"]}}</h5></div>
         </div>
     </div>
     @endforeach
