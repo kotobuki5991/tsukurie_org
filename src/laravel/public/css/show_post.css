@@ -106,8 +106,10 @@ div.posted-desk-card-profiles {
 
 div.posted-desk-card-message {
     width: 600px;
-    height: auto;
+    /* height: auto; */
+    height: 250px;
     overflow-wrap: break-word;
+    overflow-y: scroll;
     text-align: left;
     background-color: rgb(243, 246, 246, 0.5);
     /* border-radius: 5px; */
