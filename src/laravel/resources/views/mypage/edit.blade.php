@@ -556,13 +556,18 @@
                 <input name="publish_flag" type="radio" value="1" {{ $profile["publish_flag"] == 1 ? 'checked' : null}}>プロフィールを公開
                 <input name="publish_flag" type="radio" value="0" {{ $profile["publish_flag"] == 0 ? 'checked' : null}}>非公開
             </div>
-            <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新">
+            <input id="update-button" class="myprofile-edit-submit sink-button mouse-hover-pointer" type="button" value="更新" onclick="blockDoubleSubmit(this)">
         </form>
     </div>
 
 @endsection
 
 @section('add_script')
+<script>
+    function blockDoubleSubmit(btn){
+        btn.disabled=true;
+    }
+</script>
 <script>
     // let cropper = null;
     // const cropAspectRatio = 3.0 / 2.0;
