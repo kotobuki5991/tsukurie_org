@@ -48,7 +48,14 @@ class ProfileController extends Controller
         }
 
         $form = $request->all();
-        // dd($form);
+
+        // 入力した機材が10個未満の場合、未入力の部分にnullをセット
+        for ($i=1; $i <= 10; $i++) {
+            $form["equipment_id_{$i}"] = isset($form["equipment_id_{$i}"]) ? $form["equipment_id_{$i}"] : null;
+            $form["equipment_maker_id_{$i}"] = isset($form["equipment_maker_id_{$i}"]) ? $form["equipment_maker_id_{$i}"] : null;
+            $form["equipment_url_{$i}"] = isset($form["equipment_url_{$i}"]) ? $form["equipment_url_{$i}"] : null;
+        }
+
         // アップロード画像が選択されている場合のみS3にアップロード
         if( isset($request->profile_icon) ){
             //タスク 後で冗長な部分をまとめる
