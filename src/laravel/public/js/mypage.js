@@ -71,7 +71,8 @@ const handleIconSelect = (event) => {
 
 select_upload_user_icon_button.addEventListener('change', handleIconSelect);
 
-let used_item_form_number;
+// グローバル変数、creator_type変更時にリセット
+var used_item_form_number;
 // 入力欄追加ボタン
 if( document.getElementById("used-items-form-area").childElementCount == 0 ){
     used_item_form_number = 1;
@@ -83,7 +84,7 @@ if( document.getElementById("used-items-form-area").childElementCount == 0 ){
 function addForm() {
     // 使用機材入力欄は最大10個まで
     if(used_item_form_number < 10 ){
-
+        console.log(used_item_form_number);
         let used_item_form = document.getElementById('used-items-form-' + used_item_form_number);
 
         let add_form = used_item_form.cloneNode(true);

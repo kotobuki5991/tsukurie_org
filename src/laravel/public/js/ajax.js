@@ -26,7 +26,6 @@ function changeSelectForUsedItem(selected_item){
     var idx = selected_item.selectedIndex;
     let id = selected_item.name.replace('equipment_id_','');
     let value = selected_item.options[idx].value || 'empty'; // 選択されている値
-    // if (value === "" || value === null || value === undefined) return;
 
     var url = "/mypage/ajax_selecttag_foredit";
     let url_with_param = url + '/' + value + '/' + id;
@@ -41,14 +40,38 @@ function changeSelectForUsedItem(selected_item){
 }
 
 
-// window.addEventListener('load', function () {
 
-//     var url = "ajax.html";
 
-//     var div = document.getElementById('ajaxreload');
 
-//     setTimeout(function () {
-//         ajaxUpdate(url, div);
-//     }, 5000);
+// クリエイターカテゴリ変更で、クリエイタータグと機材選択selectを変更
+function changeCreatorType(creator_type){
+    var idx = creator_type.selectedIndex;
+    let value = creator_type.options[idx].value || 'empty'; // 選択されている値
 
-// });
+    // 変更後の出力部品のurl
+    var url = "/mypage/ajax_creator_type_change";
+    let url_with_param = url + '/' + value;
+
+    console.log(url_with_param);
+    // 変更対象のdivタグを取得
+    var creator_tag_for_change = document.getElementById('creator-type-tag');
+    console.log(creator_tag_for_change);
+
+    ajaxUpdate(url_with_param, creator_tag_for_change);
+
+    // 変更対象のdivタグを取得
+    url = "/mypage/ajax_used_item_form_change";
+    url_with_param = url + '/' + value;
+
+    var used_items_form_for_change = document.getElementById('used-items-form-area');
+    console.log(used_items_form_for_change);
+
+    ajaxUpdate(url_with_param, used_items_form_for_change);
+
+    // mypage.jsのフォームの個数カウンターをリセット
+    used_item_form_number = 1;
+
+}
+
+
+

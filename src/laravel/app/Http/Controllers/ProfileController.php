@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use \Illuminate\Contracts\Filesystem\Filesystem;
 use App\Http\Helpers\SearchDb;
+use Aws\Crypto\Cipher\CipherMethod;
 
 class ProfileController extends Controller
 {
@@ -103,5 +104,18 @@ class ProfileController extends Controller
 
         // return view('/mypage/ajax_selecttag_foredit', ['ajax_param' => $ajax_param]);
         return view('/mypage/ajax_selecttag_foredit', ['ajax_param' => $ajax_param]);
+    }
+
+
+    public function changeCreatorTypeTag(Request $request)
+    {
+        // dd( $request);
+        return view('/mypage/ajax_creator_type_change', ['ajax_param' => $request]);
+    }
+
+    public function changeUsedItemForm(Request $request)
+    {
+        // dd( $request);
+        return view('/mypage/ajax_used_item_form_change', ['ajax_param' => $request]);
     }
 }
