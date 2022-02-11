@@ -98,7 +98,8 @@
 
                 <div class="posted-desk-card-profiles">
                     <div class="myprofile-edit-message">
-                        <textarea name="message" placeholder="ここにメッセージを入力">{!! nl2br(e($profile["message"])) !!}</textarea>
+                        {{-- <textarea name="message" placeholder="ここにメッセージを入力">{!! nl2br(e($profile["message"])) !!}</textarea> --}}
+                        <textarea name="message" placeholder="ここにメッセージを入力">{!! e($profile["message"]) !!}</textarea>
                     </div>
                     <div class="using-items">
                         <h3>使用機材</h3>

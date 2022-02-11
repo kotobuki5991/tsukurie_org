@@ -50,11 +50,21 @@ class ProfileController extends Controller
 
         $form = $request->all();
 
-        // 入力した機材が10個未満の場合、未入力の部分にnullをセット
-        for ($i=1; $i <= 10; $i++) {
-            $form["equipment_id_{$i}"] = isset($form["equipment_id_{$i}"]) ? $form["equipment_id_{$i}"] : null;
-            $form["equipment_maker_id_{$i}"] = isset($form["equipment_maker_id_{$i}"]) ? $form["equipment_maker_id_{$i}"] : null;
-            $form["equipment_url_{$i}"] = isset($form["equipment_url_{$i}"]) ? $form["equipment_url_{$i}"] : null;
+        // 使用機材入力フォームの空欄を詰めて登録
+        $num = 1;
+        for ($i=1; $i <= 10 ; $i++) {
+            if (isset($form["equipment_id_{$i}"]) && isset($form["equipment_maker_id_{$i}"])) {
+                $form["equipment_id_{$num}"] = $form["equipment_id_{$i}"];
+                $form["equipment_maker_id_{$num}"] = $form["equipment_maker_id_{$i}"];
+                $num++;
+            }
+        }
+
+        // 詰めた後の残りはnullで登録
+        for ($i = $num; $i <= 10 ; $i++) {
+            $form["equipment_id_{$i}"] = null;
+            $form["equipment_maker_id_{$i}"] = null;
+            $form["equipment_url_{$i}"] = null;
         }
 
         // アップロード画像が選択されている場合のみS3にアップロード
