@@ -22,7 +22,7 @@ if( submit != null ){
         if (confirm('本当に送信しますか？')){
 
             event.method = 'post';
-            alert('ありがとうございます、送信が完了しました!');
+            // alert('ありがとうございます、送信が完了しました!');
             event.submit();
         }else{
             event.preventDefault();

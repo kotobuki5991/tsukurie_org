@@ -72,7 +72,11 @@ class MainController extends Controller
     // お問合せページへの遷移
     public function contact(Request $request)
     {
-        return view('main/contact');
+        $profile = Profile::firstWhere('user_id', $request->user_id);
+
+        $mail_from = isset($profile->profile_name) ? $profile->profile_name : 'guest';
+
+        return view('main/contact', ['mail_from' => $mail_from]);
     }
 
     public function toMyPageDelete(Request $request)
