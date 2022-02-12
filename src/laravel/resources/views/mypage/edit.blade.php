@@ -5,10 +5,10 @@
 
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
-<link rel="stylesheet" type="text/css" media="all"
+{{-- <link rel="stylesheet" type="text/css" media="all"
     href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script> --}}
 
 @endsection
 
@@ -24,7 +24,7 @@
         {{-- タスク エラー表示なおす --}}
         @if (count($errors) > 0)
             @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
+            <p class="error-msg">{{ $error }}</p>
             @endforeach
         @endif
         {{-- <button id="crop-btn">切り抜き</button>

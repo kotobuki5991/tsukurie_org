@@ -17,7 +17,7 @@ class Profile extends Model
     public static $rules = [
         'user_id'         => 'required',
         'profile_name'    => 'required',
-        // 'creator_type_id' => 'required',
+        'publish_flag' => 'required',
     ];
 
     public function user()

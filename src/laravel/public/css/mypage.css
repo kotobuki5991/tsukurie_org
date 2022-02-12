@@ -23,6 +23,11 @@ a, p, h1, h2, h3, h4, h5, input, textarea {
     border-bottom: 1px solid rgb(179, 187, 190);
 }
 
+/* エラーメッセージ */
+.error-msg {
+    font-size: 20px;
+    color: red;
+}
 
 /* プロフィール更新 */
 /* 最低サイズは幅700の16×9のサイズ */

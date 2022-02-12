@@ -44,7 +44,6 @@ class ProfileController extends Controller
 
         // ログインユーザーのidと更新するprofileテーブルのuser_idが異なる場合更新せずリダイレクト
         if ($request->user_id != $auth_user_id) {
-            dd($request->user_id . ':' . $auth_user_id);
             return redirect('/mypage/top');
         }
 
