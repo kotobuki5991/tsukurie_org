@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -49,38 +50,79 @@ Route::post('/contact', 'MainController@contact');
 Route::post('/contact', 'ContactController@send')->name('send');
 
 ////////////////////////////////////////////////
+// ユーザー登録メール認証
+////////////////////////////////////////////////
+
+// メール確認の通知（確認リンククリックの指示）
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+// 電子メールの確認リンク押下時リクエストの処理
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    // return redirect('/home');
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+// メール確認の再送信
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+////////////////////////////////////////////////
 // マイページ遷移のみ
 ////////////////////////////////////////////////
-Route::get('/mypage/top', 'ProfileController@index')
-    ->middleware('auth');
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::get('/mypage/top', 'ProfileController@index');
+    Route::post('/mypage/top', 'MainController@toMyPageTop');
 
-Route::post('/mypage/top', 'MainController@toMyPageTop')
-    ->middleware('auth');
+    // プロフィール編集
+    // Route::get('/mypage/edit', 'MainController@toMyPageEdit');
+    Route::get('/mypage/edit', 'ProfileController@edit');
+    Route::post('/mypage/update', 'ProfileController@update');
 
-Route::get('/mypage/edit', 'MainController@toMyPageEdit')
-    ->middleware('auth');
+    // アカウント削除
+    Route::get('/mypage/delete_account', 'MainController@toMyPageDelete');
 
-Route::get('/mypage/delete_account', 'MainController@toMyPageDelete')
-    ->middleware('auth');
+    // プロフィール編集用ajax
+    Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax');
+    Route::get('/mypage/ajax_creator_type_change/{equipment_type_id}', 'ProfileController@changeCreatorTypeTag');
+    Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm');
+});
+
+// Route::get('/mypage/top', 'ProfileController@index')
+//     ->middleware(['auth', 'verified']);
+
+// Route::post('/mypage/top', 'MainController@toMyPageTop')
+//     ->middleware(['auth', 'verified']);
+
+// Route::get('/mypage/edit', 'MainController@toMyPageEdit')
+//     ->middleware(['auth', 'verified']);
+
+// Route::get('/mypage/delete_account', 'MainController@toMyPageDelete')
+//     ->middleware(['auth', 'verified']);
 
 
-// プロフィール編集ページへ
-Route::get('/mypage/edit', 'ProfileController@edit')
-    ->middleware('auth');
-// プロフィール更新ボタン押下時
-Route::post('/mypage/update', 'ProfileController@update')
-    ->middleware('auth');
+// // プロフィール編集ページへ
+// Route::get('/mypage/edit', 'ProfileController@edit')
+//     ->middleware(['auth', 'verified']);
+// // プロフィール更新ボタン押下時
+// Route::post('/mypage/update', 'ProfileController@update')
+//     ->middleware(['auth', 'verified']);
 
 
-// プロフィール編集用ajax
-Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax')
-    ->middleware('auth');
+// // プロフィール編集用ajax
+// Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax')
+//     ->middleware(['auth', 'verified']);
 
-Route::get('/mypage/ajax_creator_type_change/{equipment_type_id}', 'ProfileController@changeCreatorTypeTag')
-    ->middleware('auth');
+// Route::get('/mypage/ajax_creator_type_change/{equipment_type_id}', 'ProfileController@changeCreatorTypeTag')
+//     ->middleware(['auth', 'verified']);
 
-Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm')
-    ->middleware('auth');
+// Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm')
+//     ->middleware(['auth', 'verified']);
 
 
 
