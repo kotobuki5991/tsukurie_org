@@ -123,9 +123,3 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
 // Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm')
 //     ->middleware(['auth', 'verified']);
-
-
-
-
-
-

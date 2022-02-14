@@ -38,14 +38,15 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
-        $auth_user_id = Auth::user()->id;
+        // $auth_user_id = Auth::user()->id;
 
         $this->validate($request, Profile::$rules);
 
-        // ログインユーザーのidと更新するprofileテーブルのuser_idが異なる場合更新せずリダイレクト
-        if ($request->user_id != $auth_user_id) {
-            return redirect('/mypage/top');
-        }
+        // // ログインユーザーのidと更新するprofileテーブルのuser_idが異なる場合更新せずリダイレクト
+        // if ($request->user_id != $auth_user_id) {
+        //     // return redirect('/mypage/top');
+        //     return view('invalid/invalid-request')->render();
+        // }
 
         $form = $request->all();
 
@@ -85,7 +86,8 @@ class ProfileController extends Controller
         unset($form['_token']);
 
 
-        $profile = Profile::firstWhere('user_id', $request->user_id);
+        // $profile = Profile::firstWhere('user_id', $request->user_id);
+        $profile = Profile::firstWhere('user_id', Auth::user()->id);
 
         $profile->fill($form)->save();
 

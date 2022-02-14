@@ -40,7 +40,7 @@
         </div> --}}
         <form id="update-form" action="{{ asset('/mypage/update') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="user_id" value="{{ $profile["user_id"] }}">
+            {{-- <input type="hidden" name="user_id" value="{{ $profile["user_id"] }}"> --}}
             <div class="posted-desk-card float">
                 <div id="creator-type-tag">
                     @switch($profile["creator_type"])

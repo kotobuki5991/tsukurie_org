@@ -15,7 +15,7 @@ class Profile extends Model
     protected $guarded = array('id');
 
     public static $rules = [
-        'user_id'         => 'required',
+        // 'user_id'         => 'required',
         'profile_name'    => 'required',
         'publish_flag' => 'required',
     ];
