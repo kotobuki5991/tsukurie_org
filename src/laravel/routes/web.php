@@ -92,34 +92,3 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/mypage/ajax_creator_type_change/{equipment_type_id}', 'ProfileController@changeCreatorTypeTag');
     Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm');
 });
-
-// Route::get('/mypage/top', 'ProfileController@index')
-//     ->middleware(['auth', 'verified']);
-
-// Route::post('/mypage/top', 'MainController@toMyPageTop')
-//     ->middleware(['auth', 'verified']);
-
-// Route::get('/mypage/edit', 'MainController@toMyPageEdit')
-//     ->middleware(['auth', 'verified']);
-
-// Route::get('/mypage/delete_account', 'MainController@toMyPageDelete')
-//     ->middleware(['auth', 'verified']);
-
-
-// // プロフィール編集ページへ
-// Route::get('/mypage/edit', 'ProfileController@edit')
-//     ->middleware(['auth', 'verified']);
-// // プロフィール更新ボタン押下時
-// Route::post('/mypage/update', 'ProfileController@update')
-//     ->middleware(['auth', 'verified']);
-
-
-// // プロフィール編集用ajax
-// Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax')
-//     ->middleware(['auth', 'verified']);
-
-// Route::get('/mypage/ajax_creator_type_change/{equipment_type_id}', 'ProfileController@changeCreatorTypeTag')
-//     ->middleware(['auth', 'verified']);
-
-// Route::get('/mypage/ajax_used_item_form_change/{equipment_type_id}', 'ProfileController@changeUsedItemForm')
-//     ->middleware(['auth', 'verified']);
