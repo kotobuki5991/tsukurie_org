@@ -1,3 +1,4 @@
+<title>つくりえ -ユーザー登録-</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

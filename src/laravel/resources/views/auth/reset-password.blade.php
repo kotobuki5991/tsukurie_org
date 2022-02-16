@@ -1,4 +1,5 @@
-<x-guest-layout>
+
+<title>つくりえ -パスワードのリセット-</title><x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">

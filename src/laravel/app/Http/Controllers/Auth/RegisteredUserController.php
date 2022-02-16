@@ -58,6 +58,7 @@ class RegisteredUserController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
+        return redirect('/mypage/top');
     }
 }
