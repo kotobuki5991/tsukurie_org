@@ -69,14 +69,14 @@ Route::get('/update-password', [PasswordResetLinkController::class, 'update'])
                 ->name('update.password');
 
 // パスワードリセットリンク送信ボタン押下時
-Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+Route::post('/update-password', [PasswordResetLinkController::class, 'store'])
                 ->middleware('auth')
-                ->name('update.password.email');
+                ->name('update-password.email');
 
-Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->middleware('auth')
-                ->name('password.reset');
+// Route::get('/update-password/{token}', [NewPasswordController::class, 'create'])
+//                 ->middleware('auth')
+//                 ->name('update-password.reset');
 
-Route::post('/reset-password', [NewPasswordController::class, 'store'])
-                ->middleware('auth')
-                ->name('password.update');
+// Route::post('/reset-password', [NewPasswordController::class, 'store'])
+//                 ->middleware('auth')
+//                 ->name('password.update');

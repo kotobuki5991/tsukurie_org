@@ -1,3 +1,4 @@
+<title>つくりえ -パスワードをお忘れですか？-</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

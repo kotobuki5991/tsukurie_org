@@ -1,3 +1,4 @@
+<title>つくりえ -ログイン-</title>
 <x-guest-layout>
 
     <x-auth-card>
