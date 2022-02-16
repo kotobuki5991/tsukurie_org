@@ -62,3 +62,21 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+// マイページ パスワードの更新用
+Route::get('/update-password', [PasswordResetLinkController::class, 'update'])
+                ->middleware('auth')
+                ->name('update.password');
+
+// パスワードリセットリンク送信ボタン押下時
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+                ->middleware('auth')
+                ->name('update.password.email');
+
+Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+                ->middleware('auth')
+                ->name('password.reset');
+
+Route::post('/reset-password', [NewPasswordController::class, 'store'])
+                ->middleware('auth')
+                ->name('password.update');

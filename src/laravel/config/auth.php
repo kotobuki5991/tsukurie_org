@@ -105,7 +105,8 @@ return [
     | confirmation screen. By default, the timeout lasts for three hours.
     |
     */
-
-    'password_timeout' => 10800,
+    // 三日間ログインを保持
+    // 'password_timeout' => 10800,
+    'password_timeout' => 259200,
 
 ];
