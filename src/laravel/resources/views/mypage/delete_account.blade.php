@@ -22,7 +22,7 @@
             &nbsp;&nbsp;画面下部の「アカウント削除」ボタンを押下すると確認のポップアップが表示され、OKを選択することで削除が実行されます。
             </p>
         </div>
-        <form id="account-delete-button" action="{{ asset('/') }}" method="post">
+        <form id="account-delete-button" action="{{ asset('/mypage/destroy_account') }}" method="post">
             @csrf
             <input class="account-delete-submit sink-button mouse-hover-pointer" type="submit" value="アカウント削除">
             {{-- タスク ここにinput type hiddenで削除する対象のuseridを置いておく --}}

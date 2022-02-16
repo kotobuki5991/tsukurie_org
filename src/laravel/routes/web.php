@@ -86,6 +86,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     // アカウント削除
     Route::get('/mypage/delete_account', 'MainController@toMyPageDelete');
+    Route::post('/mypage/destroy_account', 'MainController@softDeleteAccount');
 
     // プロフィール編集用ajax
     Route::get('/mypage/ajax_selecttag_foredit/{equipment_type_id}/{id}', 'ProfileController@ajax');

@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// use App\Models\User;
-// use App\Models\CreatorType;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Profile extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = array('id');
 

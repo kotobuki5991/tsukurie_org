@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\EquipmentType;
 use App\Http\Helpers\SearchDb;
+use App\Models\User;
 
 class MainController extends Controller
 {
@@ -82,6 +83,19 @@ class MainController extends Controller
     public function toMyPageDelete(Request $request)
     {
         return view('mypage/delete_account');
+    }
+
+    public function softDeleteAccount(Request $request)
+    {
+        $delete_user_id = Auth::user()->id;
+
+        // userとprofileをソフトデリートする
+        User::firstWhere('id', $delete_user_id)->delete();
+        Profile::firstWhere('user_id', $delete_user_id)->delete();
+        // dd(Profile::firstWhere('user_id', $delete_user_id));
+
+
+        return redirect('/');
     }
 
 
