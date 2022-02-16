@@ -38,7 +38,6 @@ const handleFileSelect = (event) => {
 select_upload_img_buttotn.addEventListener('change', handleFileSelect);
 
 
-
 // アイコン選択////////////////////
 // タスク 冗長なので短くする
 let show_selected_user_icon_area = document.getElementById('show-selected-user-icon-area');
@@ -145,21 +144,5 @@ if ( update_button != null ){
         update_form.submit();
     });
 }
-
-
-////////////////////////////////////////////
-// アカウント削除ページ
-////////////////////////////////////////////
-
-let delete_button = document.getElementById('account-delete-button');
-
-if( delete_button != null ){
-    delete_button.addEventListener('submit', (event) => {
-        if( !confirm('本当に削除しますか？') ){
-            event.preventDefault();
-        }
-    });
-}
-
 
 

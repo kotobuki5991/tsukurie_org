@@ -38,5 +38,5 @@
 
 @section('add_script')
 <script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/mypage.js') }}"></script>
+{{-- <script src="{{ asset('js/mypage.js') }}"></script> --}}
 @endsection

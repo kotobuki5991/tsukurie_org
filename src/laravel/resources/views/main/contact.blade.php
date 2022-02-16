@@ -21,7 +21,8 @@
         {{--タスク 登録していないユーザーからの問い合わせの場合、ゲストさんとする。 --}}
         <input type="hidden" name="contact_title" value="【つくりえ】{{ $mail_from }}さんからの問い合わせ">
         <div class="contact-parts">
-            <textarea class="contact-message" name="contact_message" cols="60" rows="30" >機能追加のご要望や、改善点、感想などをご記入ください。</textarea>
+            <textarea class="contact-message" name="contact_message" cols="60" rows="30"
+            placeholder="機能追加のご要望や、改善点、感想などをご記入ください。  返答が必要な場合、あなたのメールアドレスも併せてご記入ください。" ></textarea>
             <input id="contact-submit" class="contact-submit sink-button mouse-hover-pointer"  type="submit" value="送信">
         </div>
     </form>
