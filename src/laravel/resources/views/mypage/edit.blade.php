@@ -5,10 +5,6 @@
 
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
-{{-- <link rel="stylesheet" type="text/css" media="all"
-    href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script> --}}
 
 @endsection
 
@@ -75,8 +71,23 @@
                     <img id="show-selected-img" class="show-selected-img"
                     src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt="">
                     {{-- メイン画像選択ボタン --}}
-                    <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png">
+                    <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="load_img(this)">
+                    <input id="croped-base64-profile-icon" name="croped_base64_profile_icon" type="hidden">
                 </div>
+
+
+
+                {{-- <button onclick="load_img('https:\/\/lh3.ggpht.com/O0aW5qsyCkR2i7Bu-jUU1b5BWA_NygJ6ui4MgaAvL7gfqvVWqkOBscDaq4pn-vkwByUx=w300')">A</button>
+                <button onclick="load_img('https:\/\/www.mozilla.org/media/img/logos/firefox/logo-quantum-wordmark-white.bd1944395fb6.png')">B</button>
+                <button onclick="load_img('')">C</button><br> --}}
+                <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
+                <canvas id='cvs' class="cvs" width="1400px" height="800px"></canvas><br>
+                {{-- <button onclick='crop_img()'>CROP</button><br> --}}
+                <input onclick='cropAndSetImage()' type="button" value="CROP"><br>
+                <canvas id='out' class="out" width='200' height='200'></canvas>
+
+
+
                 <div class="upload-user-info">
                     <div id="show-selected-user-icon-area" class="show-selected-user-icon-area">
                         <img id="show-selected-user-icon" class="show-selected-user-icon"
@@ -572,75 +583,124 @@
     }
 </script>
 <script>
-    // let cropper = null;
-    // const cropAspectRatio = 3.0 / 2.0;
-    // const scaledWidth = 200;
 
-    // const cropImage = function (evt) {
-    //     const files = evt.target.files;
-    //     if (files.length == 0) {
-    //         return;
-    //     }
-    //     let file = files[0];
-    //     let image = new Image();
-    //     let reader = new FileReader();
-    //     reader.onload = function (evt) {
-    //         image.onload = function () {
-    //             let scale = scaledWidth / image.width;
-    //             let imageData = null;
-    //             {
-    //                 const canvas = document.getElementById("sourceCanvas");
-    //                 {
-    //                     let ctx = canvas.getContext("2d");
-    //                     canvas.width = image.width * scale;
-    //                     canvas.height = image.height * scale;
-    //                     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
-    //                 }
-    //                 if (cropper != null) {
-    //                     // 画像を再読み込みした場合は破棄が必要
-    //                     cropper.destroy();
-    //                 }
-    //                 cropper = new Cropper(canvas, {
-    //                     aspectRatio: cropAspectRatio,
-    //                     movable: false,
-    //                     scalable: false,
-    //                     zoomable: false,
-    //                     data: {
-    //                         width: canvas.width,
-    //                         height: canvas.width * cropAspectRatio
-    //                     },
-    //                     // crop: function (event) {
-    //                     //     const croppedCanvas = document.getElementById("croppedCanvas");
-    //                     //     {
-    //                     //         let ctx = croppedCanvas.getContext("2d");
-    //                     //         let croppedImageWidth = image.height * cropAspectRatio;
-    //                     //         croppedCanvas.width = image.width;
-    //                     //         croppedCanvas.height = image.height;
-    //                     //         croppedCanvas.width = croppedImageWidth * scale;
-    //                     //         croppedCanvas.height = image.height * scale;
-    //                     //         ctx.drawImage(image,
-    //                     //             event.detail.x / scale, event.detail.y / scale, event.detail.width / scale, event.detail.height / scale,
-    //                     //             0, 0, croppedCanvas.width, croppedCanvas.height
-    //                     //         );
-    //                     //     }
-    //                     // }
-    //                 });
-    //             }
-    //         }
-    //         image.src = evt.target.result;
-    //     }
-    //     reader.readAsDataURL(file);
-    // }
-
-    // document.getElementById('crop-btn').addEventListener('click', function () {
-    //     resultImgUrl = cropper.getCroppedCanvas().toDataURL();
-    //     var result = document.getElementById('show-selected-img');
-    //     result.src = resultImgUrl;
-    // });
-
-    // const uploader = document.getElementById('select-upload-img');
-    // uploader.addEventListener('change', cropImage);
 </script>
 <script src="{{ asset('js/mypage.js') }}"></script>
 <script type="text/javascript" src="{{ asset( 'js/ajax.js') }}" ></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
+
+<script>
+    let cropedImageURL = "";
+    let top_img_tag = document.getElementById('show-selected-img');
+    let upload_img = document.getElementById('croped-base64-profile-icon');
+
+    const cvs = document.getElementById( 'cvs' );
+    const cw = cvs.width;
+    const ch = cvs.height;
+    const out = document.getElementById( 'out' );
+    const oh = out.height;
+    const ow = out.width;
+
+    let ix = 0;    // 中心座標
+    let iy = 0;
+    let v = 1.0;   // 拡大縮小率
+    const img  = new Image();
+    img.onload = function( _ev ){   // 画像が読み込まれた
+        ix = img.width  / 2;
+        iy = img.height / 2;
+        let scl = parseInt( cw / img.width * 100 );
+        document.getElementById( 'scal' ).value = scl;
+        scaling( scl );
+    }
+    function load_img( _url ){  // 画像の読み込み
+        if ( !_url) return;
+        img.src = (_url)
+    }
+
+    load_img();
+    function scaling( _v ) {        // スライダーが変わった
+        v = parseInt( _v ) * 0.01;
+        draw_canvas( ix, iy );      // 画像更新
+    }
+
+    function draw_canvas( _x, _y ){     // 画像更新
+        const ctx = cvs.getContext( '2d' );
+        ctx.fillStyle = 'rgb(200, 200, 200)';
+        ctx.fillRect( 0, 0, cw, ch );   // 背景を塗る
+        ctx.drawImage( img,
+            0, 0, img.width, img.height,
+            (cw/2)-_x*v, (ch/2)-_y*v, img.width*v, img.height*v,
+        );
+        ctx.strokeStyle = 'rgba(200, 0, 0, 0.8)';
+        ctx.strokeRect( (cw-ow)/2, (ch-oh)/2, ow, oh ); // 赤い枠
+    }
+
+    function crop_img(){                // 画像切り取り
+        const ctx = out.getContext( '2d' );
+        ctx.fillStyle = 'rgb(200, 200, 200)';
+        ctx.fillRect( 0, 0, ow, oh );    // 背景を塗る
+        ctx.drawImage( img,
+            0, 0, img.width, img.height,
+            (ow/2)-ix*v, (oh/2)-iy*v, img.width*v, img.height*v,
+        );
+    }
+
+    // 切り抜いた画像をimgタグに表示
+
+    function toDataURL(){
+        cropedImageURL = out.toDataURL();
+    }
+
+    function decodeImage(){
+        cropedImageURL
+    }
+
+    function setURLtoImage(){
+        top_img_tag.src = cropedImageURL;
+        // type=hiddenのvalueにアップロード用のbase64エンコードimgを登録
+        upload_img.value = cropedImageURL;
+        console.log(upload_img.value);
+    }
+
+    function cropAndSetImage(){
+        crop_img();
+        toDataURL();
+        setURLtoImage();
+    }
+
+    let mouse_down = false;      // canvas ドラッグ中フラグ
+    let sx = 0;                  // canvas ドラッグ開始位置
+    let sy = 0;
+    cvs.ontouchstart =
+    cvs.onmousedown = function ( _ev ){     // canvas ドラッグ開始位置
+        mouse_down = true;
+        sx = _ev.pageX;
+        sy = _ev.pageY;
+        return false; // イベントを伝搬しない
+    }
+    cvs.ontouchend =
+    cvs.onmouseout =
+    cvs.onmouseup = function ( _ev ){       // canvas ドラッグ終了位置
+        if ( mouse_down == false ) return;
+        mouse_down = false;
+        draw_canvas( ix += (sx-_ev.pageX)/v, iy += (sy-_ev.pageY)/v );
+        return false; // イベントを伝搬しない
+    }
+    cvs.ontouchmove =
+    cvs.onmousemove = function ( _ev ){     // canvas ドラッグ中
+        if ( mouse_down == false ) return;
+        draw_canvas( ix + (sx-_ev.pageX)/v, iy + (sy-_ev.pageY)/v );
+        return false; // イベントを伝搬しない
+    }
+    cvs.onmousewheel = function ( _ev ){    // canvas ホイールで拡大縮小
+        let scl = parseInt( parseInt( document.getElementById( 'scal' ).value ) + _ev.wheelDelta * 0.05 );
+        if ( scl < 10  ) scl = 10;
+        if ( scl > 400 ) scl = 400;
+        document.getElementById( 'scal' ).value = scl;
+        scaling( scl );
+        return false; // イベントを伝搬しない
+    }
+</script>
 @endsection

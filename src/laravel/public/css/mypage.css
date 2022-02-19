@@ -60,6 +60,26 @@ img.show-selected-img {
     opacity: 0.5;
 }
 
+/* 画像切り抜き */
+canvas.cvs {
+    /* position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0; */
+    width: 700px;
+    height: 400px;
+}
+
+canvas.out {
+    /* position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0; */
+    width: 700px;
+    height: 400px;
+}
+
+
 div.upload-user-info {
     position: relative;
     width: 600px;
@@ -260,4 +280,6 @@ p.delete-explanation {
     margin: 0px 15px 10px 15px;
     text-align: left;
 }
+
+
 

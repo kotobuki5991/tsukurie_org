@@ -31,7 +31,8 @@ const handleFileSelect = (event) => {
     fileReader.readAsDataURL(selected_file);
 
     fileReader.onload = (event) => {
-        show_selected_img.src = event.target.result
+        show_selected_img.src = event.target.result;
+        load_img(show_selected_img.src);
     }
 }
 
