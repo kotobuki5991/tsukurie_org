@@ -4,6 +4,27 @@
 // プロフィール編集ページ
 ////////////////////////////////////////////
 
+// モーダルウィンドウ関連
+let modal_window = document.getElementById('modal-window');
+// let modal_content = document.getElementById('modal-content');
+
+function openModalWindow(){
+    modal_window.style.display = 'block';
+}
+
+function closeModalWindow(){
+    modal_window.style.display = 'none';
+}
+
+// // modal_content外がクリックされた場合モーダルウィンドウを閉じる
+// addEventListener('click', (event) => {
+//     if(event.target == modal_window){
+//         console.log(event.target);
+//         closeModalWindow();
+//     }
+// });
+
+
 // 画像アップロードフォーム
 // 選択した画像を半透明で表示させる
 
@@ -34,6 +55,7 @@ const handleFileSelect = (event) => {
         show_selected_img.src = event.target.result;
         load_img(show_selected_img.src);
     }
+    openModalWindow();
 }
 
 select_upload_img_buttotn.addEventListener('change', handleFileSelect);

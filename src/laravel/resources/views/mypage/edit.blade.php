@@ -13,6 +13,14 @@
 <h2 class="letter">プロフィール編集</h2>
 @endsection
 
+<div id="modal-window" class="modal-window">
+    <div id="modal-content" class="modal-content">
+        <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
+        <canvas id='cvs' class="cvs" width="1400px" height="800px"></canvas><br>
+        <div class="crop-button"><input class="button sink-button mouse-hover-pointer" type="button" value="トリミング" onclick='cropAndSetImage()'><br></div>
+        <canvas id='out' class="out" width='200' height='200'></canvas>
+    </div>
+</div>
 
 {{-- メインコンテンツ --}}
     @section('main_block')
@@ -75,16 +83,13 @@
                     <input id="croped-base64-profile-icon" name="croped_base64_profile_icon" type="hidden">
                 </div>
 
-
-
-                {{-- <button onclick="load_img('https:\/\/lh3.ggpht.com/O0aW5qsyCkR2i7Bu-jUU1b5BWA_NygJ6ui4MgaAvL7gfqvVWqkOBscDaq4pn-vkwByUx=w300')">A</button>
-                <button onclick="load_img('https:\/\/www.mozilla.org/media/img/logos/firefox/logo-quantum-wordmark-white.bd1944395fb6.png')">B</button>
-                <button onclick="load_img('')">C</button><br> --}}
-                <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
-                <canvas id='cvs' class="cvs" width="1400px" height="800px"></canvas><br>
-                {{-- <button onclick='crop_img()'>CROP</button><br> --}}
-                <input onclick='cropAndSetImage()' type="button" value="CROP"><br>
-                <canvas id='out' class="out" width='200' height='200'></canvas>
+                {{-- モーダルウィンドウ --}}
+                {{-- <div id="modal-window" class="modal-window">
+                    <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
+                    <canvas id='cvs' class="cvs" width="1400px" height="800px"></canvas><br>
+                    <input onclick='cropAndSetImage()' type="button" value="CROP"><br>
+                    <canvas id='out' class="out" width='200' height='200'></canvas>
+                </div> --}}
 
 
 
@@ -588,13 +593,15 @@
 <script src="{{ asset('js/mypage.js') }}"></script>
 <script type="text/javascript" src="{{ asset( 'js/ajax.js') }}" ></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+{{-- <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script> --}}
 
 <script>
     let cropedImageURL = "";
     let top_img_tag = document.getElementById('show-selected-img');
     let upload_img = document.getElementById('croped-base64-profile-icon');
+
+    // let modal_window = document.getElementById('modal-window')
 
     const cvs = document.getElementById( 'cvs' );
     const cw = cvs.width;
@@ -668,6 +675,7 @@
         crop_img();
         toDataURL();
         setURLtoImage();
+        closeModalWindow(); //mypage.jsに定義
     }
 
     let mouse_down = false;      // canvas ドラッグ中フラグ

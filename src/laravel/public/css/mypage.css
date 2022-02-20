@@ -60,14 +60,52 @@ img.show-selected-img {
     opacity: 0.5;
 }
 
+/* モーダルウィンドウ */
+.modal-window {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+.modal-content {
+    /* display: none; */
+    /* position: absolute; */
+    /* z-index: 3; */
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 700px;
+    height: 400px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+  }
+
+  div.crop-button {
+    text-align: center;
+  }
+
+  div.crop-button > .button {
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 1px;
+    border-color: rgb(198, 202, 202);
+  }
+
+
+
 /* 画像切り抜き */
 canvas.cvs {
     /* position: absolute;
     z-index: 3;
     top: 0;
     left: 0; */
-    width: 700px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
 }
 
 canvas.out {
@@ -75,8 +113,9 @@ canvas.out {
     z-index: 3;
     top: 0;
     left: 0; */
-    width: 700px;
-    height: 400px;
+    display: none;
+    width: 100%;
+    height: 100%;
 }
 
 
