@@ -633,10 +633,6 @@
         cropedImageURL = out.toDataURL();
     }
 
-    function decodeImage(){
-        cropedImageURL
-    }
-
     function setURLtoImage(){
         top_img_tag.src = cropedImageURL;
         // type=hiddenのvalueにアップロード用のbase64エンコードimgを登録
