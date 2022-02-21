@@ -37,6 +37,9 @@ const allow_exts = new Array('jpg', 'jpeg', 'png');
 
 const handleFileSelect = (event) => {
     let selected_file = select_upload_img_buttotn.files[0];
+    // ファイルが選択されていなければ処理しない
+    console.log(selected_file);
+    if (selected_file == undefined) return;
     let selected_file_name = selected_file.name;
 
     // 拡張子を取得（.で区切った配列の最後の要素が拡張子）

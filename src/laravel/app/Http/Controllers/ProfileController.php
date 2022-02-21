@@ -71,7 +71,8 @@ class ProfileController extends Controller
             $form['profile_icon'] = $profile_icon_path;
         }
 
-        if( isset($request->top_image) ){
+        // 画像がセットされている場合、アップロードする
+        if( isset($request->top_image) || isset($request->croped_base64_profile_icon) ){
             if ($form['croped_base64_profile_icon']){
                 // デコードした画像をアップロードする
 

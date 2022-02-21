@@ -79,8 +79,8 @@ img.show-selected-img {
     /* z-index: 3; */
     background-color: #f4f4f4;
     margin: 20% auto;
-    width: 700px;
-    height: 400px;
+    width: 770px; /* 3:2にする */
+    height: 514px;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
   }
 
@@ -114,8 +114,8 @@ canvas.out {
     top: 0;
     left: 0; */
     display: none;
-    width: 100%;
-    height: 100%;
+    width: 700px; /* 3:2にする */
+    height: 467px;
 }
 
 

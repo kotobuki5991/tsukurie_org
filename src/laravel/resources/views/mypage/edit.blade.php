@@ -16,9 +16,9 @@
 <div id="modal-window" class="modal-window">
     <div id="modal-content" class="modal-content">
         <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
-        <canvas id='cvs' class="cvs" width="1400px" height="800px"></canvas><br>
+        <canvas id='cvs' class="cvs" width="1540px" height="1028px"></canvas><br>
         <div class="crop-button"><input class="button sink-button mouse-hover-pointer" type="button" value="トリミング" onclick='cropAndSetImage()'><br></div>
-        <canvas id='out' class="out" width='200' height='200'></canvas>
+        <canvas id='out' class="out" width='1400px' height='934px'></canvas>
     </div>
 </div>
 
@@ -31,20 +31,10 @@
             <p class="error-msg">{{ $error }}</p>
             @endforeach
         @endif
-        {{-- <button id="crop-btn">切り抜き</button>
-        <div>
-            <table>
-                <tr>
-                    <th>元画像</th>
-                </tr>
-                <tr>
-                    <td><canvas id="sourceCanvas" width="1" height="1"></canvas></td>
-                </tr>
-            </table>
-        </div> --}}
+
         <form id="update-form" action="{{ asset('/mypage/update') }}" method="post" enctype="multipart/form-data">
             @csrf
-            {{-- <input type="hidden" name="user_id" value="{{ $profile["user_id"] }}"> --}}
+
             <div class="posted-desk-card float">
                 <div id="creator-type-tag">
                     @switch($profile["creator_type"])
@@ -72,9 +62,6 @@
                     @endswitch
                 </div>
 
-                {{-- <div class="posted-deck-category-tag-music mouse-hover-transparent">
-                    <a href="https://www.google.com"><h4 class="letter">{{ $profile["creator_type"] }}</h4></a>
-                </div> --}}
                 <div id="upload-img-area" class="upload-img-area">
                     <img id="show-selected-img" class="show-selected-img"
                     src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt="">
@@ -82,16 +69,6 @@
                     <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="load_img(this)">
                     <input id="croped-base64-profile-icon" name="croped_base64_profile_icon" type="hidden">
                 </div>
-
-                {{-- モーダルウィンドウ --}}
-                {{-- <div id="modal-window" class="modal-window">
-                    <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
-                    <canvas id='cvs' class="cvs" width="1400px" height="800px"></canvas><br>
-                    <input onclick='cropAndSetImage()' type="button" value="CROP"><br>
-                    <canvas id='out' class="out" width='200' height='200'></canvas>
-                </div> --}}
-
-
 
                 <div class="upload-user-info">
                     <div id="show-selected-user-icon-area" class="show-selected-user-icon-area">
@@ -593,15 +570,10 @@
 <script src="{{ asset('js/mypage.js') }}"></script>
 <script type="text/javascript" src="{{ asset( 'js/ajax.js') }}" ></script>
 
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
-{{-- <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script> --}}
-
 <script>
     let cropedImageURL = "";
     let top_img_tag = document.getElementById('show-selected-img');
     let upload_img = document.getElementById('croped-base64-profile-icon');
-
-    // let modal_window = document.getElementById('modal-window')
 
     const cvs = document.getElementById( 'cvs' );
     const cw = cvs.width;
@@ -622,7 +594,8 @@
         scaling( scl );
     }
     function load_img( _url ){  // 画像の読み込み
-        if ( !_url) return;
+        // ファイルが選択されていなければなにもしない
+        if ( !_url || select_upload_img_buttotn.files[0] == undefined) return;
         img.src = (_url)
     }
 

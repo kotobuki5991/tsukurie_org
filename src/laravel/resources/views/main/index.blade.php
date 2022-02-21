@@ -47,7 +47,6 @@
             <div class="category-tag unselected-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @default
-            {{-- タスク 未選択タグを準備 --}}
         @endswitch
         {{-- <div class="category-tag-music mouse-hover-transparent"><a href="https://www.google.com"><h4>{{ $profile["creator_type"] }}</h4></a></div> --}}
         <div class="desk-card-image-area">
@@ -57,7 +56,7 @@
         </div>
         {{-- 後で遷移先変える --}}
         <div>
-            <a href="https://www.google.com">
+            <a href="{{ route('/show_post', ['user_id' => $profile['user_id']]) }}">
                 <img class="desk-card-user-icon" src="{{ $profile["profile_icon"] ?: asset('/images/default_user_icon.jpeg') }}" alt="">
             </a>
         </div>
