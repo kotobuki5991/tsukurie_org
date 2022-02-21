@@ -17,6 +17,8 @@
         };
     </script>
 
+    @yield('add_script_head')
+
 </head>
 <body>
     <header>

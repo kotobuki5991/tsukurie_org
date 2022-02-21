@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use \Illuminate\Contracts\Filesystem\Filesystem;
 use App\Http\Helpers\SearchDb;
 use Aws\Crypto\Cipher\CipherMethod;
+use Illuminate\Http\File;
 
 class ProfileController extends Controller
 {
@@ -38,15 +39,9 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
 
-        // $auth_user_id = Auth::user()->id;
+        $auth_user_id = Auth::user()->id;
 
         $this->validate($request, Profile::$rules);
-
-        // // ログインユーザーのidと更新するprofileテーブルのuser_idが異なる場合更新せずリダイレクト
-        // if ($request->user_id != $auth_user_id) {
-        //     // return redirect('/mypage/top');
-        //     return view('invalid/invalid-request')->render();
-        // }
 
         $form = $request->all();
 
@@ -76,25 +71,37 @@ class ProfileController extends Controller
             $form['profile_icon'] = $profile_icon_path;
         }
 
-        if( isset($request->top_image) ){
-            $top_image_path = Storage::disk('s3')
+        // 画像がセットされている場合、アップロードする
+        if( isset($request->top_image) || isset($request->croped_base64_profile_icon) ){
+            if ($form['croped_base64_profile_icon']){
+                // デコードした画像をアップロードする
+
+                // 画像をデコード
+                $decoded_file_info = $this->decodeBase64Image($request->croped_base64_profile_icon);
+                // ファイル名を設定
+                $fileName = 's3_top_image' . $auth_user_id . '.' . $decoded_file_info['file_extension'];
+                // 保存するパスを決める
+                $path = 'uploaded-images/'.$fileName;
+                // AWS S3 に保存する
+                Storage::disk('s3')->put($path, $decoded_file_info['file_data']);
+                $form['top_image'] = $path;
+            }else{
+                // 画像をトリミングしなかった場合
+                $top_image_path = Storage::disk('s3')
                 ->putFileAs('/uploaded-images',$request->file('top_image'), 's3_top_image' . $auth_user_id . '.' . $request->top_image->getClientOriginalExtension());
-            $form['top_image'] = $top_image_path;
+                $form['top_image'] = $top_image_path;
+            }
         }
 
-
         unset($form['_token']);
+        unset($form['croped_base64_profile_icon']);
 
-
-        // $profile = Profile::firstWhere('user_id', $request->user_id);
         $profile = Profile::firstWhere('user_id', Auth::user()->id);
 
         $profile->fill($form)->save();
 
         return redirect('/mypage/top');
     }
-
-
 
     public function ajax(Request $request)
     {
@@ -128,5 +135,27 @@ class ProfileController extends Controller
     {
         // dd( $request);
         return view('/mypage/ajax_used_item_form_change', ['ajax_param' => $request]);
+    }
+
+
+
+
+
+    private function decodeBase64Image($base64_file)
+    {
+        $file_info = [];
+        // "data:{拡張子}"と"base64,"で区切る
+        list($file_data_extention, $file_data) = explode(';', $base64_file);
+        // 拡張子を取得
+        $file_extension = explode('/', $file_data_extention)[1];
+        // $file_dataにある"base64,"を削除する
+        list(, $file_data) = explode(',', $file_data);
+        // base64をデコード
+        $file_data = base64_decode($file_data);
+        $file_info = [
+            'file_data' => $file_data,
+            'file_extension' => $file_extension,
+        ];
+        return $file_info;
     }
 }

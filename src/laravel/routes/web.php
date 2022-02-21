@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\UploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,6 +84,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
     // Route::get('/mypage/edit', 'MainController@toMyPageEdit');
     Route::get('/mypage/edit', 'ProfileController@edit');
     Route::post('/mypage/update', 'ProfileController@update');
+
+
+    // 画像トリミング用
+    Route::get('upload',[UploadController::class, 'index']);
+    Route::post('crop',[UploadController::class, 'crop'])->name('crop');
+
 
     // アカウント削除
     Route::get('/mypage/delete_account', 'MainController@toMyPageDelete');

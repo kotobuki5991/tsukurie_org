@@ -4,6 +4,27 @@
 // プロフィール編集ページ
 ////////////////////////////////////////////
 
+// モーダルウィンドウ関連
+let modal_window = document.getElementById('modal-window');
+// let modal_content = document.getElementById('modal-content');
+
+function openModalWindow(){
+    modal_window.style.display = 'block';
+}
+
+function closeModalWindow(){
+    modal_window.style.display = 'none';
+}
+
+// // modal_content外がクリックされた場合モーダルウィンドウを閉じる
+// addEventListener('click', (event) => {
+//     if(event.target == modal_window){
+//         console.log(event.target);
+//         closeModalWindow();
+//     }
+// });
+
+
 // 画像アップロードフォーム
 // 選択した画像を半透明で表示させる
 
@@ -16,6 +37,9 @@ const allow_exts = new Array('jpg', 'jpeg', 'png');
 
 const handleFileSelect = (event) => {
     let selected_file = select_upload_img_buttotn.files[0];
+    // ファイルが選択されていなければ処理しない
+    console.log(selected_file);
+    if (selected_file == undefined) return;
     let selected_file_name = selected_file.name;
 
     // 拡張子を取得（.で区切った配列の最後の要素が拡張子）
@@ -31,8 +55,10 @@ const handleFileSelect = (event) => {
     fileReader.readAsDataURL(selected_file);
 
     fileReader.onload = (event) => {
-        show_selected_img.src = event.target.result
+        show_selected_img.src = event.target.result;
+        load_img(show_selected_img.src);
     }
+    openModalWindow();
 }
 
 select_upload_img_buttotn.addEventListener('change', handleFileSelect);
