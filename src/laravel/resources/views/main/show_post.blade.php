@@ -1,5 +1,6 @@
 @extends('layouts.main_layout')
 
+{{-- タスク ユーザー名を表示 --}}
 @section('title', 'つくりえ -○○のつくえ-')
 @section('add_css')
 <link rel="stylesheet" href="{{ asset('css/show_post.css') }}">
@@ -15,7 +16,9 @@
 @section('main_contents')
 <div class="main-contents">
 
+    @if (!$isMobile)
     <div class="left-block"></div>
+    @endif
 
     <div class="main-block">
         <div class="posted-desk-card float">
@@ -72,8 +75,9 @@
             </div>
         </div>
     </div>
-
+    @if (!$isMobile)
     <div class="right-block"></div>
+    @endif
 </div>
 <div class="posted-back-to-top">
     <a class="letter" href="/">トップへ戻る</a>

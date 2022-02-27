@@ -21,7 +21,9 @@
                 <option value="2">イラスト</option>
                 <option value="3">動画</option>
                 </select>
+            @if (!$isMobile)
             <input class="search-select-submit sink-button" type="submit" value="検索">
+            @endif
         </form>
     </div>
 </div>
