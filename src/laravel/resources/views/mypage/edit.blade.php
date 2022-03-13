@@ -1,30 +1,33 @@
 @extends('/layouts.mypage_layout')
 
-@section('title', 'つくりえ -プロフィール編集-')
+@section('title')つくりえ -プロフィール編集-@endsection
 @section('add_css')
-
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
-
 @endsection
 
 {{-- ページ名 --}}
 @section('page_name')
-<h2 class="letter">プロフィール編集</h2>
+<h2 class="letter-title">プロフィール編集</h2>
 @endsection
 
+{{-- トップ画像用 --}}
 <div id="modal-window" class="modal-window">
     <div id="modal-content" class="modal-content">
         <input id='scal' type='range' value='' min='10' max='400' oninput="scaling(value)" style='width: 300px;'><br>
-        <canvas id='cvs' class="cvs" width="1540px" height="1028px"></canvas><br>
-        <div class="crop-button"><input class="button sink-button mouse-hover-pointer" type="button" value="トリミング" onclick='cropAndSetImage()'><br></div>
-        <canvas id='out' class="out" width='1400px' height='934px'></canvas>
+        <canvas id='cvs' class="cvs" width="{{ $isMobile ? '650px' : '1540px' }}" height="{{ $isMobile ? '466px' : '1028px' }}"></canvas><br>
+        {{-- トップ画像用 --}}
+        <div id="crop-button-top" class="crop-button crop-button-top"><input class="button sink-button mouse-hover-pointer" type="button" value="トリミング" onclick='cropAndSetImage()'><br></div>
+        <canvas id='out' class="out" width="{{ $isMobile ? '600px' : '1400px' }}" height="{{ $isMobile ? '400px' : '934px' }}"></canvas>
+        {{-- ユーザーアイコン用 --}}
+        <div id="crop-button-icon" class="crop-button crop-button-icon"><input class="button sink-button mouse-hover-pointer" type="button" value="トリミング" onclick='cropAndSetUserIcon()'><br></div>
+        <canvas id='out-user-icon' class="out-user-icon" width="400px" height="400px"></canvas>
     </div>
 </div>
 
 {{-- メインコンテンツ --}}
-    @section('main_block')
-    <div class="main-block">
+@section('main_block')
+<div class="main-block">
         {{-- タスク エラー表示なおす --}}
         @if (count($errors) > 0)
             @foreach ($errors->all() as $error)
@@ -40,22 +43,22 @@
                     @switch($profile["creator_type"])
                     @case('音楽')
                     <div id="creator-type" class="posted-deck-category-tag music-tag mouse-hover-transparent">
-                        <a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                        <a class="letter-title" href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
                     </div>
                     @break
                     @case('イラスト')
                         <div id="creator-type" class="posted-deck-category-tag illust-tag mouse-hover-transparent">
-                            <a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                            <a class="letter-title" href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
                         </div>
                         @break
                     @case('動画')
                         <div id="creator-type" class="posted-deck-category-tag movie-tag mouse-hover-transparent">
-                            <a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                            <a class="letter-title" href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
                         </div>
                         @break
                     @case('未選択')
                         <div id="creator-type" class="posted-deck-category-tag unselected-tag mouse-hover-transparent">
-                            <a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
+                            <a class="letter-title" href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
                         </div>
                     @break
                     @default
@@ -66,10 +69,13 @@
                     <img id="show-selected-img" class="show-selected-img"
                     src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt="">
                     {{-- メイン画像選択ボタン --}}
-                    <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="load_img(this)">
+                    {{-- <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="loadImg(this)"> --}}
+                    <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="changeActiveCanvas(0)">
                     <input id="croped-base64-profile-icon" name="croped_base64_profile_icon" type="hidden">
                 </div>
-
+                @if ($isMobile)
+                    <p style="color: red" >※画像アップロードはPCからを推奨しています。</p>
+                @endif
                 <div class="upload-user-info">
                     <div id="show-selected-user-icon-area" class="show-selected-user-icon-area">
                         <img id="show-selected-user-icon" class="show-selected-user-icon"
@@ -85,8 +91,8 @@
                     </select>
                 </div>
                 <div id="select-upload-user-icon-button" class="select-upload-user-icon-button">
-                    {{-- ユーザーアイコン選択ボタン --}}
-                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="profile_icon" accept=".jpg, .jpeg, .png">
+                    <input id="select-upload-user-icon" class="select-upload-user-icon" type="file" name="profile_icon" accept=".jpg, .jpeg, .png" onchange="changeActiveCanvas(1)">
+                    <input id="croped-base64-user-icon" name="croped_base64_user_icon" type="hidden">
                 </div>
 
                 <div class="posted-desk-card-profiles">
@@ -487,8 +493,8 @@
 
                                         </select>
                                         <div class="myprofile-edit-items-url">
-                                            <input type="text" value="" name="equipment_url_{{ $i }}"
-                                            placeholder="使用機材のURLを入力" value={{ $profile["equipment_url_" . $i] }}>
+                                            <input type="text" value="{{ $profile["equipment_url_{$i}"] }}" name="equipment_url_{{ $i }}"
+                                            placeholder="使用機材のURLを入力">
                                         </div>
                                     </div>
                                 </div>
@@ -571,41 +577,73 @@
 <script type="text/javascript" src="{{ asset( 'js/ajax.js') }}" ></script>
 
 <script>
-    let cropedImageURL = "";
+    let croped_image_URL = "";
     let top_img_tag = document.getElementById('show-selected-img');
     let upload_img = document.getElementById('croped-base64-profile-icon');
+
+
+    let user_icon_img_tag = document.getElementById('show-selected-user-icon');
+    let upload_user_icon = document.getElementById('croped-base64-user-icon');
 
     const cvs = document.getElementById( 'cvs' );
     const cw = cvs.width;
     const ch = cvs.height;
+
     const out = document.getElementById( 'out' );
-    const oh = out.height;
-    const ow = out.width;
+    const out_user_icon = document.getElementById( 'out-user-icon' );
+
+    const crop_button_top = document.getElementById('crop-button-top');
+    const crop_button_icon = document.getElementById('crop-button-icon');
+
 
     let ix = 0;    // 中心座標
     let iy = 0;
     let v = 1.0;   // 拡大縮小率
     const img  = new Image();
+
+     // 現在使用しているcanvasはトップ画像かユーザーアイコンどちらか判定（0でトップ、1でアイコン）
+     let active_canvas = 0;
+
+     function changeActiveCanvas(active_canvas_num){
+        active_canvas = active_canvas_num;
+        if (active_canvas == 0) {
+            crop_button_top.style.display = 'block';
+            crop_button_icon.style.display = 'none';
+            out_user_icon.style.display = 'none';
+        }else if(active_canvas == 1){
+            crop_button_icon.style.display = 'block';
+            crop_button_top.style.display = 'none';
+            out.style.display = 'none';
+        }
+     }
+
     img.onload = function( _ev ){   // 画像が読み込まれた
+        console.log('onload');
         ix = img.width  / 2;
         iy = img.height / 2;
         let scl = parseInt( cw / img.width * 100 );
         document.getElementById( 'scal' ).value = scl;
         scaling( scl );
     }
-    function load_img( _url ){  // 画像の読み込み
-        // ファイルが選択されていなければなにもしない
-        if ( !_url || select_upload_img_buttotn.files[0] == undefined) return;
+    function loadImg( _url ){  // 画像の読み込み
+        console.log('loadImg edit_after_if');
         img.src = (_url)
     }
 
-    load_img();
+    // loadImg();
     function scaling( _v ) {        // スライダーが変わった
+        console.log('scaling');
         v = parseInt( _v ) * 0.01;
-        draw_canvas( ix, iy );      // 画像更新
+        if (active_canvas == 0) {
+            drawCanvas( ix, iy, out.width, out.height );      // 画像更新
+        }else if(active_canvas == 1){
+            drawCanvas( ix, iy, out_user_icon.width, out_user_icon.height );      // 画像更新
+        }
     }
 
-    function draw_canvas( _x, _y ){     // 画像更新
+
+    function drawCanvas( _x, _y, crop_width, crop_height){     // 画像更新
+        console.log('drawCanvas');
         const ctx = cvs.getContext( '2d' );
         ctx.fillStyle = 'rgb(200, 200, 200)';
         ctx.fillRect( 0, 0, cw, ch );   // 背景を塗る
@@ -614,36 +652,44 @@
             (cw/2)-_x*v, (ch/2)-_y*v, img.width*v, img.height*v,
         );
         ctx.strokeStyle = 'rgba(200, 0, 0, 0.8)';
-        ctx.strokeRect( (cw-ow)/2, (ch-oh)/2, ow, oh ); // 赤い枠
+        ctx.strokeRect( (cw-crop_width)/2, (ch-crop_height)/2, crop_width, crop_height ); // 赤い枠
     }
 
-    function crop_img(){                // 画像切り取り
-        const ctx = out.getContext( '2d' );
+    function cropImg(out_canvas){                // 画像切り取り
+        const ctx = out_canvas.getContext( '2d' );
         ctx.fillStyle = 'rgb(200, 200, 200)';
-        ctx.fillRect( 0, 0, ow, oh );    // 背景を塗る
+        ctx.fillRect( 0, 0, out_canvas.width, out_canvas.height );    // 背景を塗る
         ctx.drawImage( img,
             0, 0, img.width, img.height,
-            (ow/2)-ix*v, (oh/2)-iy*v, img.width*v, img.height*v,
+            (out_canvas.width/2)-ix*v, (out_canvas.height/2)-iy*v, img.width*v, img.height*v,
         );
     }
 
     // 切り抜いた画像をimgタグに表示
 
-    function toDataURL(){
-        cropedImageURL = out.toDataURL();
+    function toDataURL(out_canvas){
+        croped_image_URL = out_canvas.toDataURL();
     }
 
-    function setURLtoImage(){
-        top_img_tag.src = cropedImageURL;
+    function setURLtoImage(img_tag, upload_crop_img){
+        img_tag.src = croped_image_URL;
         // type=hiddenのvalueにアップロード用のbase64エンコードimgを登録
-        upload_img.value = cropedImageURL;
-        console.log(upload_img.value);
+        upload_crop_img.value = croped_image_URL;
+        console.log(upload_crop_img.value);
     }
 
+    // top_image用
     function cropAndSetImage(){
-        crop_img();
-        toDataURL();
-        setURLtoImage();
+        cropImg(out);
+        toDataURL(out);
+        setURLtoImage(top_img_tag, upload_img);
+        closeModalWindow(); //mypage.jsに定義
+    }
+    // user_icon用
+    function cropAndSetUserIcon(){
+        cropImg(out_user_icon);
+        toDataURL(out_user_icon);
+        setURLtoImage(user_icon_img_tag, upload_user_icon);
         closeModalWindow(); //mypage.jsに定義
     }
 
@@ -662,13 +708,22 @@
     cvs.onmouseup = function ( _ev ){       // canvas ドラッグ終了位置
         if ( mouse_down == false ) return;
         mouse_down = false;
-        draw_canvas( ix += (sx-_ev.pageX)/v, iy += (sy-_ev.pageY)/v );
+        if (active_canvas == 0) {
+            drawCanvas(  ix += (sx-_ev.pageX)/v, iy += (sy-_ev.pageY)/v , out.width, out.height );      // 画像更新
+        }else if(active_canvas == 1){
+            drawCanvas(  ix += (sx-_ev.pageX)/v, iy += (sy-_ev.pageY)/v , out_user_icon.width, out_user_icon.height );      // 画像更新
+        }
+
         return false; // イベントを伝搬しない
     }
     cvs.ontouchmove =
     cvs.onmousemove = function ( _ev ){     // canvas ドラッグ中
         if ( mouse_down == false ) return;
-        draw_canvas( ix + (sx-_ev.pageX)/v, iy + (sy-_ev.pageY)/v );
+        if (active_canvas == 0) {
+            drawCanvas(  ix + (sx-_ev.pageX)/v, iy + (sy-_ev.pageY)/v , out.width, out.height );      // 画像更新
+        }else if(active_canvas == 1){
+            drawCanvas(  ix + (sx-_ev.pageX)/v, iy + (sy-_ev.pageY)/v , out_user_icon.width, out_user_icon.height );      // 画像更新
+        }
         return false; // イベントを伝搬しない
     }
     cvs.onmousewheel = function ( _ev ){    // canvas ホイールで拡大縮小

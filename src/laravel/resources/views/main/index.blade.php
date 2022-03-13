@@ -4,7 +4,7 @@
 
 {{-- ページ名 --}}
 @section('page_name')
-<h2 class="letter">検索結果</h2>
+<h2 class="letter-title">検索結果</h2>
 @endsection
 
 {{-- 検索ボックス --}}
@@ -21,7 +21,9 @@
                 <option value="2">イラスト</option>
                 <option value="3">動画</option>
                 </select>
+            @if (!$isMobile)
             <input class="search-select-submit sink-button" type="submit" value="検索">
+            @endif
         </form>
     </div>
 </div>
@@ -35,16 +37,16 @@
     <div class="desk-card float">
         @switch($profile["creator_type"])
             @case('音楽')
-            <div class="category-tag music-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag music-tag mouse-hover-transparent"><a class="letter-title" href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('イラスト')
-            <div class="category-tag illust-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag illust-tag mouse-hover-transparent"><a class="letter-title" href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('動画')
-            <div class="category-tag movie-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag movie-tag mouse-hover-transparent"><a class="letter-title" href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @case('未選択')
-            <div class="category-tag unselected-tag mouse-hover-transparent"><a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
+            <div class="category-tag unselected-tag mouse-hover-transparent"><a class="letter-title" href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a></div>
                 @break
             @default
         @endswitch

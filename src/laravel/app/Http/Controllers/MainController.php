@@ -16,7 +16,7 @@ class MainController extends Controller
     // タスク 冗長さ改善
     public function index(Request $request)
     {
-        $user_profiles = Profile::where('publish_flag', 1)->paginate(1);
+        $user_profiles = Profile::where('publish_flag', 1)->paginate(20);
         // dd($user_profiles);
         $profile_ary = [];
         foreach($user_profiles as $user_profile){
@@ -37,14 +37,14 @@ class MainController extends Controller
     {
         $search_terms = [
             ['publish_flag', 1],
-            ['profile_name', 'LIKE', $request->search_word],
+            ['profile_name', 'LIKE', "%$request->search_word%"],
         ];
 
         if(isset($request->creator_type)){
             $search_terms[] = ['creator_type_id', $request->creator_type];
         }
 
-        $user_profiles = Profile::where($search_terms)->paginate(1);
+        $user_profiles = Profile::where($search_terms)->paginate(20);
 
         $profile_ary = [];
         foreach($user_profiles as $user_profile){

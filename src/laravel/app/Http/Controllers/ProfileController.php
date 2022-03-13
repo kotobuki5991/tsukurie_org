@@ -13,6 +13,7 @@ use \Illuminate\Contracts\Filesystem\Filesystem;
 use App\Http\Helpers\SearchDb;
 use Aws\Crypto\Cipher\CipherMethod;
 use Illuminate\Http\File;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -62,13 +63,26 @@ class ProfileController extends Controller
             $form["equipment_url_{$i}"] = null;
         }
 
-        // アップロード画像が選択されている場合のみS3にアップロード
-        if( isset($request->profile_icon) ){
-            //タスク 後で冗長な部分をまとめる
-            $profile_icon_path = Storage::disk('s3')
+        // 画像がセットされている場合、アップロードする
+        if( isset($request->profile_icon) || isset($request->croped_base64_user_icon) ){
+            if ($form['croped_base64_user_icon']){
+                // デコードした画像をアップロードする
+
+                // 画像をデコード
+                $decoded_file_info = $this->decodeBase64Image($request->croped_base64_user_icon);
+                // ファイル名を設定
+                $fileName = 's3_profile_icon' . $auth_user_id . '.' . $decoded_file_info['file_extension'];
+                // 保存するパスを決める
+                $path = 'uploaded-images/'.$fileName;
+                // AWS S3 に保存する
+                Storage::disk('s3')->put($path, $decoded_file_info['file_data']);
+                $form['profile_icon'] = $path;
+            }else{
+                $profile_icon_path = Storage::disk('s3')
                 ->putFileAs('/uploaded-images',$request->file('profile_icon'), 's3_profile_icon' . $auth_user_id . '.' . $request->profile_icon->getClientOriginalExtension());
-            // S3アップロード先のパスを取得
-            $form['profile_icon'] = $profile_icon_path;
+                // S3アップロード先のパスを取得
+                $form['profile_icon'] = $profile_icon_path;
+            }
         }
 
         // 画像がセットされている場合、アップロードする
@@ -152,9 +166,12 @@ class ProfileController extends Controller
         list(, $file_data) = explode(',', $file_data);
         // base64をデコード
         $file_data = base64_decode($file_data);
+        // 画像を圧縮
+        $comp_file_data = Image::make($file_data)->fit(700, 467)->encode('jpeg');
         $file_info = [
-            'file_data' => $file_data,
-            'file_extension' => $file_extension,
+            'file_data' => $comp_file_data,
+            // 'file_extension' => $file_extension,
+            'file_extension' => 'jpeg',
         ];
         return $file_info;
     }

@@ -9,7 +9,7 @@
 
 {{-- ページ名 --}}
 @section('page_name')
-<h2 class="letter">アカウント削除</h2>
+<h2 class="letter-title">アカウント削除</h2>
 @endsection
 
 
@@ -30,18 +30,7 @@
 </div>
 @endsection
 
-@section('add_optional_script')
-<script>
-    let delete_button = document.getElementById('account-delete-button');
-    console.log(delete_button);
-    if( delete_button != null ){
-        delete_button.addEventListener('submit', (event) => {
-            if( !confirm('本当に削除しますか？') ){
-                event.preventDefault();
-            }
-        });
-    }
-</script>
-
+@section('add_script')
+<script src="{{ asset('js/delete_account.js') }}"></script>
 @endsection
 

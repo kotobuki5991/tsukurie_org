@@ -1,7 +1,7 @@
 /* マイページトップ */
-a, p, h1, h2, h3, h4, h5, input, textarea {
+/* a, p, h1, h2, h3, h4, h5, input, textarea {
     color: rgb(90, 97, 100);
-}
+} */
 
 .mypage-links {
     list-style: none;
@@ -29,39 +29,372 @@ a, p, h1, h2, h3, h4, h5, input, textarea {
     color: red;
 }
 
-/* プロフィール更新 */
-/* 最低サイズは幅700の16×9のサイズ */
-div.upload-img-area {
+/* OSごとのスタイルをリセット */
+input[type="button"]{
+    -webkit-appearance: none;
+}
+input[type="submit"]{
+    -webkit-appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/* @media screen and (min-width: 450px) { */
+    /* @media screen and (min-width: 851px) { */
+@media screen and (hover: hover) {
+    /* プロフィール更新 */
+    /* 最低サイズは幅700の16×9のサイズ */
+    div.upload-img-area {
+            width: 700px;
+            height: auto;
+            min-height: 393px;
+            max-height: 480px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            background-color: rgb(255, 255, 255);
+    }
+
+
+
+    input.select-upload-img {
+        position: absolute;
+        z-index: 2;
+        left: 240px;
+        top: 200px;
+    }
+
+    img.show-selected-img {
+        /* display: block;
+        max-width: 100%; */
+
         width: 700px;
         height: auto;
-        min-height: 393px;
-        max-height: 480px;
+        margin-bottom: 25px;
+        opacity: 0.5;
+    }
+
+    /* モーダルウィンドウ */
+    .modal-window {
+        display: none;
+        position: fixed;
+        z-index: 3;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        /* display: none; */
+        /* position: absolute; */
+        /* z-index: 3; */
+        background-color: #f4f4f4;
+        margin: 20% auto;
+        width: 770px; /* 3:2にする */
+        height: 514px;
+        box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    }
+
+    div.crop-button {
+        text-align: center;
+    }
+
+    div.crop-button > .button {
+        width: 120px;
+        height: 30px;
+        border-radius: 10px;
+        border-style: none;
+        background-color: #645832;
+        color: white;
+    }
+
+
+
+    /* 画像切り抜き */
+    canvas.cvs {
+        width: 100%;
+        height: 100%;
+    }
+
+    canvas.out {
+        /* position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0; */
+        display: none;
+        width: 700px; /* 3:2にする */
+        height: 467px;
+    }
+    canvas.out-user-icon {
+        /* position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0; */
+        display: none;
+        width: 200px;
+        height: 200px;
+    }
+
+
+    div.upload-user-info {
+        position: relative;
+        width: 600px;
+        height: 80px;
+        margin: auto;
+        display: flex;
+    }
+
+    div.show-selected-user-icon-area {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+        left: 0;
+        border-radius: 40px;
+        overflow: hidden;
+        background-color: rgb(226, 231, 232);
+    }
+
+
+
+    .select-upload-user-icon-button {
+        height: 50px;
+    }
+
+    input.select-upload-user-icon {
+        margin-top: 15px;
+        padding-right: 350px;
+    }
+
+    img.show-selected-user-icon {
+        position: absolute;
+        z-index: 3;
+        width: 80px;
+        height: 80px;
+        left: 0;
+    }
+
+
+
+    input.myprofile-edit-username {
+        line-height: 34px;
+        margin-left: 100px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+    }
+
+    .select-creator-type {
+        width: 160px;
+        height: 40px;
+        margin: 20px;
+        margin-right: 0px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 0px;
+    }
+
+
+    .myprofile-edit-submit {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-style: none;
+        background-color: #645832;
+        color: white;
+    }
+
+    .myprofile-edit-message {
+        width: 600px;
+    }
+
+
+
+    div.myprofile-edit-message > textarea {
+        width: 578px;
+        height: 200px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 10px;
+        font-size: 15px;
+        /* color: rgb(90, 97, 100); */
+    }
+
+    div.myprofile-edit-used-items-exp {
+        width: 220px;
+        height: 70px;
+        margin: 0;
+    }
+
+    select.select-items-logo {
+        width: 80px;
+        height: 70px;
+
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 0px;
+        /* color: rgb(90, 97, 100); */
+
+    }
+
+
+    select.myprofile-edit-used-items {
+        height: 20px;
+        width: 200px;
+        margin-left: 0px;
+
+        margin-top: 9px;
+        margin-bottom: 9px;
+
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+    }
+
+
+    div.myprofile-edit-items-url > input {
+        width: 200px;
+        height: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        /* color: rgb(90, 97, 100); */
+    }
+
+
+    .circle-button {
+        width: 40px;
+        height: 40px;
+        border: solid 1px;
+        border-color: rgb(160, 173, 173);
+        border-radius: 20px;
+        resize: vertical;
+        font-size: 20px;
+    }
+
+
+    .add-button {
+        position: absolute;
+        right: 15px;
+        bottom: 80px;
+    }
+
+    .remove-button {
+        position: absolute;
+        right: 15px;
+        bottom: 20px;
+    }
+
+    div.publish-radio-button {
+        height: 15px;
+    }
+
+    /* アカウント削除ページ */
+
+    .account-delete-submit {
+        width: 130px;
+        height: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(255, 77, 0);
+        margin-top: 40px;
+        margin-bottom: 40px;
+        background-color: rgb(251, 124, 20);
+        color: white;
+    }
+
+
+    .delete-explanation-area {
+        width: 600px;
+        height: auto;
+        background-color: rgb(243, 246, 246);
+        margin: auto;
+        border-radius: 15px;
+        border: solid 1px;
+        border-color: rgb(160, 173, 173);
+    }
+
+
+
+    h2.delete-explanation {
+        color: red;
+        margin-top: 10px;
+    }
+
+    p.delete-explanation {
+        margin: 0px 15px 10px 15px;
+        text-align: left;
+    }
+ }
+
+/*///////////////////////////////////
+    スマホ横長orタブレット用
+///////////////////////////////////*/
+ @media screen and (min-width: 481px) and (max-width: 1200px) and (hover: none) and (pointer: coarse)  {
+    .add-button {
+        position: absolute;
+        right: 70px;
+        bottom: 15px;
+    }
+
+    .remove-button {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+
+
+
+    /* プロフィール更新 */
+    /* 最低サイズは幅700の16×9のサイズ */
+    div.upload-img-area {
+        width: 100%;
+        height: auto;
+        /* min-height: 393px;
+        max-height: 480px; */
         overflow: hidden;
         margin-bottom: 25px;
         background-color: rgb(255, 255, 255);
-}
+        position: relative;
+    }
 
 
 
-input.select-upload-img {
-    position: absolute;
-    z-index: 2;
-    left: 240px;
-    top: 200px;
-}
+    input.select-upload-img {
+        position: absolute;
+        z-index: 2;
+        left: 40%;
+        /* top: 25%; */
+        top: 50%;
+    }
 
-img.show-selected-img {
-    /* display: block;
-    max-width: 100%; */
-
-    width: 700px;
+    img.show-selected-img {
+    width: 100%;
     height: auto;
     margin-bottom: 25px;
     opacity: 0.5;
-}
+    }
 
-/* モーダルウィンドウ */
-.modal-window {
+    /* モーダルウィンドウ */
+    .modal-window {
     display: none;
     position: fixed;
     z-index: 3;
@@ -71,254 +404,560 @@ img.show-selected-img {
     width: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
-  }
+    }
 
-.modal-content {
-    /* display: none; */
-    /* position: absolute; */
-    /* z-index: 3; */
-    background-color: #f4f4f4;
-    margin: 20% auto;
-    width: 770px; /* 3:2にする */
-    height: 514px;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
-  }
+    .modal-content {
+        /* display: none; */
+        /* position: absolute; */
+        /* z-index: 3; */
+        background-color: #f4f4f4;
+        margin: 20% auto;
+        width: 325px; /* 3:2にする */
+        height: 200px;
+        box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    }
 
-  div.crop-button {
-    text-align: center;
-  }
+    div.crop-button {
+        text-align: center;
+    }
 
-  div.crop-button > .button {
-    width: 120px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-  }
+    div.crop-button > .button {
+        width: 120px;
+        height: 30px;
+        border-radius: 10px;
+        border-style: none;
+        background-color: #645832;
+        color: white;
+    }
+
+    .crop-button-top {
+        display: none;
+    }
+
+    .crop-button-icon {
+        display: none;
+    }
+
+    /* 画像切り抜き */
+    canvas.cvs {
+        /* width: 100%; */
+        /* height: 100%; */
+        width: 325px;
+        height: 233px;
+    }
+
+    canvas.out {
+        /* position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0; */
+        display: none;
+        width: 700px; /* 3:2にする */
+        height: 467px;
+    }
+
+
+    div.upload-user-info {
+        position: relative;
+        width: 70%;
+        height: 80px;
+        margin: auto;
+        display: flex;
+    }
+
+    div.show-selected-user-icon-area {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+        left: 0;
+        border-radius: 40px;
+        overflow: hidden;
+        background-color: rgb(226, 231, 232);
+    }
 
 
 
-/* 画像切り抜き */
-canvas.cvs {
-    /* position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0; */
+    .select-upload-user-icon-button {
+        width: 70%;
+        height: 50px;
+        /* width: 300px; */
+        margin: auto;
+    }
+
+    input.select-upload-user-icon {
+        margin-top: 15px;
+        margin-left: 0px;
+    }
+
+    img.show-selected-user-icon {
+        position: absolute;
+        z-index: 3;
+        width: 80px;
+        height: 80px;
+        left: 0;
+    }
+
+
+
+    input.myprofile-edit-username {
+        line-height: 34px;
+        margin-left: 30%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        width: 280px;
+    }
+
+    .select-creator-type {
+        width: 80px;
+        height: 40px;
+        margin: 20px;
+        margin-right: 0px;
+        margin-left: 10%;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 0px;
+    }
+
+
+    .myprofile-edit-submit {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        border-style: none;
+        background-color: #645832;
+        color: white;
+    }
+
+    .myprofile-edit-message {
+        width: 100%;
+    }
+
+
+
+    div.myprofile-edit-message > textarea {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 10px;
+        font-size: 15px;
+        /* color: rgb(90, 97, 100); */
+    }
+
+    div.myprofile-edit-used-items-exp {
+        width: 220px;
+        height: 70px;
+        margin: 0;
+    }
+
+    select.select-items-logo {
+        width: 80px;
+        height: 70px;
+
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 0px;
+        /* color: rgb(90, 97, 100); */
+
+    }
+
+
+    select.myprofile-edit-used-items {
+        height: 20px;
+        width: 200px;
+        margin-left: 0px;
+
+        margin-top: 9px;
+        margin-bottom: 9px;
+
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+    }
+
+
+    div.myprofile-edit-items-url > input {
+        width: 200px;
+        height: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        /* color: rgb(90, 97, 100); */
+    }
+
+
+    .circle-button {
+        width: 40px;
+        height: 40px;
+        border: solid 1px;
+        border-color: rgb(160, 173, 173);
+        border-radius: 20px;
+        resize: vertical;
+        font-size: 20px;
+    }
+
+
+    div.publish-radio-button {
+        height: 15px;
+    }
+
+    /* アカウント削除ページ */
+
+    .account-delete-submit {
+        width: 130px;
+        height: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(255, 77, 0);
+        margin-top: 40px;
+        margin-bottom: 40px;
+        background-color: rgb(251, 124, 20);
+        color: white;
+    }
+
+
+    .delete-explanation-area {
+        width: 90%;
+        height: auto;
+        background-color: rgb(243, 246, 246);
+        margin: auto;
+        border-radius: 15px;
+        border: solid 1px;
+        border-color: rgb(160, 173, 173);
+    }
+
+
+
+    h2.delete-explanation {
+        color: red;
+        margin-top: 10px;
+    }
+
+    p.delete-explanation {
+        margin: 0px 15px 10px 15px;
+        text-align: left;
+    }
+
+ }
+
+
+
+
+
+/*///////////////////////////////////
+            スマホ用
+///////////////////////////////////*/
+/* @media screen and (max-width: 449px) { */
+    /* 横に倒した時のサイズ */
+/* @media screen and (max-width: 850px) and (hover: none){ */
+@media screen and (max-width: 480px) and (hover: none) and (pointer: coarse) {
+    .add-button {
+        position: absolute;
+        right: 70px;
+        bottom: 15px;
+    }
+
+    .remove-button {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+
+
+
+    /* プロフィール更新 */
+    /* 最低サイズは幅700の16×9のサイズ */
+    div.upload-img-area {
+        width: 350px;
+        height: auto;
+        /* min-height: 393px;
+        max-height: 480px; */
+        overflow: hidden;
+        margin-bottom: 25px;
+        background-color: rgb(255, 255, 255);
+    }
+
+
+
+    input.select-upload-img {
+        position: absolute;
+        z-index: 2;
+        left: 60px;
+        top: 100px;
+    }
+
+    img.show-selected-img {
     width: 100%;
-    height: 100%;
-}
-
-canvas.out {
-    /* position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 0; */
-    display: none;
-    width: 700px; /* 3:2にする */
-    height: 467px;
-}
-
-
-div.upload-user-info {
-    position: relative;
-    width: 600px;
-    height: 80px;
-    margin: auto;
-    display: flex;
-}
-
-div.show-selected-user-icon-area {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    margin-left: 0;
-    left: 0;
-    border-radius: 40px;
-    overflow: hidden;
-    background-color: rgb(226, 231, 232);
-}
-
-
-
-.select-upload-user-icon-button {
-    height: 50px;
-}
-
-input.select-upload-user-icon {
-    margin-top: 15px;
-    padding-right: 350px;
-}
-
-img.show-selected-user-icon {
-    position: absolute;
-    z-index: 3;
-    width: 80px;
-    height: 80px;
-    left: 0;
-}
-
-
-
-input.myprofile-edit-username {
-    line-height: 34px;
-    margin-left: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 30px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-}
-
-.select-creator-type {
-    width: 160px;
-    height: 40px;
-    margin: 20px;
-    margin-right: 0px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    resize: vertical;
-    padding: 0px;
-}
-
-
-.myprofile-edit-submit {
-    width: 50px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.myprofile-edit-message {
-    width: 600px;
-}
-
-
-
-div.myprofile-edit-message > textarea {
-    width: 578px;
-    height: 200px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    resize: vertical;
-    padding: 10px;
-    font-size: 15px;
-    /* color: rgb(90, 97, 100); */
-}
-
-div.myprofile-edit-used-items-exp {
-    width: 220px;
-    height: 70px;
-    margin: 0;
-}
-
-select.select-items-logo {
-    width: 80px;
-    height: 70px;
-
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    resize: vertical;
-    padding: 0px;
-    /* color: rgb(90, 97, 100); */
-
-}
-
-
-select.myprofile-edit-used-items {
-    height: 20px;
-    width: 200px;
-    margin-left: 0px;
-
-    margin-top: 9px;
-    margin-bottom: 9px;
-
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-}
-
-
-div.myprofile-edit-items-url > input {
-    width: 200px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    resize: vertical;
-    /* color: rgb(90, 97, 100); */
-}
-
-
-.circle-button {
-    width: 40px;
-    height: 40px;
-    border: solid 1px;
-    border-color: rgb(160, 173, 173);
-    border-radius: 20px;
-    resize: vertical;
-    font-size: 20px;
-}
-
-
-.add-button {
-    position: absolute;
-    right: 15px;
-    bottom: 80px;
-}
-
-.remove-button {
-    position: absolute;
-    right: 15px;
-    bottom: 20px;
-}
-
-div.publish-radio-button {
-    height: 15px;
-}
-
-/* アカウント削除ページ */
-
-.account-delete-submit {
-    width: 130px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(255, 77, 0);
-    margin-top: 40px;
-    margin-bottom: 40px;
-    background-color: rgb(251, 124, 20);
-    color: white;
-}
-
-
-.delete-explanation-area {
-    width: 600px;
     height: auto;
-    background-color: rgb(243, 246, 246);
-    margin: auto;
-    border-radius: 15px;
-    border: solid 1px;
-    border-color: rgb(160, 173, 173);
+    margin-bottom: 25px;
+    opacity: 0.5;
+    }
+
+    /* モーダルウィンドウ */
+    .modal-window {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        /* display: none; */
+        /* position: absolute; */
+        /* z-index: 3; */
+        background-color: #f4f4f4;
+        margin: 20% auto;
+        width: 325px; /* 3:2にする */
+        height: 200px;
+        box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    }
+
+    div.crop-button {
+        text-align: center;
+    }
+
+    div.crop-button > .button {
+        width: 120px;
+        height: 30px;
+        border-radius: 10px;
+        border-style: none;
+        background-color: #645832;
+        color: white;
+    }
+
+
+
+    /* 画像切り抜き */
+    canvas.cvs {
+        /* width: 100%; */
+        /* height: 100%; */
+        width: 325px;
+        height: 233px;
+    }
+
+    canvas.out {
+        /* position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0; */
+        display: none;
+        width: 700px; /* 3:2にする */
+        height: 467px;
+    }
+
+
+    div.upload-user-info {
+        position: relative;
+        width: 300px;
+        height: 80px;
+        margin: auto;
+        display: flex;
+    }
+
+    div.show-selected-user-icon-area {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+        left: 0;
+        border-radius: 40px;
+        overflow: hidden;
+        background-color: rgb(226, 231, 232);
+    }
+
+
+
+    .select-upload-user-icon-button {
+        height: 50px;
+        width: 300px;
+        margin: auto;
+    }
+
+    input.select-upload-user-icon {
+        margin-top: 15px;
+        float: left;
+    }
+
+    img.show-selected-user-icon {
+        position: absolute;
+        z-index: 3;
+        width: 80px;
+        height: 80px;
+        left: 0;
+    }
+
+
+
+    input.myprofile-edit-username {
+        line-height: 34px;
+        margin-left: 90px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        width: 150px;
+    }
+
+    .select-creator-type {
+        width: 50px;
+        height: 40px;
+        margin: 20px;
+        margin-right: 0px;
+        margin-left: 10px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 0px;
+    }
+
+
+    .myprofile-edit-submit {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        border-style: none;
+        background-color: #645832;
+        color: white;
+    }
+
+    .myprofile-edit-message {
+        width: 300px;
+    }
+
+
+
+    div.myprofile-edit-message > textarea {
+        width: 300px;
+        height: 200px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 10px;
+        font-size: 15px;
+        /* color: rgb(90, 97, 100); */
+    }
+
+    div.myprofile-edit-used-items-exp {
+        width: 220px;
+        height: 70px;
+        margin: 0;
+    }
+
+    select.select-items-logo {
+        width: 80px;
+        height: 70px;
+
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        padding: 0px;
+        /* color: rgb(90, 97, 100); */
+
+    }
+
+
+    select.myprofile-edit-used-items {
+        height: 20px;
+        width: 200px;
+        margin-left: 0px;
+
+        margin-top: 9px;
+        margin-bottom: 9px;
+
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+    }
+
+
+    div.myprofile-edit-items-url > input {
+        width: 200px;
+        height: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+        /* color: rgb(90, 97, 100); */
+    }
+
+
+    .circle-button {
+        width: 40px;
+        height: 40px;
+        border: solid 1px;
+        border-color: rgb(160, 173, 173);
+        border-radius: 20px;
+        resize: vertical;
+        font-size: 20px;
+    }
+
+
+    div.publish-radio-button {
+        height: 15px;
+    }
+
+    /* アカウント削除ページ */
+
+    .account-delete-submit {
+        width: 130px;
+        height: 30px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(255, 77, 0);
+        margin-top: 40px;
+        margin-bottom: 40px;
+        background-color: rgb(251, 124, 20);
+        color: white;
+    }
+
+
+    .delete-explanation-area {
+        width: 90%;
+        height: auto;
+        background-color: rgb(243, 246, 246);
+        margin: auto;
+        border-radius: 15px;
+        border: solid 1px;
+        border-color: rgb(160, 173, 173);
+    }
+
+
+
+    h2.delete-explanation {
+        color: red;
+        margin-top: 10px;
+    }
+
+    p.delete-explanation {
+        margin: 0px 15px 10px 15px;
+        text-align: left;
+    }
 }
-
-
-
-h2.delete-explanation {
-    color: red;
-    margin-top: 10px;
-}
-
-p.delete-explanation {
-    margin: 0px 15px 10px 15px;
-    text-align: left;
-}
-
-
-

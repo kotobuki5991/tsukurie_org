@@ -2,7 +2,6 @@
 
 @section('title', 'つくりえ -○○のマイページ-')
 @section('add_css')
-{{-- タスク ファイル読み込みをasset()で行う --}}
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
 @endsection
@@ -16,24 +15,27 @@
 {{-- mypage共通部品1 --}}
 <div class="main-contents">
 
+    @if (!$isMobile)
     <div class="left-block">
         <ul class="mypage-links">
-            <li><a href="{{ asset('/mypage/top') }}" class="letter">マイページトップ</a></li>
-            {{-- <li><a href="{{ asset('/mypage/top') }}" class="letter">ログインパスワード変更</a></li> --}}
-            <li><a href="{{ route('update.password') }}" class="letter">パスワード変更</a></li>
-            <li><a href="{{ asset('/mypage/edit') }}" class="letter">プロフィール編集</a></li>
-            <li><a href="{{ asset('/mypage/delete_account') }}" class="letter">アカウント削除</a></li>
+            <li><a href="{{ asset('/mypage/top') }}" class="letter-title ">マイページトップ</a></li>
+            <li><a href="{{ route('update.password') }}" class="letter-title ">パスワード変更</a></li>
+            <li><a href="{{ asset('/mypage/edit') }}" class="letter-title ">プロフィール編集</a></li>
+            <li><a href="{{ asset('/mypage/delete_account') }}" class="letter-title ">アカウント削除</a></li>
         </ul>
     </div>
+    @endif
 {{-- mypage共通部品1 --}}
 
 @yield('main_block')
 
-{{-- mypage共通部品2 --}}
+    {{-- mypage共通部品2 --}}
+    @if (!$isMobile)
     <div class="right-block"></div>
+    @endif
 </div>
 <div class="posted-back-to-top">
-    <a class="letter" href="{{ asset('/') }}">トップへ戻る</a>
+    <a class="letter-title" href="{{ asset('/') }}">トップへ戻る</a>
 </div>
 @endsection
 

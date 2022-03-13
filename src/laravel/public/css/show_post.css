@@ -1,24 +1,26 @@
-/*/////////////////// フォント関連 ///////////////////*/
-@font-face
-{
-font-family: harenosora-mincho;
-src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
-     format("woff2");
+/* OSごとのスタイルをリセット */
+input[type="button"]{
+    -webkit-appearance: none;
 }
-
-.letter {
-    color: rgb(90, 97, 100);
-    font-family: harenosora-mincho;
+input[type="submit"]{
+    -webkit-appearance: none;
 }
-
-h3 {
-    font-size: 25px;
+select {
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 div.main-contents {
     width: 100%;
     height: auto;
     display: flex;
+}
+
+/* ボタンの共通スタイル */
+.button-style {
+    border-radius: 10px;
+    border-style: none;
+    background-color: #645832;
 }
 
 /*///////////////// 左側のブロック /////////////////*/
@@ -40,92 +42,225 @@ div.main-block {
 }
 
 
+/* @media screen and (min-width: 450px) { */
+/* @media screen and (min-width: 1025px) and (hover: hover) { */
+@media screen and (hover: hover) {
+    /* 投稿された内容表示 */
+    div.posted-desk-card {
+        position: relative;
+        background-color: white;
+        width: 700px;
+        /* height: 700px; */
+        height: auto;
+        /* margin: auto; */
+        margin: auto;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+        border-radius: 20px;
+        overflow: hidden;
+    }
 
-/* 投稿された内容表示 */
-div.posted-desk-card {
-    position: relative;
-    background-color: white;
-    width: 700px;
-    /* height: 700px; */
-    height: auto;
-    /* margin: auto; */
-    margin: auto;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-    border-radius: 20px;
-    overflow: hidden;
+    img.posted-desk-card-image {
+        /* width: 600px; */
+        width: 700px;
+        height: auto;
+        /* margin-top: 45px; */
+        margin-bottom: 25px;
+    }
+
+    /* ユーザーアイコン */
+
+    div.posted-desk-card-imgdiv {
+        position: relative;
+        width: 600px;
+        height: 80px;
+        margin: auto;
+    }
+
+
+    img.posted-desk-card-icon {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+        left: 0;
+        border-radius: 40px;
+    }
+
+    /* ユーザー名表示 */
+
+    h2.posted-desc-card-username {
+        line-height: 80px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+
+    /* メッセージ表示欄 */
+
+    div.posted-desk-card-profiles {
+        width: 600px;
+        height: auto;
+        margin: auto;
+        margin-top: 10px;
+        padding-bottom: 50px;
+    }
+
+    div.posted-desk-card-message {
+        width: 600px;
+        /* height: auto; */
+        height: 250px;
+        overflow-wrap: break-word;
+        overflow-y: scroll;
+        text-align: left;
+        background-color: rgb(243, 246, 246, 0.5);
+        /* border-radius: 5px; */
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+
+    }
+
+    div.posted-desk-card-message > p {
+        width: 580px;
+        height: auto;
+        margin: 0;
+        padding: 10px 10px;
+        font-size: 15px;
+    }
+
+    /*//////////////////// カテゴリタグ ////////////////////*/
+    .posted-deck-category-tag {
+        position: absolute;
+        z-index: 2;
+        width: 200px;
+        height: 40px;
+        border-radius: 3px;
+        margin-left: 560px;
+        margin-top: 20px;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+        transform:rotate(45deg);
+    }
+
+    div.posted-deck-category-tag > a > h4 {
+        margin: 0;
+        line-height: 40px;
+        color: white;
+        /* font-family: harenosora-mincho; */
+    }
+
+        /* ユーザーが使用しているアイテム（プラグイン、ソフトウェアなど） */
+    div.using-items {
+        height: 40px;
+    }
+
+    div.using-items {
+        margin: 0px;
+    }
+
+
+    div.posted-desk-card-used-items-area {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+
+    div.posted-desk-card-used-items {
+        /* background-color: rgb(243, 246, 246, 0.5); */
+        margin-top: 20px;
+        width: 300px;
+        height: 70px;
+        display: flex;
+    }
+
+    img.posted-used-items-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    div.posted-used-items-exp {
+        width: 230px;
+        height: 70px;
+        /* background-color: rgb(243, 246, 246, 0.5);
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220); */
+        margin: 0;
+    }
+
+    div.posted-used-items-exp-maker-area {
+        height: 39.5px;
+        display: table;
+    }
+
+    div.posted-used-items-exp-maker-area > h5 {
+        margin: 0;
+        margin-left: 10px;
+        text-align: left;
+    }
+
+    div.posted-used-items-url {
+        position: relative;
+        /* overflow-x: scroll; */
+        height: 30px;
+        width: 170px;
+        background-color: rgb(243, 246, 246, 0.5);
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+    }
+
+    figure {
+        height: 30px;
+        margin: 0px;
+        margin-left: 10px;
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+
+    /* input.copy-url {
+        position: absolute;
+        z-index: 1;
+        margin-left: 95px;
+        background-color: rgb(255, 255, 255, 0.9);
+        width: 50px;
+        height: 32px;
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+    } */
+
+    button.copy-url {
+        position: absolute;
+        z-index: 1;
+        /* margin-left: 65px; */
+        margin-left: 95px;
+        width: 50px;
+        height: 32px;
+        /* background-image: url('../images/copy_icon.png'); */
+        background: url('../images/copy_icon.png') no-repeat;
+        background-size: 25px;
+        background-position: 13px;
+        /* background-color: rgb(0, 0, 0); */
+        background-color: #645832;
+    }
+
+
+    /* 戻るボタン */
+    div.posted-back-to-top {
+        height: 50px;
+    }
+
+
+
+
 }
 
-img.posted-desk-card-image {
-    /* width: 600px; */
-    width: 700px;
-    height: auto;
-    /* margin-top: 45px; */
-    margin-bottom: 25px;
-}
 
 
-
-/* ユーザーアイコン */
-
-div.posted-desk-card-imgdiv {
-    position: relative;
-    width: 600px;
-    height: 80px;
-    margin: auto;
-}
-
-
-img.posted-desk-card-icon {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    margin-left: 0;
-    left: 0;
-    border-radius: 40px;
-}
-
-/* ユーザー名表示 */
-
-h2.posted-desc-card-username {
-    line-height: 80px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-
-/* メッセージ表示欄 */
-
-div.posted-desk-card-profiles {
-    width: 600px;
-    height: auto;
-    margin: auto;
-    margin-top: 10px;
-    padding-bottom: 50px;
-}
-
-div.posted-desk-card-message {
-    width: 600px;
-    /* height: auto; */
-    height: 250px;
-    overflow-wrap: break-word;
-    overflow-y: scroll;
-    text-align: left;
-    background-color: rgb(243, 246, 246, 0.5);
-    /* border-radius: 5px; */
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(213, 220, 220);
-
-}
-
-div.posted-desk-card-message > p {
-    width: 580px;
-    height: auto;
-    margin: 0;
-    padding: 10px 10px;
-    font-size: 15px;
-}
 
 /*//////////////////// カテゴリタグ ////////////////////*/
 .music-tag {
@@ -144,108 +279,485 @@ div.posted-desk-card-message > p {
     background-color: rgba(205, 205, 205, 0.8);
 }
 
-.posted-deck-category-tag {
-    position: absolute;
-    z-index: 2;
-    width: 200px;
-    height: 40px;
-    border-radius: 3px;
-    margin-left: 560px;
-    margin-top: 20px;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+/*///////////////////////////////////
+    スマホ横長orタブレット用
+///////////////////////////////////*/
+@media screen and (min-width: 481px) and (max-width: 1200px) and (hover: none) and (pointer: coarse)  {
+    h1 {
+        font-size: 45px;
+        font-weight: normal;
+    }
+    h2 {
+        font-size: 30px;
+        font-weight: normal;
+    }
+    h3 {
+        font-size: 25px;
+        font-weight: normal;
+    }
 
-    transform:rotate(45deg);
+    div.main-contents {
+        width: 100%;
+        height: auto;
+        display: flex;
+    }
+
+    div.show-cards-wrapper {
+        margin-top: 30px;
+        text-align: center;
+        /* display: flex; */
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /* 投稿された内容表示 */
+    div.posted-desk-card {
+        position: relative;
+        background-color: white;
+        /* width: 350px; */
+        width: 90%;
+        height: auto;
+        margin: auto;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    img.posted-desk-card-image {
+        /* width: 600px; */
+        /* width: 300px; */
+        width: 100%;
+        height: auto;
+        /* margin-top: 45px; */
+        margin-bottom: 5px;
+    }
+
+    /*////////////// カテゴリタグ /////////////*/
+    .posted-deck-category-tag {
+        position: absolute;
+        z-index: 2;
+        right: -65px;
+        width: 200px;
+        height: 40px;
+        /* margin-left: 560px; */
+        margin-top: 15px;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+        transform:rotate(45deg);
+    }
+
+    div.posted-deck-category-tag > a > h4 {
+        margin: 0;
+        line-height: 40px;
+        color: white;
+        /* font-family: harenosora-mincho; */
+    }
+
+    /* ユーザーアイコン */
+
+    div.posted-desk-card-imgdiv {
+        position: relative;
+        width: 85%;
+        height: 80px;
+        margin: auto;
+    }
+
+
+    img.posted-desk-card-icon {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+        left: 0;
+        border-radius: 40px;
+    }
+
+    /* ユーザー名表示 */
+
+    h3.posted-desc-card-username {
+        line-height: 80px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+
+    /* メッセージ表示欄 */
+
+    div.posted-desk-card-profiles {
+        /* width: 300px; */
+        width: 85%;
+        height: auto;
+        margin: auto;
+        margin-top: 10px;
+        padding-bottom: 50px;
+    }
+
+    div.posted-desk-card-message {
+        width: 100%;
+        /* height: auto; */
+        height: 250px;
+        overflow-wrap: break-word;
+        overflow-y: scroll;
+        text-align: left;
+        background-color: rgb(243, 246, 246, 0.5);
+        /* border-radius: 5px; */
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+
+    }
+
+    div.posted-desk-card-message > p {
+        width: 95%;
+        height: auto;
+        margin: 0;
+        padding: 10px 10px;
+        font-size: 15px;
+    }
+
+    /* ユーザーが使用しているアイテム（プラグイン、ソフトウェアなど） */
+    div.using-items {
+        height: 40px;
+    }
+
+    div.using-items {
+        margin: 0px;
+    }
+
+
+    div.posted-desk-card-used-items-area {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+
+    div.posted-desk-card-used-items {
+        /* background-color: rgb(243, 246, 246, 0.5); */
+        margin-top: 5px;
+        width: 300px;
+        height: 80px;
+        display: flex;
+        margin: auto;
+    }
+
+    img.posted-used-items-icon {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 70px;
+        height: 70px;
+    }
+
+    div.posted-used-items-exp {
+        width: 230px;
+        height: 80px;
+        /* background-color: rgb(243, 246, 246, 0.5);
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220); */
+        margin: 0;
+        position: relative;
+    }
+
+    div.posted-used-items-exp-maker-area {
+        height: 39.5px;
+        display: table;
+    }
+
+    div.posted-used-items-exp-maker-area > h5 {
+        margin: 0;
+        padding-left: 5px;
+        text-align: left;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    div.posted-used-items-url {
+        position: absolute;
+        top: 40px;
+        /* overflow-x: scroll; */
+        height: 30px;
+        width: 170px;
+        background-color: rgb(243, 246, 246, 0.5);
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+    }
+
+    figure {
+        height: 30px;
+        margin: 0px;
+        margin-left: 10px;
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+
+    /* input.copy-url { */
+    button.copy-url {
+        position: absolute;
+        z-index: 1;
+        /* margin-left: 65px; */
+        margin-left: 90px;
+        width: 50px;
+        height: 32px;
+        /* background-image: url('../images/copy_icon.png'); */
+        background: url('../images/copy_icon.png') no-repeat;
+        background-size: 25px;
+        background-position: 13px;
+        /* background-color: rgb(0, 0, 0); */
+        background-color: #645832;
+    }
+
+    /* 戻るボタン */
+    div.posted-back-to-top {
+        height: 50px;
+    }
 }
 
-div.posted-deck-category-tag > a > h4 {
-    margin: 0;
-    line-height: 40px;
-    color: white;
-    font-family: harenosora-mincho;
+
+
+/*///////////////////////////////////
+            スマホ用
+///////////////////////////////////*/
+/* @media screen and (max-width: 449px) { */
+    /* 横に倒した時のサイズ */
+@media screen and (max-width: 480px) and (hover: none) and (pointer: coarse) {
+
+
+    h1 {
+        font-size: 45px;
+        font-weight: normal;
+    }
+    h2 {
+        font-size: 30px;
+        font-weight: normal;
+    }
+    h3 {
+        font-size: 25px;
+        font-weight: normal;
+    }
+
+    div.main-contents {
+        width: 100%;
+        height: auto;
+        display: flex;
+    }
+
+    div.show-cards-wrapper {
+        margin-top: 30px;
+        text-align: center;
+        /* display: flex; */
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /* 投稿された内容表示 */
+    div.posted-desk-card {
+        position: relative;
+        background-color: white;
+        width: 350px;
+        /* height: 700px; */
+        height: auto;
+        /* margin: auto; */
+        margin: auto;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    img.posted-desk-card-image {
+        /* width: 600px; */
+        /* width: 300px; */
+        width: 100%;
+        height: auto;
+        /* margin-top: 45px; */
+        margin-bottom: 5px;
+    }
+
+    /*////////////// カテゴリタグ /////////////*/
+    .posted-deck-category-tag {
+        position: absolute;
+        z-index: 2;
+        left: 220px;
+        width: 200px;
+        height: 40px;
+        /* margin-left: 560px; */
+        margin-top: 10px;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+
+        transform:rotate(45deg);
+    }
+
+    div.posted-deck-category-tag > a > h4 {
+        margin: 0;
+        line-height: 40px;
+        color: white;
+        /* font-family: harenosora-mincho; */
+    }
+
+    /* ユーザーアイコン */
+
+    div.posted-desk-card-imgdiv {
+        position: relative;
+        width: 300px;
+        height: 80px;
+        margin: auto;
+    }
+
+
+    img.posted-desk-card-icon {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+        left: 0;
+        border-radius: 40px;
+    }
+
+    /* ユーザー名表示 */
+
+    h3.posted-desc-card-username {
+        line-height: 80px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+
+    /* メッセージ表示欄 */
+
+    div.posted-desk-card-profiles {
+        width: 300px;
+        height: auto;
+        margin: auto;
+        margin-top: 10px;
+        padding-bottom: 50px;
+    }
+
+    div.posted-desk-card-message {
+        width: 300px;
+        /* height: auto; */
+        height: 250px;
+        overflow-wrap: break-word;
+        overflow-y: scroll;
+        text-align: left;
+        background-color: rgb(243, 246, 246, 0.5);
+        /* border-radius: 5px; */
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+
+    }
+
+    div.posted-desk-card-message > p {
+        width: 280px;
+        height: auto;
+        margin: 0;
+        padding: 10px 10px;
+        font-size: 15px;
+    }
+
+    /* ユーザーが使用しているアイテム（プラグイン、ソフトウェアなど） */
+    div.using-items {
+        height: 40px;
+    }
+
+    div.using-items {
+        margin: 0px;
+    }
+
+
+    div.posted-desk-card-used-items-area {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+
+    div.posted-desk-card-used-items {
+        /* background-color: rgb(243, 246, 246, 0.5); */
+        margin-top: 5px;
+        width: 300px;
+        height: 80px;
+        display: flex;
+    }
+
+    img.posted-used-items-icon {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 70px;
+        height: 70px;
+    }
+
+    div.posted-used-items-exp {
+        width: 230px;
+        height: 80px;
+        /* background-color: rgb(243, 246, 246, 0.5);
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220); */
+        margin: 0;
+        position: relative;
+    }
+
+    div.posted-used-items-exp-maker-area {
+        height: 39.5px;
+        display: table;
+    }
+
+    div.posted-used-items-exp-maker-area > h5 {
+        margin: 0;
+        padding-left: 5px;
+        text-align: left;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    div.posted-used-items-url {
+        position: absolute;
+        top: 40px;
+        /* overflow-x: scroll; */
+        height: 30px;
+        width: 170px;
+        background-color: rgb(243, 246, 246, 0.5);
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(213, 220, 220);
+    }
+
+    figure {
+        height: 30px;
+        margin: 0px;
+        margin-left: 10px;
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+
+    /* input.copy-url { */
+    button.copy-url {
+        position: absolute;
+        z-index: 1;
+        /* margin-left: 65px; */
+        margin-left: 90px;
+        width: 50px;
+        height: 32px;
+        /* background-image: url('../images/copy_icon.png'); */
+        background: url('../images/copy_icon.png') no-repeat;
+        background-size: 25px;
+        background-position: 13px;
+        /* background-color: rgb(0, 0, 0); */
+        background-color: #645832;
+    }
+
+    /* 戻るボタン */
+    div.posted-back-to-top {
+        height: 50px;
+    }
 }
 
 
-
-/* ユーザーが使用しているアイテム（プラグイン、ソフトウェアなど） */
-div.using-items {
-    height: 40px;
-}
-
-div.using-items {
-    margin: 0px;
-}
-
-
-div.posted-desk-card-used-items-area {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    position: relative;
-}
-
-
-div.posted-desk-card-used-items {
-    /* background-color: rgb(243, 246, 246, 0.5); */
-    margin-top: 20px;
-    width: 300px;
-    height: 70px;
-    display: flex;
-}
-
-img.posted-used-items-icon {
-    width: 70px;
-    height: 70px;
-}
-
-div.posted-used-items-exp {
-    width: 230px;
-    height: 70px;
-    /* background-color: rgb(243, 246, 246, 0.5);
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(213, 220, 220); */
-    margin: 0;
-}
-
-div.posted-used-items-exp > h5 {
-    margin: 0;
-    margin-left: 10px;
-    text-align: left;
-}
-
-div.posted-used-items-url {
-    position: relative;
-    /* overflow-x: scroll; */
-    height: 30px;
-    width: 170px;
-    background-color: rgb(243, 246, 246, 0.5);
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(213, 220, 220);
-}
-
-figure {
-    height: 30px;
-    margin: 0px;
-    margin-left: 10px;
-    overflow-x: scroll;
-}
-
-input.copy-url {
-    position: absolute;
-    z-index: 1;
-    margin-left: 95px;
-    background-color: rgb(255, 255, 255, 0.9);
-    width: 50px;
-    height: 32px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(213, 220, 220);
-}
-
-/* 戻るボタン */
-div.posted-back-to-top {
-    height: 50px;
-}
 
 
