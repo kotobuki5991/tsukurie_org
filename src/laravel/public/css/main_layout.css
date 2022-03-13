@@ -1,9 +1,32 @@
 /*/////////////////// フォント関連 ///////////////////*/
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&family=Titillium+Web:wght@300&family=Zen+Kaku+Gothic+New:wght@300&display=swap');
+input, textarea, h5, p, figure {
+    color: rgb(90, 97, 100);
+}
+a, h1, h2, h3, h4 {
+    color: #8f8153;
+}
+
+.letter-eng {
+    font-family: 'Titillium Web', sans-serif;
+}
+.letter-title {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.letter-ja {
+    font-family: 'Sawarabi Gothic', sans-serif;
+}
+
 @font-face
 {
 font-family: harenosora-mincho;
 src: url('https://cdn.leafscape.be/Harenosora/harenosora_web.woff2')
      format("woff2");
+}
+
+.letter {
+    color: #8f8153;
+    font-family: harenosora-mincho;
 }
 
 ::placeholder {
@@ -22,24 +45,12 @@ h3 {
     font-size: 25px;
     font-weight: normal;
 }
-/* h5 {
-    font-size: 15px;
-    font-weight: normal;
-} */
-
-a, p, h1, h2, h3, h4, h5, input, textarea {
-    color: rgb(90, 97, 100);
-}
 
 a {
     text-decoration:none;
     font-size: 18px;
 }
 
-.letter {
-    color: rgb(111, 119, 122);
-    font-family: harenosora-mincho;
-}
 
 html{
     height: auto;
@@ -66,9 +77,27 @@ html{
     cursor: pointer;
 }
 
+/* OSごとのスタイルをリセット */
+input[type="button"]{
+    -webkit-appearance: none;
+}
+input[type="submit"]{
+    -webkit-appearance: none;
+}
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('/images/select_triangle.png');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+}
 
-/* PC・タブレット用 */
-@media screen and (min-width: 450px) {
+
+/* PC用 */
+/* @media screen and (min-width: 450px) { */
+/* @media screen and (min-width: 851px) { */
+@media screen and (hover: hover) {
 
     body {
         background-image: url('/images/subtle_white_mini_waves.png');
@@ -77,8 +106,8 @@ html{
         min-width: 1100px;
         height: 100%;
 
-        border: rgb(101, 110, 110);
-        border-style: solid;
+        /* border: rgb(101, 110, 110);
+        border-style: solid; */
 
         display: flex;
         flex-direction: column;
@@ -99,7 +128,7 @@ html{
     }
 
     div.header-img {
-        width: 70px;
+        /* width: 70px; */
         height: 70px;
         margin-left: 20px;
         /* top: 10px; */
@@ -107,7 +136,7 @@ html{
 
     }
     div.header-img > a > img {
-        width: 70px;
+        /* width: 70px; */
         height: 70px;
         top: 10px;
         /* margin-left: 20px; */
@@ -335,7 +364,7 @@ div.category-tag > a > h4 {
     margin: 0;
     line-height: 40px;
     color: white;
-    font-family: harenosora-mincho;
+    /* font-family: harenosora-mincho; */
 }
 
 /* ////////////////////////// */
@@ -421,11 +450,11 @@ li.page-item {
 
 
 /*///////////////////////////////////
-            スマホ用
+            スマホ・タブレット用
 ///////////////////////////////////*/
-@media screen and (max-width: 449px) {
+/* @media screen and (max-width: 449px) { */
 /* 横に倒した時のサイズ */
-/* @media screen and (max-width: 850px) and (hover: none) and (pointer: coarse) { */
+@media screen and (max-width: 1200px) and (hover: none) and (pointer: coarse) {
 
     h1 {
         font-size: 45px;
@@ -443,7 +472,8 @@ li.page-item {
 
     body {
         /* background-image: url('/images/subtle_white_mini_waves.png'); */
-        background-color: #d4e2e2;
+        /* background-color: #d4e2e2; */
+        background-color: #d6cdb2;
         margin: 0;
         padding: 0;
         min-width: 100vw;
@@ -468,18 +498,20 @@ li.page-item {
         align-items: center;
         /* background-color: rgb(243, 243, 243); */
         /* background-color: rgb(226, 225, 224); */
-        background-color: #d4e2e2;
+        background-color: #d6cdb2;
+        /* box-shadow:  0 5px 15px 0 rgba(0, 0, 0, .5); */
+        border-bottom: 1px solid #a99b6d;
     }
 
     div.header-img {
-        width: 70px;
-        height: 70px;
+        /* width: 70px; */
+        height: 50px;
         margin: auto;
     }
 
     div.header-img > a > img {
-        width: 70px;
-        height: 70px;
+        /* width: 70px; */
+        height: 50px;
         top: 10px;
         /* margin-left: 20px; */
     }
@@ -532,6 +564,60 @@ li.page-item {
         margin: auto;
     }
 
+    /*////////////////////////// 検索結果表示 //////////////////////////*/
+    div.show-cards-wrapper {
+        margin-top: 60px;
+        text-align: center;
+        /* display: flex; */
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    div.show-cards-area {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.desk-card {
+        /* margin: 30px; */
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        min-width: 300px;
+        background-color: white;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        float: left;
+        position: relative;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+        overflow: hidden;
+    }
+
+    div.desk-card-image-area {
+        width: 300px;
+        height: 200px;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+
+    img.desk-card-image {
+        /* width: 300px;
+        height: auto; */
+        width: auto;
+        height: 200px;
+        max-height: 200px;
+    }
+
+    img.desk-card-user-icon{
+        position: absolute;
+        z-index: 1;
+        width: 80px;
+        height: 80px;
+        left: 20px;
+        border-radius: 40px;
+    }
+
     /* メニュー */
     /* スマホではヘッダーではなくフッターで表示 */
     /* .pc-tablet-header-nav {
@@ -552,7 +638,8 @@ li.page-item {
 
     div.footer-nav-icon {
         /* background-color:  rgb(133, 131, 128); */
-        background-color:  #517785;
+        /* background-color:  #517785; */
+        background-color:  #645832;
         height: 100%;
         text-align: center;
     }
@@ -560,6 +647,15 @@ li.page-item {
     .footer-nav-icon > a {
         font-size: 13px;
         color: aliceblue;
+    }
+
+    .footer-nav-icon > h5 {
+        text-decoration: none;
+        font-weight: lighter;
+        font-size: 13px;
+        color: aliceblue;
+        margin: 0;
+        padding-top: 2px;
     }
 
     div.header-a  {
@@ -597,6 +693,57 @@ li.page-item {
         position: absolute;
     }
 
+    .footer-account-menu {
+        /* height: 100px;
+        width: 100px;
+        position: absolute;
+        z-index: 1000;
+        background-color: aqua;
+        top: 100px; */
+        width: 100%;
+        /* height: 100%; */
+        height: auto;
+        /* background: rgba(234, 217, 177, 0.9); */
+        background: rgba(248, 245, 236, 0.9);
+        color: #fff;
+        position: fixed;
+        z-index: 999;
+        bottom: 70px;
+        /* padding-top: 40px; */
+        transform: translate(0 ,100%);
+        transition: 0.3s ease-out;
+        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+    }
+
+    .footer-account-menu.open {
+        transform: translate(0, 0);
+        transition: 0.3s ease-out;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .footer-account-menu > ul > li {
+        margin-bottom: 10px;
+
+    }
+    .footer-account-menu > ul > li > a {
+        font-size: 18px;
+    }
+    .footer-account-menu > div {
+        font-size: 18px;
+    }
+
+    .close-footer-account-menu {
+        width: 100px;
+        margin-bottom: 20px;
+        padding-left: 40px;
+        color: #8f8153;
+    }
+
+
+
 
     /*///////////////////////// 検索ボックス /////////////////////////*/
     div.search-box-bg {
@@ -633,22 +780,23 @@ li.page-item {
         border: solid 1px;
         border-color: rgb(198, 202, 202);
     }
+
     select.search-select-box {
         height: 45px;
         width: 80px;
         border-radius: 10px;
         border: solid 1px;
+        background-color: white;
         border-color: rgb(198, 202, 202);
     }
-
 
 
 
     /* /////////////メインコンテンツ//////////// */
 
     .for-main-background-col {
-        /* background-color: rgb(246, 237, 229); */
-        background-color: #FFF4E8;
+        /* background-color: #fcffff; */
+        background-color: #f8f5ec;
     }
 
 
@@ -660,16 +808,25 @@ li.page-item {
         height: 135px;
         /* background-color: rgb(226, 225, 224); */
         /* background-color: #D1BEA9; */
-        background-color: #d4e2e2;
+        background-color: #d6cdb2;
         /* height: 100px; */
         margin-top: auto;
+        border-top: 1px solid #a99b6d;
     }
 
     footer {
         text-align: center;
+    }
+    footer > h4 {
+        margin-top: 10px;
+    }
+
+    .footer-nav-form {
+        margin-bottom: 0px;
     }
 
     /* footer > a {
         color: aliceblue;
     } */
 }
+

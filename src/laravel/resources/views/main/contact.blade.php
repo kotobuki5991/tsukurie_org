@@ -8,7 +8,7 @@
 
 {{-- ページ名 --}}
 @section('page_name')
-<h2 class="letter">お問い合わせ</h2>
+<h2 class="letter-title ">お問い合わせ</h2>
 @endsection
 
 
@@ -23,13 +23,13 @@
         <div class="contact-parts">
             <textarea class="contact-message" name="contact_message" cols="60" rows="30"
             placeholder="機能追加のご要望や、改善点、感想などをご記入ください。  返答が必要な場合、あなたのメールアドレスも併せてご記入ください。" ></textarea>
-            <input id="contact-submit" class="contact-submit sink-button mouse-hover-pointer"  type="submit" value="送信">
+            <input id="contact-submit" class="contact-submit sink-button mouse-hover-pointer button-style"  type="submit" value="送信">
         </div>
     </form>
 </div>
 
 <div class="posted-back-to-top">
-    <a class="letter" href="{{ asset('/') }}">トップへ戻る</a>
+    <a class="letter-title" href="{{ asset('/') }}">トップへ戻る</a>
 </div>
 @endsection
 

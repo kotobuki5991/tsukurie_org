@@ -1,31 +1,115 @@
-
-/* 入力フォームエリア */
-div.contact-form-erea {
-    width: 600px;
-    height: auto;
-    display: inline-block;
-}
-
-div.contact-parts {
-    width: 600px;
-    height: auto;
-}
-
-.contact-message {
-    width: 600px;
-    /* height: 400px; */
+/* ボタンの共通スタイル */
+.button-style {
     border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    resize: vertical;
+    border-style: none;
+    background-color: #645832;
 }
 
-.contact-submit {
-    width: 50px;
-    height: 30px;
-    border-radius: 10px;
-    border: solid 1px;
-    border-color: rgb(198, 202, 202);
-    margin-top: 40px;
-    margin-bottom: 40px;
+
+/* PC用 */
+/* @media screen and (min-width: 450px) { */
+@media screen and (hover: hover) {
+
+    /* 入力フォームエリア */
+    div.contact-form-erea {
+        width: 600px;
+        height: auto;
+        display: inline-block;
+    }
+
+    div.contact-parts {
+        width: 600px;
+        height: auto;
+    }
+
+    .contact-message {
+        width: 600px;
+        /* height: 400px; */
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+    }
+
+    .contact-submit {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        color: white;
+    }
+}
+
+
+/*///////////////////////////////////
+    スマホ横長orタブレット用
+///////////////////////////////////*/
+@media screen and (min-width: 481px) and (max-width: 1200px) and (hover: none) and (pointer: coarse)  {
+    /* 入力フォームエリア */
+    div.contact-form-erea {
+        width: 95%;
+        height: auto;
+        display: inline-block;
+    }
+
+    div.contact-parts {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-message {
+        width: 95%;
+        /* height: 400px; */
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+    }
+
+    .contact-submit {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        color: white;
+    }
+}
+
+/*///////////////////////////////////
+            スマホ用
+///////////////////////////////////*/
+/* @media screen and (max-width: 449px) { */
+/* 横に倒した時のサイズ */
+@media screen and (max-width: 480px) and (hover: none){
+    /* 入力フォームエリア */
+    div.contact-form-erea {
+        width: 95%;
+        height: auto;
+        display: inline-block;
+    }
+
+    div.contact-parts {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-message {
+        width: 95%;
+        /* height: 400px; */
+        border-radius: 10px;
+        border: solid 1px;
+        border-color: rgb(198, 202, 202);
+        resize: vertical;
+    }
+
+    .contact-submit {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        color: white;
+    }
 }
