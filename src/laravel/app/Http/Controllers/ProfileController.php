@@ -23,6 +23,7 @@ class ProfileController extends Controller
     {
         $profile_ary = SearchDb::showProfile(Auth::user()->id, 'equipment_type_icon_path_', 'equipment_maker_');
 
+        // dd($profile_ary);
         return view('/mypage/top', ['profile' => $profile_ary]);
     }
 
@@ -167,10 +168,10 @@ class ProfileController extends Controller
         // base64をデコード
         $file_data = base64_decode($file_data);
         // 画像を圧縮
-        $comp_file_data = Image::make($file_data)->fit(700, 467)->encode('jpeg');
+        // $comp_file_data = Image::make($file_data)->fit(700, 467)->encode('jpeg');
         $file_info = [
-            'file_data' => $comp_file_data,
-            // 'file_extension' => $file_extension,
+            // 'file_data' => $comp_file_data,
+            'file_data' => $file_data,
             'file_extension' => 'jpeg',
         ];
         return $file_info;

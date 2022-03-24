@@ -13,69 +13,7 @@
 
 {{-- メインコンテンツ --}}
 @section('main_block')
-    {{-- <div class="main-block">
-        <div class="posted-desk-card float">
-            @switch($profile["creator_type"])
-            @case('音楽')
-            <div class="posted-deck-category-tag music-tag mouse-hover-transparent">
-                <a href="{{ route('/search', ['creator_type' => 1]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-            </div>
-            @break
-            @case('イラスト')
-                <div class="posted-deck-category-tag illust-tag mouse-hover-transparent">
-                    <a href="{{ route('/search', ['creator_type' => 2]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-                </div>
-                @break
-            @case('動画')
-                <div class="posted-deck-category-tag movie-tag mouse-hover-transparent">
-                    <a href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-                </div>
-                @break
-            @case('未選択')
-            <div class="posted-deck-category-tag unselected-tag mouse-hover-transparent">
-                <a href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
-            </div>
-            @break
-            @default
-
-            @endswitch
-
-            <div><img class="posted-desk-card-image" src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt=""></div>
-            <div class="posted-desk-card-imgdiv">
-                <img class="posted-desk-card-icon" src="{{ $profile["profile_icon"] ?: asset('/images/default_user_icon.jpeg') }}" alt="">
-                <h2 class="posted-desc-card-username letter-title">{{ $profile["profile_name"] ?: 'クリエイター名未設定' }}</h2>
-            </div>
-            <div class="posted-desk-card-profiles">
-                <div class="posted-desk-card-message">
-                    <p>{!! nl2br(e($profile["message"])) ?: e('説明文が未記入です。') !!}</p>
-                </div>
-
-                <div class="using-items">
-                    <h3>使用機材</h3>
-                </div>
-
-                <div class="posted-desk-card-used-items-area">
-                    @for ($i = 1; $i <= 10; $i++)
-                        @if ( isset($profile["equipment_type_icon_path_$i" ]) && isset($profile["equipment_maker_$i" ]) )
-                        <div class="posted-desk-card-used-items">
-                            <img class="posted-used-items-icon" src="{{ asset($profile["equipment_type_icon_path_$i"]) }}">
-                            <div class="posted-used-items-exp">
-                                <h5 class="letter-title">{{ $profile["equipment_maker_$i"] }}</h5>
-                                <div class="posted-used-items-url">
-                                    <input class="copy-url sink-button mouse-hover-pointer" type="button" value="Copy" onclick="copyToClipboard()">
-                                    <figure id="url-to-copy">{{ isset($profile["equipment_url_$i"]) ? asset($profile["equipment_url_$i"]) : '' }}</figure>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                    @endfor
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
-    <div class="main-block">
+     <div class="main-block">
         <div class="posted-desk-card float">
             @switch($profile["creator_type"])
             @case('音楽')
@@ -92,6 +30,7 @@
                 <div class="posted-deck-category-tag movie-tag mouse-hover-transparent">
                     <a class="letter-title" href="{{ route('/search', ['creator_type' => 3]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
                 </div>
+                @break
             @case('未選択')
                 <div class="posted-deck-category-tag unselected-tag mouse-hover-transparent">
                     <a class="letter-title" href="{{ route('/search', ['creator_type' => 4]) }}"><h4>{{ $profile["creator_type"] }}</h4></a>
@@ -129,8 +68,13 @@
                                 <h5 class="letter-title">{{ $profile["equipment_maker_$i"] }}</h5>
                             </div>
                             <div class="posted-used-items-url">
-                                    <button id="url-to-copy-button{{ "-{$i}" }}" class="copy-url sink-button mouse-hover-pointer button-style" value=""  type="button"
-                                    onclick="void(0)"></button>
+                                @if ($isMobile)
+                                <button id="url-to-copy-button{{ "-{$i}" }}" class="copy-url sink-button mouse-hover-pointer button-style" value=""  type="button"
+                                onclick="abc(this.id)"></button>
+                                @else
+                                <button id="url-to-copy-button{{ "-{$i}" }}" class="copy-url sink-button mouse-hover-pointer button-style" value=""  type="button"
+                                onclick=""></button>
+                                @endif
                                 <figure id="url-to-copy{{ "-{$i}" }}">{{ isset($profile["equipment_url_{$i}"]) ? asset($profile["equipment_url_{$i}"]) : '' }}</figure>
                             </div>
                         </div>
@@ -141,4 +85,24 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('add_script')
+@if ($isMobile)
+<script>
+    function abc (num){
+        copy_url = (document.getElementById('url-to-copy' + num.replace('url-to-copy-button','')).innerHTML);
+        navigator.clipboard.writeText(copy_url)
+        .then(() => {
+            alert("URLをクリップボードにコピーしました。")
+        })
+        .catch(err => {
+            console.log('click');
+            alert('すみません、コピーに失敗しました。', err);
+        })
+    }
+</script>
+@else
+<script src="{{ asset('js/copy_url.js') }}"></script>
+@endif
 @endsection

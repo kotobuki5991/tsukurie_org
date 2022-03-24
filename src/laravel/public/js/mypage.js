@@ -95,18 +95,18 @@ const handleFileSelect = (img, select_tag) => {
     openModalWindow();
 }
 
-function a (){
-    console.log('aaaaa');
+function handleTopImgFileSelect (){
+    // console.log('aaaaa');
     handleFileSelect(show_selected_img, select_upload_img_buttotn);
 }
-function b (){
-    console.log('aaaaa');
+function handleUserIconFileSelect (){
+    // console.log('aaaaa');
     handleFileSelect(show_selected_user_icon, select_upload_user_icon_button);
 }
 
-select_upload_img_buttotn.addEventListener('change', a);
+select_upload_img_buttotn.addEventListener('change', handleTopImgFileSelect);
 // select_upload_img_buttotn.addEventListener('change', handleFileSelect);
-select_upload_user_icon_button.addEventListener('change', b);
+select_upload_user_icon_button.addEventListener('change', handleUserIconFileSelect);
 // select_upload_user_icon_button.addEventListener('change', handleFileSelect);
 
 

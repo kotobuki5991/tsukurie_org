@@ -100,7 +100,8 @@ select {
 @media screen and (hover: hover) {
 
     body {
-        background-image: url('/images/subtle_white_mini_waves.png');
+        /* background-image: url('/images/subtle_white_mini_waves.png'); */
+        background-color: #f7f3e7;
         margin: 0;
         padding: 0;
         min-width: 1100px;
@@ -416,6 +417,7 @@ div.footer {
     background-color: rgb(243, 243, 243);
     /* height: 100px; */
     margin-top: auto;
+    bottom: 0;
 }
 
 footer {

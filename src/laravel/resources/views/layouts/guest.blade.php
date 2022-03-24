@@ -10,14 +10,25 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+
+        @if(app('env')=='local')
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- 背景追加Styles -->
         <link rel="stylesheet" href="{{ asset('css/background.css') }}">
-
-
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @endif
+        @if(app('env')=='production')
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+        <!-- 背景追加Styles -->
+        <link rel="stylesheet" href="{{ secure_asset('css/background.css') }}">
+        <!-- Scripts -->
+        <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        @endif
+
+
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased bkground-image">
