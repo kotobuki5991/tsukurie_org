@@ -43,7 +43,7 @@
                             @endif
                         @endauth
                         <li><a href="{{ asset('/contact') }}" class="letter-title  underline">お問い合せ</a></li>
-                        <li><a href="https://www.google.com" class="letter-title  underline">つくりえとは？</a></li>
+                        <li><a href="{{ asset('/about_us') }}" class="letter-title  underline">つくりえとは？</a></li>
                     </ul>
                 </div>
             @endif
@@ -79,7 +79,7 @@
             <footer>
                 <a class="letter-title" href="{{ asset('/') }}">トップページ</a>
                 <a class="letter-title" href="{{ asset('/contact') }}">お問合せ</a>
-                <a class="letter-title" href="{{ asset('about.html') }}">つくりえとは？</a>
+                <a class="letter-title" href="{{ asset('/about_us') }}">つくりえとは？</a>
                 <h4 class="letter-title">Copyright(c) Tsukurie All Rights Reserved.</h4>
             </footer>
         </div>
@@ -132,7 +132,7 @@
                         </li>
                         <li>
                             <div class="footer-nav-icon">
-                                <a href="https://www.google.com" class="letter-title underline">つくりえとは？</a>
+                                <a href="{{ asset('/about_us') }}" class="letter-title underline">つくりえとは？</a>
                             </div>
                         </li>
                     </ul>

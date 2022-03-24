@@ -46,6 +46,14 @@ Route::get('/show_post/{user_id}', 'MainController@forPostPage')
 Route::get('/contact', 'MainController@contact');
 Route::post('/contact', 'MainController@contact');
 
+////////////////////////////////////////////////
+// つくりえとは？ページ
+////////////////////////////////////////////////
+Route::get('/about_us', function () {
+    return view('main.about_us');
+});
+// Route::post('/about_us', 'MainController@contact');
+
 
 // Route::post('/contact/send', 'ContactController@send')->name('send');
 Route::post('/contact', 'ContactController@send')->name('send');
