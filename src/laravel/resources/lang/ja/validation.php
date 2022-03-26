@@ -150,6 +150,12 @@ return [
         'publish_flag' => [
             'required' => 'プロフィールの公開/非公開を選択してください。',
         ],
+        'croped_base64_user_icon' => [
+            'max' => '3MB以下のプロフィールアイコンを選択してください。',
+        ],
+        'croped_base64_profile_icon' => [
+            'max' => '5MB以下のトップ画像を選択してください。',
+        ],
     ],
 
     /*

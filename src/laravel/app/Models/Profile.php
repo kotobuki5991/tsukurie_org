@@ -18,6 +18,10 @@ class Profile extends Model
         // 'user_id'         => 'required',
         'profile_name'    => 'required',
         'publish_flag' => 'required',
+        'croped_base64_user_icon' => 'max:3072',//アイコンは3MBまで
+        'croped_base64_profile_icon' => 'max:5120',//トップ画像は5MBまで
+        // 'profile_icon' => 'max:3072',//アイコンは3MBまで
+        // 'top_image' => 'max:5120',//トップ画像は5MBまで
     ];
 
     public function user()
