@@ -1,6 +1,6 @@
 @extends('/layouts.mypage_layout')
 
-@section('title')つくりえ -{{ $profile["profile_name"] }}のマイページトップ-@endsection
+@section('title')つくりえ -{{ $profile["profile_name"] ?: $profile["user_name"] }}のマイページトップ-@endsection
 @section('add_css')
 <link rel="stylesheet" href="{{ asset('/css/show_post.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
@@ -8,7 +8,7 @@
 
 {{-- ページ名 --}}
 @section('page_name')
-<h2 class="letter-title">{{ $profile["user_name"] }}のマイページ</h2>
+<h2 class="letter-title">{{ $profile["profile_name"] ?: $profile["user_name"] }}のマイページ</h2>
 @endsection
 
 {{-- メインコンテンツ --}}

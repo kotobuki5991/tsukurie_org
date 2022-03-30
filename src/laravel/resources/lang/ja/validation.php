@@ -85,7 +85,8 @@ return [
     'max' => [
         'numeric' => 'The :attribute must not be greater than :max.',
         'file' => 'The :attribute must not be greater than :max kilobytes.',
-        'string' => 'The :attribute must not be greater than :max characters.',
+        // 'string' => 'The :attribute must not be greater than :max characters.',
+        'string' => ':attributeは:max文字以下で入力してください。',
         'array' => 'The :attribute must not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
@@ -150,12 +151,18 @@ return [
         'publish_flag' => [
             'required' => 'プロフィールの公開/非公開を選択してください。',
         ],
-        'croped_base64_user_icon' => [
+        'profile_icon' => [
             'max' => '3MB以下のプロフィールアイコンを選択してください。',
         ],
-        'croped_base64_profile_icon' => [
+        'top_image' => [
             'max' => '5MB以下のトップ画像を選択してください。',
         ],
+        // 'croped_base64_user_icon' => [
+        //     'max' => '3MB以下のプロフィールアイコンを選択してください。',
+        // ],
+        // 'croped_base64_profile_icon' => [
+        //     'max' => '5MB以下のトップ画像を選択してください。',
+        // ],
     ],
 
     /*
@@ -172,6 +179,16 @@ return [
     'attributes' => [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'equipment_url_1' => 'URL',
+        'equipment_url_2' => 'URL',
+        'equipment_url_3' => 'URL',
+        'equipment_url_4' => 'URL',
+        'equipment_url_5' => 'URL',
+        'equipment_url_6' => 'URL',
+        'equipment_url_7' => 'URL',
+        'equipment_url_8' => 'URL',
+        'equipment_url_9' => 'URL',
+        'equipment_url_10' => 'URL',
     ],
 
 ];

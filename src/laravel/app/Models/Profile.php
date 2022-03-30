@@ -18,10 +18,20 @@ class Profile extends Model
         // 'user_id'         => 'required',
         'profile_name'    => 'required',
         'publish_flag' => 'required',
-        'croped_base64_user_icon' => 'max:3072',//アイコンは3MBまで
-        'croped_base64_profile_icon' => 'max:5120',//トップ画像は5MBまで
-        // 'profile_icon' => 'max:3072',//アイコンは3MBまで
-        // 'top_image' => 'max:5120',//トップ画像は5MBまで
+        // 'croped_base64_user_icon' => 'max:3072',//アイコンは3MBまで
+        // 'croped_base64_profile_icon' => 'max:5120',//トップ画像は5MBまで
+        'profile_icon' => 'max:3072',//アイコンは3MBまで
+        'top_image' => 'max:5120',//トップ画像は5MBまで
+        // 'equipment_url_1' => 'string|max:255',
+        // 'equipment_url_2' => 'string|max:255',
+        // 'equipment_url_3' => 'string|max:255',
+        // 'equipment_url_4' => 'string|max:255',
+        // 'equipment_url_5' => 'string|max:255',
+        // 'equipment_url_6' => 'string|max:255',
+        // 'equipment_url_7' => 'string|max:255',
+        // 'equipment_url_8' => 'string|max:255',
+        // 'equipment_url_9' => 'string|max:255',
+        // 'equipment_url_10' => 'string|max:255',
     ];
 
     public function user()

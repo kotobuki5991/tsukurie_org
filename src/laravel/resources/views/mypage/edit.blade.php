@@ -69,7 +69,6 @@
                     <img id="show-selected-img" class="show-selected-img"
                     src="{{ $profile["top_image"] ?: asset('/uploaded_images/1.jpg')  }}" alt="">
                     {{-- メイン画像選択ボタン --}}
-                    {{-- <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="loadImg(this)"> --}}
                     <input id="select-upload-img" class="select-upload-img" type="file" name="top_image" accept=".jpg, .jpeg, .png" onchange="changeActiveCanvas(0)">
                     <input id="croped-base64-profile-icon" name="croped_base64_profile_icon" type="hidden">
                 </div>
@@ -81,7 +80,7 @@
                         <img id="show-selected-user-icon" class="show-selected-user-icon"
                         src="{{ $profile["profile_icon"] ?: asset('/images/default_user_icon.jpeg') }}" alt="">
                     </div>
-                    <input class="myprofile-edit-username" type="text" name="profile_name" placeholder="クリエイター名を入力" value="{{ $profile["profile_name"] }}">
+                    <input class="myprofile-edit-username" type="text" name="profile_name" placeholder="クリエイター名を入力" value="{{ old('profile_name', $profile["profile_name"]) }}">
                     <select id="select-creator-type" class="select-creator-type" name="creator_type_id" onchange="changeCreatorType(this)">
                         {{-- <option value="">クリエイター種別を選択</option> --}}
                         <option value="4" {{ $profile["creator_type"] == '未選択' ? 'selected' : null}}>クリエイター種別選択</option>
@@ -95,10 +94,11 @@
                     <input id="croped-base64-user-icon" name="croped_base64_user_icon" type="hidden">
                 </div>
 
+                <p>※トップ画像は5MB、プロフィール画像は3MBまでアップロードできます。</p>
+
                 <div class="posted-desk-card-profiles">
                     <div class="myprofile-edit-message">
-                        {{-- <textarea name="message" placeholder="ここにメッセージを入力">{!! nl2br(e($profile["message"])) !!}</textarea> --}}
-                        <textarea name="message" placeholder="ここにメッセージを入力">{!! e($profile["message"]) !!}</textarea>
+                        <textarea name="message" placeholder="ここにメッセージを入力">{!! e(old('message', $profile["message"])) !!}</textarea>
                     </div>
                     <div class="using-items">
                         <h3>使用機材</h3>
