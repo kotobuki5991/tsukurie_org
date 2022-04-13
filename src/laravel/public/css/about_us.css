@@ -106,10 +106,6 @@ select {
         vertical-align: middle;
     }
 
-    /* div.about-us-col > p {
-        height: 300px;
-    } */
-
     .about-us-image {
         width: 300px;
     }
@@ -128,6 +124,17 @@ select {
 /* @media screen and (max-width: 449px) { */
 /* 横に倒した時のサイズ */
 @media screen and (max-width: 1200px) and (hover: none) and (pointer: coarse) {
+
+    div.about-us-col {
+        /* display: flex; */
+        width: 80%;
+        margin: auto;
+        vertical-align: middle;
+    }
+
+    .about-us-image {
+        width: 300px;
+    }
 
 }
 
