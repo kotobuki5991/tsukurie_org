@@ -35,7 +35,7 @@ class ContactSendmail extends Mailable
     {
 
         return $this
-        ->from('tsukurie@noreply.com')
+        ->from(env('MAIL_FROM_ADDRESS'))
         // ->from($this->email)
         ->subject('自動送信メール')
         ->view('main.mail', ['contact' => $this->contact]);
