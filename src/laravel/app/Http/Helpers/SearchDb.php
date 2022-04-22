@@ -15,14 +15,12 @@ class SearchDb{
         // ログインユーザーのプロフィールカラム取得
         $profile = Profile::where('user_id', $user)->first();
 
-        // dd($profile);
         $profile_ary = [
             'id' => $profile->id,
             'user_id' => $profile->user_id,
             'user_name' => $profile->user->name,
             'profile_name' => $profile->profile_name,
             'creator_type' => $profile->creator_type->creator_type, //creator_typesのidとprofilesのcreator_types_idで紐づいたcreator_typeを取得
-            // 'profile_icon' => imagecreatefromstring(base64_decode(Storage::disk('s3')->get($profile->profile_icon))), //s3のurl
             'top_image' => isset($profile->top_image) ? Storage::disk('s3')->url($profile->top_image) : null, //s3のurl
             'profile_icon' => isset($profile->profile_icon) ? Storage::disk('s3')->url($profile->profile_icon) : null, //s3のurl
             'message' => $profile->message,
@@ -39,7 +37,6 @@ class SearchDb{
             'publish_flag' => $profile->publish_flag,
         ];
 
-        // dd(isset($profile_ary['top_image']) . ':' . isset($profile_ary['profile_icon']));
         $equipment_type_icon_paths = [];
 
         $equipment_ids = [
@@ -88,18 +85,13 @@ class SearchDb{
 
         $i = 1;
 
-        // $equipment_type_icon_pathsの個数より$equipment_type_icon_pathが少ないとエラーがでる。
-        // または、０個の場合はエラーか？
-        // validationでセットで入力するようにするか例外でキャッチする
         foreach($equipment_type_icon_paths as $equipment_type_icon_path){
-            // $profile_ary['equipment_type_icon_path_' . $i] = $equipment_type_icon_path[0]->equipment_type_icon_path;
             $profile_ary[$equipment_type_tag_name . $i] = $equipment_type_icon_path[0]->equipment_type_icon_path;
             $i++;
         }
 
         $i = 1;
         foreach($equipment_makers as $equipment_maker){
-            // $profile_ary['equipment_maker_' . $i] = $equipment_makers[$i - 1][0]->equipment_maker;
             $profile_ary[$equipment_maker_tag_name . $i] = $equipment_maker[0]->equipment_maker;
             $i++;
         }
@@ -114,14 +106,12 @@ class SearchDb{
         // ログインユーザーのプロフィールカラム取得
         $profile = Profile::where('user_id', $user)->first();
 
-        // dd($profile);
         $profile_ary = [
             'id' => $profile->id,
             'user_id' => $profile->user_id,
             'user_name' => $profile->user->name,
             'profile_name' => $profile->profile_name,
             'creator_type' => $profile->creator_type->creator_type, //creator_typesのidとprofilesのcreator_types_idで紐づいたcreator_typeを取得
-            // 'profile_icon' => imagecreatefromstring(base64_decode(Storage::disk('s3')->get($profile->profile_icon))), //s3のurl
             'top_image' => isset($profile->top_image) ? Storage::disk('s3')->url($profile->top_image) : null, //s3のurl
             'profile_icon' => isset($profile->profile_icon) ? Storage::disk('s3')->url($profile->profile_icon) : null, //s3のurl
             'message' => $profile->message,

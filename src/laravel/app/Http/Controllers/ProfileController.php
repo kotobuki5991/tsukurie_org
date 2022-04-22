@@ -23,7 +23,6 @@ class ProfileController extends Controller
     {
         $profile_ary = SearchDb::showProfile(Auth::user()->id, 'equipment_type_icon_path_', 'equipment_maker_');
 
-        // dd($profile_ary);
         return view('/mypage/top', ['profile' => $profile_ary]);
     }
 
@@ -142,13 +141,11 @@ class ProfileController extends Controller
 
     public function changeCreatorTypeTag(Request $request)
     {
-        // dd( $request);
         return view('/mypage/ajax_creator_type_change', ['ajax_param' => $request]);
     }
 
     public function changeUsedItemForm(Request $request)
     {
-        // dd( $request);
         return view('/mypage/ajax_used_item_form_change', ['ajax_param' => $request]);
     }
 

@@ -17,7 +17,7 @@ class MainController extends Controller
     public function index(Request $request)
     {
         $user_profiles = Profile::where('publish_flag', 1)->paginate(20);
-        // dd($user_profiles);
+
         $profile_ary = [];
         foreach($user_profiles as $user_profile){
             $profile_ary[] = [
@@ -43,7 +43,6 @@ class MainController extends Controller
         if(isset($request->creator_type)){
             $search_terms[] = ['creator_type_id', $request->creator_type];
         }
-        // dd($search_terms);
 
         $user_profiles = Profile::where($search_terms)->paginate(20);
 
@@ -93,8 +92,6 @@ class MainController extends Controller
         // userとprofileをソフトデリートする
         User::firstWhere('id', $delete_user_id)->delete();
         Profile::firstWhere('user_id', $delete_user_id)->delete();
-        // dd(Profile::firstWhere('user_id', $delete_user_id));
-
 
         return redirect('/');
     }
