@@ -7,8 +7,6 @@
 // モーダルウィンドウ関連
 // トップ画像用
 let modal_window = document.getElementById('modal-window');
-// ユーザーアイコン用
-// let modal_window_user_icon = document.getElementById('modal-window-user-icon');
 
 function openModalWindow(){
     modal_window.style.display = 'block';
@@ -17,14 +15,6 @@ function openModalWindow(){
 function closeModalWindow(){
     modal_window.style.display = 'none';
 }
-
-// // modal_content外がクリックされた場合モーダルウィンドウを閉じる
-// addEventListener('click', (event) => {
-//     if(event.target == modal_window){
-//         console.log(event.target);
-//         closeModalWindow();
-//     }
-// });
 
 
 // 画像アップロードフォーム
@@ -41,31 +31,6 @@ let select_upload_user_icon_button = document.getElementById('select-upload-user
 // アップロードできるファイルの拡張子を指定
 const allow_exts = new Array('jpg', 'jpeg', 'png');
 
-// const handleFileSelect = (event) => {
-//     let selected_file = select_upload_img_buttotn.files[0];
-//     // ファイルが選択されていなければ処理しない
-
-//     if (selected_file == undefined) return;
-//     let selected_file_name = selected_file.name;
-
-//     // 拡張子を取得（.で区切った配列の最後の要素が拡張子）
-//     let selected_file_ext = selected_file_name.split('.').slice(-1)[0];
-//     // ファイルの拡張子がallow_extsと一致しない場合
-//     if( allow_exts.indexOf(selected_file_ext) === -1 ){
-//         alert('アップロードできる画像ファイルの拡張子はjpg、jpeg、pngです。');
-//         return;
-//     }
-//     // 画像を表示するimgタグのsrc要素を選択したファイル名に変更
-//     let fileReader = new FileReader();
-
-//     fileReader.readAsDataURL(selected_file);
-
-//     fileReader.onload = (event) => {
-//         show_selected_img.src = event.target.result;
-//         loadImg(show_selected_img.src);
-//     }
-//     openModalWindow();
-// }
 
 const handleFileSelect = (img, select_tag) => {
     let selected_file = select_tag.files[0];
@@ -90,7 +55,6 @@ const handleFileSelect = (img, select_tag) => {
         img.src = event.target.result;
         console.log('loadImg mypage.js');
         loadImg(img.src);
-        // console.log(img.src);
     }
     openModalWindow();
 }
@@ -105,42 +69,12 @@ function handleUserIconFileSelect (){
 }
 
 select_upload_img_buttotn.addEventListener('change', handleTopImgFileSelect);
-// select_upload_img_buttotn.addEventListener('change', handleFileSelect);
 select_upload_user_icon_button.addEventListener('change', handleUserIconFileSelect);
-// select_upload_user_icon_button.addEventListener('change', handleFileSelect);
 
 
 // アイコン選択////////////////////
 // タスク 冗長なので短くする
 let show_selected_user_icon_area = document.getElementById('show-selected-user-icon-area');
-// 上で定義済み
-// let show_selected_user_icon = document.getElementById('show-selected-user-icon');
-// let select_upload_user_icon_button = document.getElementById('select-upload-user-icon');
-
-
-// const handleIconSelect = (event) => {
-//     let selected_file = select_upload_user_icon_button.files[0];
-//     let selected_file_name = selected_file.name;
-//     console.log('handleIconSelect');
-//     // 拡張子を取得（.で区切った配列の最後の要素が拡張子）
-//     let selected_file_ext = selected_file_name.split('.').slice(-1)[0];
-//     // ファイルの拡張子がallow_extsと一致しない場合
-//     if( allow_exts.indexOf(selected_file_ext) === -1 ){
-//         alert('アップロードできる画像ファイルの拡張子はjpg、jpeg、pngです。');
-//         return;
-//     }
-//     // 画像を表示するimgタグのsrc要素を選択したファイル名に変更
-//     let fileReader = new FileReader();
-
-//     fileReader.readAsDataURL(selected_file);
-
-//     fileReader.onload = (event) => {
-//         show_selected_user_icon.src = event.target.result
-//     }
-// }
-
-
-// select_upload_user_icon_button.addEventListener('change', handleIconSelect);
 
 // グローバル変数、creator_type変更時にリセット
 var used_item_form_number;
