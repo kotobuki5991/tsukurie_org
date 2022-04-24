@@ -8,7 +8,7 @@ https://tsukurie-for-creators.com/
 
 ## 使用技術
 Laravel、JavaScript、HTML5、CSS、Docker Compose、PHP、MySQL、GitHub、
-AWS（AMI、ACM、S3、Fargate、ECR、ECS、SES、VPC、RDS、ELB、Route53）
+AWS（IAM、ACM、S3、Fargate、ECR、ECS、SES、VPC、RDS、ELB、Route53）
 
 ## 主な機能
 ログイン、メール認証、お問い合わせ、プロフィール投稿、アカウント削除、画像トリミング、画像アップロード
