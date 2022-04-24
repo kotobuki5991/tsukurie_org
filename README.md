@@ -7,7 +7,7 @@ https://tsukurie-for-creators.com/
 アマチュアクリエイター向け作業環境共有webアプリです。
 
 ## 使用技術
-Laravel、JavaScrip、HTML5、CSS、Docker Compose、PHP、MySQL、GitHub、
+Laravel、JavaScript、HTML5、CSS、Docker Compose、PHP、MySQL、GitHub、
 AWS（AMI、ACM、S3、Fargate、ECR、ECS、SES、VPC、RDS、ELB、Route53）
 
 ## 主な機能
