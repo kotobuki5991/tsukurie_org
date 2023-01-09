@@ -1,5 +1,5 @@
 # つくりえ
-https://tsukurie-for-creators.com/
+https://tsukurie-for-creators.com/（現在閉鎖中）
 
 <img width="800" alt="スクリーンショット 2022-04-23 8 15 58" src="https://user-images.githubusercontent.com/64915142/164816309-34ef335a-b933-45c3-ac9a-07a3323737b6.png">
 
